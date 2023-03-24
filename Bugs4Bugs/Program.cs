@@ -1,4 +1,6 @@
+using Bugs4Bugs.Controllers;
 using Bugs4Bugs.Models;
+using Bugs4Bugs.Models.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,6 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddTransient<AccountDataservice>();
+builder.Services.AddTransient<TicketDataservice>();
 
 var connString = builder.Configuration
     .GetConnectionString("DefaultConnection");
