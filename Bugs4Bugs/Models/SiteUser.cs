@@ -6,7 +6,9 @@ namespace Bugs4Bugs.Models
 	{
 		public string? FirstName { get; set; }
         public string? LastName { get; set; }
-        
+
+        public List<ProductRole> ProductRoles { get; set; } = new List<ProductRole>();
+
 
     }
 
