@@ -6,4 +6,5 @@ namespace Bugs4Bugs.Models
 
         public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
     }
+
 }

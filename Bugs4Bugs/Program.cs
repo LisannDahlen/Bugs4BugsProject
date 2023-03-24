@@ -1,7 +1,17 @@
+using Bugs4Bugs.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+var connString = builder.Configuration
+    .GetConnectionString("DefaultConnection");
+
+builder.Services.AddDbContext<ApplicationContext>
+    (o => o.UseSqlServer(connString));
+
 
 var app = builder.Build();
 
