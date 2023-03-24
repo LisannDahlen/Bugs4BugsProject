@@ -5,9 +5,19 @@
         public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public string ProductName { get; set; }
-        public int TcketUrgencyId { get; set; }
-        public TicketUrgency Urgency { get; set; }
-
+        public DateTime SubmittedDate { get; set; }
+        public DateTime LastUpdated { get; set; }
+        //public int SubmitterId { get; set; }
+        //public User Submitter { get; set; }
+        //public int DeveloperId { get; set; }
+        //public User Developer { get; set; }
+        public int ProductId { get; set; }
+        public Product Product { get; set; }
+        public int BuggTypeId { get; set; }
+        public BuggType BuggType { get; set; }
+        public int UrgencyId { get; set; }
+        public Urgency Urgency { get; set; }
+        public int StatusId { get; set; }
+        public Status Status { get; set; }
     }
 }
