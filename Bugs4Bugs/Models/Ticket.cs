@@ -6,7 +6,7 @@
         public string Title { get; set; }
         public string Description { get; set; }
         public string ProductName { get; set; }
-        public int UrgencyId { get; set; }
+        public int TcketUrgencyId { get; set; }
         public TicketUrgency Urgency { get; set; }
 
     }
