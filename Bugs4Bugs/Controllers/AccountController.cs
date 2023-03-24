@@ -1,10 +1,16 @@
-﻿using Bugs4Bugs.Views.Account;
+﻿using Bugs4Bugs.Models.Services;
+using Bugs4Bugs.Views.Account;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bugs4Bugs.Controllers
 {
     public class AccountController : Controller
     {
+        AccountDataservice dataservice;
+        public AccountController(AccountDataservice dataservice) 
+        {
+            this.dataservice = dataservice;
+        }
         [HttpGet("/login")]
         public IActionResult Login()
         {

@@ -1,9 +1,9 @@
 ﻿namespace Bugs4Bugs.Models
 {
-    public class Status
+    public class TicketStatus
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string Status { get; set; }
         public string Description { get; set; }
     }
 }

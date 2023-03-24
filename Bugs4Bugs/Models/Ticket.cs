@@ -18,6 +18,6 @@
         public int UrgencyId { get; set; }
         public Urgency Urgency { get; set; }
         public int StatusId { get; set; }
-        public Status Status { get; set; }
+        public TicketStatus Status { get; set; }
     }
 }
