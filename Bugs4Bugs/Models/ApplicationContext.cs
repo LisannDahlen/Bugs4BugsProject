@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Bugs4Bugs.Models
 {
-	public class ApplicationContext : IdentityDbContext<ApplicationUser, IdentityRole, string>
+	public class ApplicationContext : IdentityDbContext<SiteUser, IdentityRole, string>
 	{
         // Denna konstruktor krävs för att konfigurationen ska fungera
         public ApplicationContext(DbContextOptions<ApplicationContext> options) :

@@ -13,7 +13,7 @@ var connString = builder.Configuration
 builder.Services.AddDbContext<ApplicationContext>
     (o => o.UseSqlServer(connString));
 
-builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+builder.Services.AddIdentity<SiteUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationContext>()
     .AddDefaultTokenProviders();
 
