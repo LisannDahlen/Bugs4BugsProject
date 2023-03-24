@@ -30,7 +30,7 @@ namespace Bugs4Bugs.Controllers
         }
 
         [HttpPost("/register")]
-        public IActionResult Register(RegisterVM loginVM)
+        public IActionResult Register(RegisterVM registerVM)
         {
             return View();
         }

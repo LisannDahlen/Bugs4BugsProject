@@ -31,7 +31,7 @@ namespace Bugs4Bugs.Controllers
         }
 
         [HttpPost("/createTicket")]
-        public IActionResult EditTicket(EditTicketVM createTicketVM)
+        public IActionResult EditTicket(EditTicketVM editTicketVM)
         {
             return View();
         }
