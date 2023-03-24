@@ -1,0 +1,34 @@
+﻿using Bugs4Bugs.Views.Account;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Bugs4Bugs.Controllers
+{
+    public class AccountController : Controller
+    {
+        [HttpGet("/login")]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost("/login")]
+        public IActionResult Login(LoginVM loginVM)
+        {
+            return View();
+        }
+
+        [HttpGet("/register")]
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost("/register")]
+        public IActionResult Register(RegisterVM loginVM)
+        {
+            return View();
+        }
+
+
+    }
+}
