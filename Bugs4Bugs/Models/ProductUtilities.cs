@@ -13,7 +13,7 @@
             };
         }
 
-        public static BugType[] GetDefaultBuggTypes()
+        public static BugType[] GetDefaultBugTypes()
         {
 
             return new BugType[]
