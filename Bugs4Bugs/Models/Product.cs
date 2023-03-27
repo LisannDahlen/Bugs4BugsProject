@@ -19,9 +19,9 @@
         public string Description { get; set; }
         public List<SiteUserRole> ProductTeam { get; set; }
 
-        BugType[] bugTypes;
-        Status[] statuses;
-        Urgency[] urgencies;
+        public BugType[] bugTypes;
+        public Status[] statuses;
+        public Urgency[] urgencies;
 
 
     }

@@ -25,7 +25,7 @@ namespace Bugs4Bugs.Models.Services
             };
         public AddTicket1VM[] GetAllProducts()
         {
-            return products.Select(p => new AddTicket1VM {productName = p.Name} )
+            return products.Select(p => new AddTicket1VM { productName = p.Name })
                             .ToArray();
         }
 
@@ -40,10 +40,12 @@ namespace Bugs4Bugs.Models.Services
                 LastUpdated = DateTime.Now,
                 Submitter = new SiteUser() {FirstName="John", LastName="Connor", UserName = "JohnConnor" },
                 TicketProduct = products.FirstOrDefault(o => o.Name=="Skynet"),
-                TicketBugType = TicketProduct.TicketBugType
-                //TicketUrgency = 
-                //TicketStatus =
-    }
+                TicketBugType = products.FirstOrDefault(o => o.Name=="Skynet").bugTypes[0],
+                TicketUrgency = products.FirstOrDefault(o => o.Name=="Skynet").urgencies[0],
+                TicketStatus =  products.FirstOrDefault(o => o.Name=="Skynet").statuses[0]
+            }
         };
+
+        
     }
 }
