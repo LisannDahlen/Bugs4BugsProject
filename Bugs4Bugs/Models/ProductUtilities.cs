@@ -25,14 +25,14 @@
             };
         }
 
-        public static TicketStatus[] GetDefaultStatuses()
+        public static Status[] GetDefaultStatuses()
         {
-            return new TicketStatus[] {
-                new TicketStatus{Status = "Closed"},
-                new TicketStatus{Status = "Resolved"},
-                new TicketStatus{Status = "Opened"},
-                new TicketStatus{Status = "Pending"},
-                new TicketStatus{Status = "Assigned"},
+            return new Status[] {
+                new Status{TicketStatus = "Closed"},
+                new Status{TicketStatus = "Resolved"},
+                new Status{TicketStatus = "Opened"},
+                new Status{TicketStatus = "Pending"},
+                new Status{TicketStatus = "Assigned"},
 
             };
         }

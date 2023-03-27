@@ -11,13 +11,13 @@
         public SiteUser Submitter { get; set; }
         public int? DeveloperId { get; set; }
         public SiteUser? Developer { get; set; }
-        public int ProductId { get; set; }
-        public Product Product { get; set; }
-        public int BuggTypeId { get; set; }
-        public BugType BuggType { get; set; }
-        public int UrgencyId { get; set; }
-        public Urgency Urgency { get; set; }
-        public int StatusId { get; set; }
-        public TicketStatus Status { get; set; }
+        public int TicketProductId { get; set; }
+        public Product TicketProduct { get; set; }
+        public int TicketBugTypeId { get; set; }
+        public BugType TicketBugType { get; set; }
+        public int TicketUrgencyId { get; set; }
+        public Urgency TicketUrgency { get; set; }
+        public int TicketStatusId { get; set; }
+        public Status TicketStatus { get; set; }
     }
 }

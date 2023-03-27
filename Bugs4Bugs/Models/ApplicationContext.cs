@@ -15,7 +15,7 @@ namespace Bugs4Bugs.Models
         // Exponerar våra databas-modeller via properties av typen DbSet<T> 
         public DbSet<Ticket> Tickets { get; set; }
         public DbSet<Urgency> Urgencies { get; set; }
-        public DbSet<TicketStatus> Statuses { get; set; }
+        public DbSet<Status> Statuses { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<BugType> BuggTypes { get; set; }
 

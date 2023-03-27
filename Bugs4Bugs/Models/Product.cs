@@ -6,8 +6,8 @@
         {
             Name = name;
             urgencies = ProductUtilities.GetDefaultUrgencyLevels();
-            ticketstatuses =  ProductUtilities.GetDefaultStatuses();
-            bugtypes =  ProductUtilities.GetDefaultBugTypes();
+            statuses =  ProductUtilities.GetDefaultStatuses();
+            bugTypes =  ProductUtilities.GetDefaultBugTypes();
         }
 
         public Product()
@@ -19,8 +19,8 @@
         public string Description { get; set; }
         public List<SiteUserRole> ProductTeam { get; set; }
 
-        BugType[] bugtypes;
-        TicketStatus[] ticketstatuses;
+        BugType[] bugTypes;
+        Status[] statuses;
         Urgency[] urgencies;
 
 
