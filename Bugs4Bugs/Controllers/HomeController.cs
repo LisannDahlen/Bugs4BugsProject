@@ -23,7 +23,11 @@ namespace Bugs4Bugs.Controllers
         {
             return View();
         }
-
+        [HttpGet("/OurMission")]
+        public IActionResult OurMission()
+        {
+            return View();
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
