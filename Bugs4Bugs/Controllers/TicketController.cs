@@ -16,7 +16,7 @@ namespace Bugs4Bugs.Controllers
         }
 
         [HttpGet("/CreateTicket")]
-        public IActionResult CreateTicket()
+        public IActionResult CreateTicket(string prodName)
         {
             ViewBag.UrgencyLevels = Models.ProductUtilities.GetDefaultUrgencyLevels()
                 .Select(x => new SelectListItem { Value = x.Level, Text = x.Level })
@@ -24,8 +24,9 @@ namespace Bugs4Bugs.Controllers
             ViewBag.BuggTypes = Models.ProductUtilities.GetDefaultBugTypes()
                 .Select(x => new SelectListItem { Value = x.Type, Text = x.Type })
                 .ToList();
+            CreateTicketVM createTicketVM = ticketDataservice.GetProductByName(prodName);
 
-            return View();
+            return View(createTicketVM);
         }
 
         [HttpPost("/CreateTicket")]

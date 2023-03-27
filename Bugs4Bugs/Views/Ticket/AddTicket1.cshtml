@@ -14,19 +14,20 @@
     
         
     
-   
+        
             <div class="col-sm-6 mb-3 mb-sm-0">
                 <div class="card" style="width: 18rem;">
                     <img src="..." class="card-img-top" alt="...">
                     <div class="card-body">
-                    <h5 class="card-title">@Model[i].productName</h5>
-            @*<p class="card-text"></p>*@
-            <a asp-action="CreateTicket" asp-controller="Ticket" class="btn btn-primary" >Create ticket</a>
-                    <br />
+                        <h5 class="card-title">@Model[i].productName</h5>
+                         @*<p class="card-text"></p>*@
+
+                    <a asp-action="CreateTicket" asp-controller="Ticket" asp-route-prodName="@Model[i].productName" class="btn btn-primary">Create ticket</a>
+                          <br />
+                     </div>
                 </div>
-            </div>
           
-        </div>
+            </div>
         
     
     

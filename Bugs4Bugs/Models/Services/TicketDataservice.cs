@@ -17,12 +17,23 @@ namespace Bugs4Bugs.Models.Services
                  new Product()
                 {
                    Name = "Firefox"
+                },
+                 new Product()
+                {
+                   Name = "Chrome"
                 }
             };
         public AddTicket1VM[] GetAllProducts()
         {
             return products.Select(p => new AddTicket1VM {productName = p.Name} )
                             .ToArray();
+        }
+
+        internal CreateTicketVM GetProductByName(string prodName)
+        {
+            return products.Where(p => p.Name == prodName)
+                .Select(p => new CreateTicketVM { ProductName = prodName })
+                .FirstOrDefault();
         }
     }
 }
