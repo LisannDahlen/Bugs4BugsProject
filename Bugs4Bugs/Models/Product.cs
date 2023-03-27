@@ -7,7 +7,7 @@
             Name = name;
             urgencies = ProductUtilities.GetDefaultUrgencyLevels();
             ticketstatuses =  ProductUtilities.GetDefaultStatuses();
-            bugtypes =  ProductUtilities.GetDefaultBuggTypes();
+            bugtypes =  ProductUtilities.GetDefaultBugTypes();
         }
 
         public int Id { get; set; }

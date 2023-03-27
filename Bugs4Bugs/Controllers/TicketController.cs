@@ -12,7 +12,7 @@ namespace Bugs4Bugs.Controllers
             ViewBag.UrgencyLevels = Models.ProductUtilities.GetDefaultUrgencyLevels()
                 .Select(x => new SelectListItem { Value = x.Level, Text = x.Level })
                 .ToList();
-            ViewBag.BuggTypes = Models.ProductUtilities.GetDefaultBuggTypes()
+            ViewBag.BuggTypes = Models.ProductUtilities.GetDefaultBugTypes()
                 .Select(x => new SelectListItem { Value = x.Type, Text = x.Type })
                 .ToList();
 
