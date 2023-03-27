@@ -1,4 +1,5 @@
 ﻿using Bugs4Bugs.Models;
+using Bugs4Bugs.Models.Services;
 using Bugs4Bugs.Views.Ticket;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -7,6 +8,13 @@ namespace Bugs4Bugs.Controllers
 {
     public class TicketController : Controller
     {
+
+        TicketDataservice ticketDataservice;
+        public TicketController(TicketDataservice ticketDataservice)
+        {
+            this.ticketDataservice = ticketDataservice;
+        }
+
         [HttpGet("/CreateTicket")]
         public IActionResult CreateTicket()
         {
@@ -48,18 +56,10 @@ namespace Bugs4Bugs.Controllers
         [HttpGet("/AddTicket1")]
         public IActionResult AddTicket1()
         {
-            List<Product> products = new List<Product>()
-            {
-                new Product()
-                {
-                   Name = "Visual Studio"
-                },
-                 new Product()
-                {
-                   Name = "Visual Studio Code"
-                },
-            };
-            return View();
+            AddTicket1VM[] model = ticketDataservice.GetAllProducts();
+            return View(model);
         }
+
+
     }
 }
