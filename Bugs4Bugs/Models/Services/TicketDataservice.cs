@@ -18,6 +18,10 @@ namespace Bugs4Bugs.Models.Services
                 {
                    Name = "Firefox"
                 },
+                new Product()
+                {
+                   Name = "Chrome"
+                },
                  new Product()
                  {
                      Name = "Skynet"
@@ -29,22 +33,7 @@ namespace Bugs4Bugs.Models.Services
                             .ToArray();
         }
 
-        List<Ticket> tickets = new List<Ticket>()
-        {
-            new Ticket()
-            {
-                Id = 1,
-                Title = "Mördarrobotar",
-                Description = "En smältande polis jagar mig och en Österrikisk bodybuilder säger att jag ska rädda framtiden",
-                SubmittedDate = DateTime.Now,
-                LastUpdated = DateTime.Now,
-                Submitter = new SiteUser() {FirstName="John", LastName="Connor", UserName = "JohnConnor" },
-                TicketProduct = products.FirstOrDefault(o => o.Name=="Skynet"),
-                TicketBugType = products.FirstOrDefault(o => o.Name=="Skynet").bugTypes[0],
-                TicketUrgency = products.FirstOrDefault(o => o.Name=="Skynet").urgencies[0],
-                TicketStatus =  products.FirstOrDefault(o => o.Name=="Skynet").statuses[0]
-            }
-        };
+
 
         
     }
