@@ -3,16 +3,37 @@
 *@
 @{
 }
-@model Bugs4Bugs.Views.Ticket.AddTicket1VM
+@model Bugs4Bugs.Views.Ticket.AddTicket1VM[]
 
 <h1>Available Products</h1>
 <input class="mb-3" type="text" placeholder="Search"  />
+ 
+ <div class="row row-cols-3 row-cols-md-3 g-4">
+@for (int i = 0; i < Model.Length; i++)
+{
+    
+        
+    
+   
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                <div class="card" style="width: 18rem;">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <h5 class="card-title">@Model[i].productName</h5>
+            @*<p class="card-text"></p>*@
+            <a asp-action="CreateTicket" asp-controller="Ticket" class="btn btn-primary" >Create ticket</a>
+                    <br />
+                </div>
+            </div>
+          
+        </div>
+        
+    
+    
+        
+        
+}
+        </div>
+      
 
-<div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-</div>
+
