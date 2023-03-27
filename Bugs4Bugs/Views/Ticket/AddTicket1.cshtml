@@ -7,15 +7,19 @@
 
 <h1>Available Products</h1>
 <input class="mb-3" type="text" placeholder="Search"  />
-
-@foreach (var item in Model)
+ 
+ <div class="row row-cols-3 row-cols-md-3 g-4">
+@for (int i = 0; i < Model.Length; i++)
 {
-  <div class="row">
-    <div class="col-sm-6 mb-3 mb-sm-0">
-        <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">@item.productName</h5>
+    
+        
+    
+   
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                <div class="card" style="width: 18rem;">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <h5 class="card-title">@Model[i].productName</h5>
             @*<p class="card-text"></p>*@
             <a asp-action="CreateTicket" asp-controller="Ticket" class="btn btn-primary" >Create ticket</a>
                     <br />
@@ -23,5 +27,13 @@
             </div>
           
         </div>
-    </div>
+        
+    
+    
+        
+        
 }
+        </div>
+      
+
+
