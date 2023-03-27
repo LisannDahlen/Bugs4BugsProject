@@ -9,8 +9,8 @@
         public DateTime LastUpdated { get; set; }
         public int SubmitterId { get; set; }
         public SiteUser Submitter { get; set; }
-        public int DeveloperId { get; set; }
-        public SiteUser Developer { get; set; }
+        public int? DeveloperId { get; set; }
+        public SiteUser? Developer { get; set; }
         public int ProductId { get; set; }
         public Product Product { get; set; }
         public int BuggTypeId { get; set; }
