@@ -33,7 +33,7 @@ namespace Bugs4Bugs.Controllers
             }
 
             // Redirect user
-            return RedirectToAction(nameof(TicketController.CreateTicket), "Ticket");
+            return RedirectToAction(nameof(TicketController.AddTicket1), "Ticket");
         }
 
         [HttpGet("/register")]
