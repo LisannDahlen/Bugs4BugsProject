@@ -25,7 +25,7 @@
 
         public string[] GetBugtypesArray()
         {
-            return bugtypes.Select(b => b.Type).ToArray();
+            return bugTypes.Select(b => b.Type).ToArray();
         }
 
         public string[] GetUrgencyArray()
