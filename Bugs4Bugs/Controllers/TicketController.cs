@@ -26,8 +26,8 @@ namespace Bugs4Bugs.Controllers
         }
 
 
-        [HttpGet("/TicketOverView")]
-        public IActionResult TicketOverView()
+        [HttpGet("/TicketOverview")]
+        public IActionResult TicketOverview()
         {
             return View(new TicketOverviewVM());
         }
