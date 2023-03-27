@@ -18,6 +18,7 @@ namespace Bugs4Bugs.Controllers
             return View();
         }
 
+        [HttpGet("/Privacy")]
         public IActionResult Privacy()
         {
             return View();

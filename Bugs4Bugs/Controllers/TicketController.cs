@@ -1,17 +1,25 @@
 ﻿using Bugs4Bugs.Views.Ticket;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Bugs4Bugs.Controllers
 {
     public class TicketController : Controller
     {
-        [HttpGet("/createTicket")]
+        [HttpGet("/CreateTicket")]
         public IActionResult CreateTicket()
         {
+            ViewBag.UrgencyLevels = Models.ProductUtilities.GetDefaultUrgencyLevels()
+                .Select(x => new SelectListItem { Value = x.Level, Text = x.Level })
+                .ToList();
+            ViewBag.BuggTypes = Models.ProductUtilities.GetDefaultBuggTypes()
+                .Select(x => new SelectListItem { Value = x.Type, Text = x.Type })
+                .ToList();
+
             return View();
         }
 
-        [HttpPost("/createTicket")]
+        [HttpPost("/CreateTicket")]
         public IActionResult CreateTicket(CreateTicketVM createTicketVM)
         {
             return View();
@@ -30,7 +38,7 @@ namespace Bugs4Bugs.Controllers
             return View();
         }
 
-        [HttpPost("/createTicket")]
+        [HttpPost("/EditTicket")]
         public IActionResult EditTicket(EditTicketVM editTicketVM)
         {
             return View();

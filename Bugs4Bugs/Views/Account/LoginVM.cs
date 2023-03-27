@@ -8,7 +8,7 @@ namespace Bugs4Bugs.Views.Account
         public string UserName { get; set; }
 
         [Required(ErrorMessage = "Please enter your Password")]
-
+        [DataType(DataType.Password)]
         public string Password { get; set; }
     }
 }

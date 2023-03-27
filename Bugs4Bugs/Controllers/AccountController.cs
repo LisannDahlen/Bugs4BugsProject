@@ -18,9 +18,22 @@ namespace Bugs4Bugs.Controllers
         }
 
         [HttpPost("/login")]
-        public IActionResult Login(LoginVM loginVM)
+        public async Task<IActionResult> LoginAsync(LoginVM loginVM)
         {
-            return View();
+            if (!ModelState.IsValid)
+                return View();
+
+            // Check if credentials is valid (and set auth cookie)
+            var errorMessage = await dataservice.TryLoginAsync(loginVM);
+            if (errorMessage != null)
+            {
+                // Show error
+                ModelState.AddModelError(string.Empty, errorMessage);
+                return View();
+            }
+
+            // Redirect user
+            return RedirectToAction(nameof(TicketController.CreateTicket), "Ticket");
         }
 
         [HttpGet("/register")]
@@ -30,9 +43,22 @@ namespace Bugs4Bugs.Controllers
         }
 
         [HttpPost("/register")]
-        public IActionResult Register(RegisterVM registerVM)
+        public async Task<IActionResult> RegisterAsync(RegisterVM registerVM)
         {
-            return View();
+            if (!ModelState.IsValid)
+                return View();
+
+            // Try to register user
+            var errorMessage = await dataservice.TryRegisterAsync(registerVM);
+            if (errorMessage != null)
+            {
+                // Show error
+                ModelState.AddModelError(string.Empty, errorMessage);
+                return View();
+            }
+
+            // Redirect user
+            return RedirectToAction(nameof(Login));
         }
 
 

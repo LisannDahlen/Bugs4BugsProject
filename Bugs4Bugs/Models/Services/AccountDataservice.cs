@@ -25,9 +25,11 @@ namespace Bugs4Bugs.Models.Services
             // Todo: Try to create a new user
             var user = new SiteUser
             {
+                FirstName = viewModel.FirstName,
+                LastName = viewModel.LastName,
                 UserName = viewModel.UserName,
-                //FirstName = viewModel.FirstName,
-                //LastName = viewModel.LastName,
+                Email = viewModel.Email,
+                PasswordHash = viewModel.Password,
             };
 
             IdentityResult result = await

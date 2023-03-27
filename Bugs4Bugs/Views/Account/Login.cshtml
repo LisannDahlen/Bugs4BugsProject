@@ -1,20 +1,16 @@
-﻿
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-
-@model LoginVM
+﻿@model LoginVM
 @{
-    <h1>Sign in</h1>
-    <br/>
-    <form asp-controller="Account" asp-action="Login">
-        
-        <input class="mb-3" asp-for="UserName" placeholder ="Username" />
-        <br/>
-        <input asp-for="Password" placeholder ="Password" />
-                 
-        <br />
-        <input type="submit" value="Log in" />
-    </form>
-    
+    ViewBag.Title = "Sign in";
 }
+
+<h1>@ViewData["Title"]</h1>
+
+<form asp-controller="Account" asp-action="Login">
+    <input asp-for="UserName" placeholder="Username" class="mb-3" />
+    <br />
+    <input asp-for="Password" placeholder="Password" class="mb-3" />
+    <br />
+    <input type="submit" value="Log In" />
+</form>
+
+<div asp-validation-summary="All"></div>
