@@ -15,15 +15,10 @@ namespace Bugs4Bugs.Controllers
             this.ticketDataservice = ticketDataservice;
         }
 
-        [HttpGet("/CreateTicket")]
+        [HttpGet("/CreateTicket/{prodName}")]
         public IActionResult CreateTicket(string prodName)
         {
-            ViewBag.UrgencyLevels = Models.ProductUtilities.GetDefaultUrgencyLevels()
-                .Select(x => new SelectListItem { Value = x.Level, Text = x.Level })
-                .ToList();
-            ViewBag.BuggTypes = Models.ProductUtilities.GetDefaultBugTypes()
-                .Select(x => new SelectListItem { Value = x.Type, Text = x.Type })
-                .ToList();
+            
             CreateTicketVM createTicketVM = ticketDataservice.GetProductByName(prodName);
 
             return View(createTicketVM);

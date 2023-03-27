@@ -32,7 +32,7 @@ namespace Bugs4Bugs.Models.Services
         internal CreateTicketVM GetProductByName(string prodName)
         {
             return products.Where(p => p.Name == prodName)
-                .Select(p => new CreateTicketVM { ProductName = prodName })
+                .Select(p => new CreateTicketVM { ProductName = prodName})
                 .FirstOrDefault();
         }
     }
