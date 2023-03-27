@@ -18,14 +18,10 @@ namespace Bugs4Bugs.Models.Services
                 {
                    Name = "Firefox"
                 },
-                new Product()
+                 new Product()
                 {
                    Name = "Chrome"
-                },
-                 new Product()
-                 {
-                     Name = "Skynet"
-                 }
+                }
             };
         public AddTicket1VM[] GetAllProducts()
         {
@@ -33,8 +29,13 @@ namespace Bugs4Bugs.Models.Services
                             .ToArray();
         }
 
-
-
-        
+        internal CreateTicketVM GetProductByName(string prodName)
+        {
+            return products.Where(p => p.Name == prodName)
+                .Select(p => new CreateTicketVM { ProductName = prodName , 
+                    BugTypes = p.GetBugtypesArray() ,
+                    UrgencyLevels = p.GetUrgencyArray()})
+                .FirstOrDefault();
+        }
     }
 }

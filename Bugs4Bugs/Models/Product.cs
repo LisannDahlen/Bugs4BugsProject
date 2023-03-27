@@ -23,6 +23,15 @@
         public Status[] statuses;
         public Urgency[] urgencies;
 
+        public string[] GetBugtypesArray()
+        {
+            return bugtypes.Select(b => b.Type).ToArray();
+        }
+
+        public string[] GetUrgencyArray()
+        {
+            return urgencies.Select(u => u.Level).ToArray();
+        }
 
     }
 }
