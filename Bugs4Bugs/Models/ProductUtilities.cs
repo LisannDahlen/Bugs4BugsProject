@@ -13,15 +13,15 @@
             };
         }
 
-        public static BuggType[] GetDefaultBuggTypes()
+        public static BugType[] GetDefaultBuggTypes()
         {
 
-            return new BuggType[]
+            return new BugType[]
             {
-                new BuggType{Type = "Program crash"},
-                new BuggType{Type = "Visual glitch"},
-                new BuggType{Type = "Performance issue"},
-                new BuggType{Type = "Unexpected behaviour"},
+                new BugType{Type = "Program crash"},
+                new BugType{Type = "Visual glitch"},
+                new BugType{Type = "Performance issue"},
+                new BugType{Type = "Unexpected behaviour"},
             };
         }
 

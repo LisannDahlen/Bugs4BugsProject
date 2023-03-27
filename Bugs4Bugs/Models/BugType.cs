@@ -1,6 +1,6 @@
 ﻿namespace Bugs4Bugs.Models
 {
-    public class BuggType
+    public class BugType
     {
         public int Id { get; set; }
         public string Type { get; set; }

@@ -17,7 +17,7 @@ namespace Bugs4Bugs.Models
         public DbSet<Urgency> Urgencies { get; set; }
         public DbSet<TicketStatus> Statuses { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<BuggType> BuggTypes { get; set; }
+        public DbSet<BugType> BuggTypes { get; set; }
 
     }
 
