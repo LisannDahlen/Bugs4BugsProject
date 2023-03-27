@@ -1,6 +1,6 @@
 ﻿namespace Bugs4Bugs.Views.Ticket
 {
-    public class TicketOverviewVM
+    public class TicketVM
     {
         public string Title { get; set; }
         public string Submiter { get; set; }
