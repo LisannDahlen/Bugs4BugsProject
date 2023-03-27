@@ -1,4 +1,5 @@
-﻿using Bugs4Bugs.Views.Ticket;
+﻿using Bugs4Bugs.Models;
+using Bugs4Bugs.Views.Ticket;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -44,5 +45,21 @@ namespace Bugs4Bugs.Controllers
             return View();
         }
 
+        [HttpGet("/AddTicket1")]
+        public IActionResult AddTicket1()
+        {
+            List<Product> products = new List<Product>()
+            {
+                new Product()
+                {
+                   Name = "Visual Studio"
+                },
+                 new Product()
+                {
+                   Name = "Visual Studio Code"
+                },
+            };
+            return View();
+        }
     }
 }
