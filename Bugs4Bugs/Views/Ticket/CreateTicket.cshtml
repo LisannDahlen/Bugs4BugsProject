@@ -19,12 +19,10 @@
                     <form>
                         <div class="form-group">
                             <label for="Product">Product: @Model.ProductName</label>
-
-
                         </div>
-                        <div class="form-group">
-                            <label for="Bugtypes"> Bugtypes:</label>
-                            <select id="Bugtypes">
+                        <div class="form-outline mb-3">
+                            <label for="Bugtypes" class="form-label">Bugtypes:</label>
+                            <select id="Bugtypes" class="form-select">
                                 <option value="">-- Select a bug type --</option>
                                 @foreach (string option in Model.BugTypes)
                                 {
@@ -32,22 +30,21 @@
                                 }
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="Urgencies"> Bugtypes:</label>
-                            <select id="Urgencies">
-                                <option value="">-- Select a urgency level --</option>
+                        <div class="form-outline mb-3">
+                            <label for="Urgencies" class="form-label">Urgency:</label>
+                            <select id="Urgencies" class="form-select">
+                                <option value="">-- Select an urgency level --</option>
                                 @foreach (string option in Model.UrgencyLevels)
                                 {
                                     <option value="@option">@option</option>
                                 }
                             </select>
                         </div>
-
-                        <div class="form-group">
-                            <label for="description">Description:</label>
+                        <div class="form-outline mb-3">
+                            <label for="description" class="form-label">Description:</label>
                             <textarea class="form-control" id="description" rows="3"></textarea>
                         </div>
-                        <input type="submit" value="Create ticket" />
+                        <input type="submit" value="Create ticket" class="btn btn-primary" />
                     </form>
                 </div>
             </div>
