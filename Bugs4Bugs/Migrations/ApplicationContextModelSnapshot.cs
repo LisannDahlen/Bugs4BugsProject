@@ -40,7 +40,7 @@ namespace Bugs4Bugs.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("BuggTypes");
+                    b.ToTable("BuggTypes", (string)null);
                 });
 
             modelBuilder.Entity("Bugs4Bugs.Models.Product", b =>
@@ -65,7 +65,7 @@ namespace Bugs4Bugs.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("Bugs4Bugs.Models.ProductRole", b =>
@@ -93,7 +93,7 @@ namespace Bugs4Bugs.Migrations
 
                     b.HasIndex("SiteUserId");
 
-                    b.ToTable("ProductRole");
+                    b.ToTable("ProductRole", (string)null);
                 });
 
             modelBuilder.Entity("Bugs4Bugs.Models.Role", b =>
@@ -114,7 +114,7 @@ namespace Bugs4Bugs.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Role");
+                    b.ToTable("Role", (string)null);
                 });
 
             modelBuilder.Entity("Bugs4Bugs.Models.SiteUser", b =>
@@ -217,7 +217,7 @@ namespace Bugs4Bugs.Migrations
 
                     b.HasIndex("SiteUserId1");
 
-                    b.ToTable("SiteUserRole");
+                    b.ToTable("SiteUserRole", (string)null);
                 });
 
             modelBuilder.Entity("Bugs4Bugs.Models.Status", b =>
@@ -237,7 +237,7 @@ namespace Bugs4Bugs.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Statuses");
+                    b.ToTable("Statuses", (string)null);
                 });
 
             modelBuilder.Entity("Bugs4Bugs.Models.Ticket", b =>
@@ -300,7 +300,7 @@ namespace Bugs4Bugs.Migrations
 
                     b.HasIndex("TicketUrgencyId");
 
-                    b.ToTable("Tickets");
+                    b.ToTable("Tickets", (string)null);
                 });
 
             modelBuilder.Entity("Bugs4Bugs.Models.Urgency", b =>
@@ -320,7 +320,7 @@ namespace Bugs4Bugs.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Urgencies");
+                    b.ToTable("Urgencies", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

@@ -31,7 +31,8 @@ namespace Bugs4Bugs.Models.Services
                 Email = viewModel.Email,
                 PasswordHash = viewModel.Password,
             };
-
+            
+            
             IdentityResult result = await
                 userManager.CreateAsync(user, viewModel.Password);
 

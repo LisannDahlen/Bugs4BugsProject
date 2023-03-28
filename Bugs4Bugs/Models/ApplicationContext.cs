@@ -11,7 +11,11 @@ namespace Bugs4Bugs.Models
             base(options)
         {
         }
-
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.Entity<BugType>().HasData(ProductUtilities.GetDefaultBugTypes());
+        }
         // Exponerar våra databas-modeller via properties av typen DbSet<T> 
         public DbSet<Ticket> Tickets { get; set; }
         public DbSet<Urgency> Urgencies { get; set; }
