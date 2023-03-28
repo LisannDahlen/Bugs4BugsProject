@@ -12,10 +12,10 @@
 @for (int i = 0; i < Model.Length; i++)
 {
         <div class="col-sm-6 mb-3 mb-sm-0" >
-                <div class="card" style="width: 12rem;">
-                <img src="@Model[i].PhotoURL" class="card-img-top" alt="..." style="width: 10rem;">
+                <div class="card display-flex align-items-center" style="height: 200px;">
+                <img src="@Model[i].PhotoURL" class="card-img-top mt-2" alt="..." style="width: 80px;">
                     <div class="card-body">
-                        <h5 class="card-title">@Model[i].productName</h5>
+                    <strong><h6 class="card-title">@Model[i].productName</h6></strong>
                          @*<p class="card-text"></p>*@
 
                     <a asp-action="CreateTicket" asp-controller="Ticket" asp-route-prodName="@Model[i].productName" class="btn btn-primary">Create ticket</a>
