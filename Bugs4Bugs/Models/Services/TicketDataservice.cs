@@ -100,7 +100,7 @@ namespace Bugs4Bugs.Models.Services
                     Urgency = t.TicketUrgency.Level,
                     Submitted = t.SubmittedDate.ToString("dd/MM/yyyy"),
                     LastUpdated = t.LastUpdated.ToString("dd/MM/yyyy"),
-                    Developer = t.Developer == null ? "Unassigned" : t.Developer.FirstName + t.Developer.LastName,
+                    //Developer = t.Developer == null ? "Unassigned" : t.Developer.FirstName + t.Developer.LastName,
                     Product = t.TicketProduct.Name,
                     ProductPhotoURL = t.TicketProduct.PhotoURL
                 })
@@ -122,6 +122,7 @@ namespace Bugs4Bugs.Models.Services
             newTicket.TicketStatus = new Status();
             newTicket.TicketBugType = new BugType(createTicketVM.SelectedBugType);
             newTicket.TicketUrgency = new Urgency(createTicketVM.SelectedUrgencyLevel);
+            //newTicket.SubmitterId = 
         }
     }
 }

@@ -7,7 +7,10 @@ namespace Bugs4Bugs.Models
 		public string? FirstName { get; set; }
         public string? LastName { get; set; }
 
-        public List<ProductRole> ProductRoles { get; set; } = new List<ProductRole>();
+        //List<Ticket> DeveloperTickets { get; set; }
+        List<Ticket> SubmitterTickets { get; set; }
+
+        //public List<ProductRole>? ProductRoles { get; set; } = new List<ProductRole>();
 
 
     }

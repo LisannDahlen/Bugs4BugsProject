@@ -7,10 +7,10 @@
         public string Description { get; set; }
         public DateTime SubmittedDate { get; set; }
         public DateTime LastUpdated { get; set; }
-        public int SubmitterId { get; set; }
+        public string SubmitterId { get; set; }
         public SiteUser Submitter { get; set; }
-        public int? DeveloperId { get; set; }
-        public SiteUser? Developer { get; set; }
+        //public string? DeveloperId { get; set; }
+        //public SiteUser? Developer { get; set; }
         public int TicketProductId { get; set; }
         public Product TicketProduct { get; set; }
         public int TicketBugTypeId { get; set; }
