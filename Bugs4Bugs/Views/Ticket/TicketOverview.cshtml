@@ -18,7 +18,7 @@
                     @{
                         int i = 0;
                         foreach (TicketVM ticket in Model){
-                            <tr data-mdb-toggle="collapse" data-mdb-target="#r@i">
+                            <tr data-bs-toggle="collapse" data-bs-target="#r_@i">
                                 <td>
                                     <div class="d-flex align-items-center">
                                         <img src="@ticket.ProductPhotoURL"
@@ -45,7 +45,7 @@
                                     <span class="badge badge-success rounded-pill d-inline">@ticket.Urgency</span>
                                 </td>
                             </tr>
-                        <tr class="collapse accordion-collapse" id="r@i" data-mdb-parent=".table">
+                        <tr class="collapse accordion-collapse" id="r_@i" data-bs-parent=".table">
                             <td colspan="5">
                                 <p>Submitted by: @ticket.Submiter</p>
                                 <p>Product: @ticket.Product</p>
