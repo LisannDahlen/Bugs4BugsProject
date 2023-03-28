@@ -12,6 +12,8 @@
         public string Product { get; set; }
         public string Developer { get; set; }
         public string Description { get; set; }
+        public string ProductPhotoURL { get; set; }
+
 
     }
 }

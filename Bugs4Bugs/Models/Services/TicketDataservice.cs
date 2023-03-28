@@ -101,7 +101,8 @@ namespace Bugs4Bugs.Models.Services
                     Submitted = t.SubmittedDate.ToString(),
                     LastUpdated = t.LastUpdated.ToString(),
                     Developer = t.Developer == null ? "" : t.Developer.FirstName + t.Developer.LastName,
-                    Product = t.TicketProduct.Name
+                    Product = t.TicketProduct.Name,
+                    ProductPhotoURL =t.TicketProduct.PhotoURL
                 })
                 .ToArray(); 
             return ticketVMs;
