@@ -98,11 +98,11 @@ namespace Bugs4Bugs.Models.Services
                     Status = t.TicketStatus.TicketStatus,
                     BugType = t.TicketBugType.Type,
                     Urgency = t.TicketUrgency.Level,
-                    Submitted = t.SubmittedDate.ToString(),
-                    LastUpdated = t.LastUpdated.ToString(),
-                    Developer = t.Developer == null ? "" : t.Developer.FirstName + t.Developer.LastName,
+                    Submitted = t.SubmittedDate.ToString("dd/MM/yyyy"),
+                    LastUpdated = t.LastUpdated.ToString("dd/MM/yyyy"),
+                    Developer = t.Developer == null ? "Unassigned" : t.Developer.FirstName + t.Developer.LastName,
                     Product = t.TicketProduct.Name,
-                    ProductPhotoURL =t.TicketProduct.PhotoURL
+                    ProductPhotoURL = t.TicketProduct.PhotoURL
                 })
                 .ToArray(); 
             return ticketVMs;
