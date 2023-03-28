@@ -16,22 +16,23 @@
 </style>
 @model Bugs4Bugs.Views.Ticket.ChooseProductVM[]
 
-<h1>Available Products</h1>
-<div class="container">
-    <div class="row">
-        <div class="col-4">
-            <div class="input-group mb-4">
-                <div class="form-outline">
-                    <input type="search" id="form1" class="form-control" />
-                    <label class="form-label" for="form1">Search</label>
-                </div>
-                <button type="button" class="btn btn-primary" id="search-button">
-                    <i class="fas fa-search"></i>
-                </button>
+<h1 class="text-center">Available Products</h1>
+<div class="row" style="justify-content: center">
+    <div class="col-6">
+        <div class="input-group mb-4">
+            <div class="form-outline">
+                <input type="search" id="form1" class="form-control" />
+                <label class="form-label" for="form1">Search</label>
             </div>
+            <button type="button" class="btn btn-primary" id="search-button">
+                <i class="fas fa-search"></i>
+            </button>
         </div>
     </div>
 </div>
+
+<div class="container mb-3">
+
 
 
 <div class="row row-cols-lg-4 row-cols-sm-1 g-4">
