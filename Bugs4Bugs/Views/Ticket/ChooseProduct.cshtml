@@ -38,7 +38,7 @@
 <div class="row row-cols-lg-3 row-cols-sm-1 g-4">
     @for (int i = 0; i < Model.Length; i++)
     {
-        <div class="col-sm-6 mb-3 mb-sm-0">
+        <div class="col-sm-6 mb-3 mb-sm-0" style="display: flex;">
             <div class="card flex-fill product-card" data-product-name="@Model[i].productName" style="width: 12rem;" id="@Model[i].productName">
                 <h5 class="card-header">@Model[i].productName</h5>
 
@@ -70,7 +70,7 @@
 
     function searchProducts() {
         var searchTerm = document.getElementById("form1").value.toLowerCase().trim();
-        console.log("searchTerm:", searchTerm); // Log the search term
+        console.log("searchTerm:", searchTerm);
 
         var allColumns = document.querySelectorAll(".col-sm-6");
 
@@ -78,19 +78,18 @@
             var column = allColumns[i];
             if (column.querySelector(".product-card")) {
                 var productName = column.querySelector(".product-card").getAttribute("data-product-name").toLowerCase();
-                console.log("productName:", productName); // Log the product name
+                console.log("productName:", productName); 
 
                 if (productName.includes(searchTerm)) {
-                    console.log("Showing:", productName); // Log if the product card is shown
+                    console.log("Showing:", productName);
                     column.style.display = "flex";
                 } else {
-                    console.log("Hiding:", productName); // Log if the product card is hidden
+                    console.log("Hiding:", productName); 
                     column.style.display = "none";
                 }
             }
         }
     }
-
 </script>
 
 
