@@ -3,79 +3,75 @@
 *@
 @{
 
-    <div class="accordion" id="accordionExample">
-        <table class="table align-middle mb-0 bg-white">
-            <thead class="bg-light">
-                <tr>
-                    <th>Name</th>
-                    <th>Title</th>
-                    <th>Status</th>
-                    <th>Position</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @{
-                    int i = 0;
-                    foreach (TicketVM ticket in Model)
-                    {
+    <div= class="table-responsive">
+    <table class="table accordian align-middle mb-0 bg-white">
+        <thead class="bg-light">
+            <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Dates</th>
+                    <th scope="col">Bug Type</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Urgency</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int i = 0;
+                foreach (TicketVM ticket in Model)
+                {
 
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="heading_@i">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_@i" aria-expanded="false" aria-controls="collapse_@i">
-                                    @*Skriv det du vill ha i den kolapsade vyn här*@
-                        <tr>
-                            <td>
-                                <div class="d-flex align-items-center">
-                                    <img src="https://mdbootstrap.com/img/new/avatars/8.jpg"
-                                         alt=""
-                                         style="width: 45px; height: 45px"
-                                         class="rounded-circle" />
-                                    <div class="ms-3">
-                                        <p class="fw-bold mb-1">@ticket.Title</p>
-                                        <p class="text-muted mb-0">@ticket.Product</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <p class="fw-normal mb-1">submitted @ticket.Submitted</p>
-                                <p class="text-muted mb-0">Last updated @ticket.LastUpdated</p>
-                            </td>
-                            <td>
-                                <span class="badge badge-success rounded-pill d-inline">@ticket.Status</span>
-                            </td>
-                            <td>
-                                <span class="badge badge-success rounded-pill d-inline">@ticket.Status</span>
-                            </td>
-                            <td>
-                                <button type="button" class="btn btn-link btn-sm btn-rounded">
-                                    Edit
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                                    <p></p>, <p></p> <br />
-                                    <p>@ticket.BugType</p>, <p>@ticket.Urgency</p>, <p>@ticket.Status</p>,  <p></p>
-                                </button>
-                            </h2>
-                            <div id="collapse_@i" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    @*Skriv det du vill ha i expanderade vyn här*@
-                                    <p>Submitted by: @ticket.Submiter</p>
-                                    <p>Product: @ticket.Product</p>
-                                    <p>Developed by:@ticket.Developer</p>
-
-                                    <p><strong>Description:</strong><br />@ticket.Description</p>
+                    <tr>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading_@i">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_@i" aria-expanded="false" aria-controls="collapse_@i">
+                                        @*Skriv det du vill ha i den kolapsade vyn här*@
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <img src="@ticket.ProductPhotoURL"
+                                     alt=""
+                                     style="width: 45px; height: 45px"
+                                     class="rounded-circle" />
+                                <div class="ms-3">
+                                    <p class="fw-bold mb-1">@ticket.Title</p>
+                                    <p class="text-muted mb-0">@ticket.Product</p>
                                 </div>
                             </div>
+                        </td>
+                        <td>
+                            <p class="fw-normal mb-1">submitted @ticket.Submitted</p>
+                            <p class="text-muted mb-0">Last updated @ticket.LastUpdated</p>
+                        </td>
+                        <td>
+                            <span class="badge badge-success rounded-pill d-inline">@ticket.BugType</span>
+                        </td>
+                        <td>
+                            <span class="badge badge-success rounded-pill d-inline">@ticket.Status</span>
+                        </td>
+                        <td>
+                            <span class="badge badge-success rounded-pill d-inline">@ticket.Urgency</span>
+                        </td>
+
+
+                        </button>
+                        </h2>
+                        <div id="collapse_@i" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                        @*Skriv det du vill ha i expanderade vyn här*@
+                                <p>Submitted by: @ticket.Submiter</p>
+                                <p>Product: @ticket.Product</p>
+                                <p>Developed by:@ticket.Developer</p>
+
+                                <p><strong>Description:</strong><br />@ticket.Description</p>
+                            </div>
                         </div>
-                        i++;
-                    }
+                        </div>
+                    </tr>
+                    i++;
                 }
-            </tbody>
-        </table>
-
-
-
+            }
+        </tbody>
+    </table>
     </div>
+
+
 }
