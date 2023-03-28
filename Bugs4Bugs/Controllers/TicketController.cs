@@ -27,6 +27,8 @@ namespace Bugs4Bugs.Controllers
         [HttpPost("/SaveTicket")]
         public IActionResult SaveTicket(CreateTicketVM createTicketVM)
         {
+            createTicketVM.ProductName = (string)TempData[CURRENT_PRODUCT_NAME];
+            ticketDataservice.SaveTicket(createTicketVM);
             //dataservice.saveTicket()
             return RedirectToAction(nameof(TicketOverview));
         }
