@@ -11,18 +11,20 @@
 <div class="container">
     <div class="row">
         <div class="col-6 offset-md-3 center-box">
-            <div class="card">
+            <div class="card" style="margin-bottom: 50px">
                 <div class="card-header">
                     <h6>Product: @Model.ProductName</h6>
                 </div>
                 <div class="card-body">
                     <form asp-controller="Ticket" asp-action="SaveTicket">
-                        <div class="form-group">
-                            <label asp-for="Title">Title:</label>
-                            <input asp-for="Title"/>
+                        <div class="form-outline mb-3">
+                            <!--<label asp-for="Title">Title:</label>-->
+                            <!--<input asp-for="Title" placeholder="Title"/>-->
+                            <!--<br />-->
+                            <input type="text" id="title" class="form-control" >
+                            <label for="title" class="form-label">Title..</label>
                         </div>
                         <div class="form-outline mb-3">
-                            <label asp-for="SelectedBugType" class="form-label">Bugtypes:</label>
                             <select asp-for="SelectedBugType" class="form-select">
                                 <option value="">-- Select a bug type --</option>
                                 @foreach (string option in Model.BugTypes)
@@ -32,7 +34,6 @@
                             </select>
                         </div>
                         <div class="form-outline mb-3">
-                            <label asp-for="SelectedUrgencyLevel" class="form-label">Urgency level:</label>
                             <select asp-for="SelectedUrgencyLevel" class="form-select">
                                 <option value="">-- Select an urgency level --</option>
                                 @foreach (string option in Model.UrgencyLevels)
@@ -42,8 +43,8 @@
                             </select>
                         </div>
                         <div class="form-outline mb-3">
-                            <label asp-for="Description" class="form-label">Description:</label>
-                            <textarea asp-for="Description" class="form-control border 1px background black" rows="3" style="background: #FAFAFA"></textarea>
+                            <textarea asp-for="Description" class="form-control border 1px" rows="3" style="background: #FAFAFA"  id="description"></textarea>
+                            <label for="description" class="form-label">Description..</label>
                         </div>
                         <input type="submit" value="Add ticket" class="btn btn-primary" />
                     </form>
