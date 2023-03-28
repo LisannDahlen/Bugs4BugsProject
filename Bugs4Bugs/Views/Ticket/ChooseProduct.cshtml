@@ -3,6 +3,7 @@
 *@
 @{
 }
+
 <style>
     .button-card {
         display: flex;
@@ -16,13 +17,29 @@
 @model Bugs4Bugs.Views.Ticket.ChooseProductVM[]
 
 <h1>Available Products</h1>
-<input class="mb-3" type="text" placeholder="Search" />
+<div class="container">
+    <div class="row">
+        <!-- Half the size of the card -->
+        <div class="col-6">
+            <div class="input-group mb-4">
+                <div class="form-outline">
+                    <input type="search" id="form1" class="form-control" />
+                    <label class="form-label" for="form1">Search</label>
+                </div>
+                <button type="button" class="btn btn-primary" id="search-button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
-<div class="row row-cols-lg-3 row-cols-sm-1 g-4 d-flex">
+
+<div class="row row-cols-lg-3 row-cols-sm-1 g-4">
     @for (int i = 0; i < Model.Length; i++)
     {
-        <div class="col-sm-6 mb-3 mb-sm-0 d-flex">
-            <div class="card flex-fill" style="width: 12rem;">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            <div class="card flex-fill product-card" data-product-name="@Model[i].productName" style="width: 12rem;" id="@Model[i].productName">
                 <h5 class="card-header">@Model[i].productName</h5>
 
                 <div class="card-body d-flex flex-column justify-content-between">
@@ -35,7 +52,6 @@
                         <div class="button-card button">
                             <a asp-action="CreateTicket" asp-controller="Ticket" asp-route-prodName="@Model[i].productName" class="btn btn-primary button-card">Create ticket</a>
                             <a asp-action="TicketOverview" asp-controller="Ticket" class="btn btn-primary button-card">Ticket Overview</a>
-                            <a asp-action="EditTicket" asp-controller="Ticket" asp-route-prodName="@Model[i].productName" class="btn btn-primary button-card">Edit Ticket</a>
                             <br />
                         </div>
                     </div>
@@ -46,5 +62,35 @@
     }
 </div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var searchButton = document.getElementById("search-button");
+        searchButton.addEventListener("click", searchProducts);
+    });
+
+    function searchProducts() {
+        var searchTerm = document.getElementById("form1").value.toLowerCase().trim();
+        console.log("searchTerm:", searchTerm); // Log the search term
+
+        var allColumns = document.querySelectorAll(".col-sm-6");
+
+        for (var i = 0; i < allColumns.length; i++) {
+            var column = allColumns[i];
+            if (column.querySelector(".product-card")) {
+                var productName = column.querySelector(".product-card").getAttribute("data-product-name").toLowerCase();
+                console.log("productName:", productName); // Log the product name
+
+                if (productName.includes(searchTerm)) {
+                    console.log("Showing:", productName); // Log if the product card is shown
+                    column.style.display = "flex";
+                } else {
+                    console.log("Hiding:", productName); // Log if the product card is hidden
+                    column.style.display = "none";
+                }
+            }
+        }
+    }
+
+</script>
 
 

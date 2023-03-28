@@ -6,83 +6,97 @@
     <h1 class="display-4">Welcome</h1>
     <p>This is the home page for bugs4bugs</p>
 
-    
-        <!-- Info row -->
-        <div class="row">
-            <div class="col-12">
-                <p>
+
+    <!-- Info row -->
+    <div class="row">
+        <div class="col-12">
+            <p>
                 Welcome to BugsForBugs - the solution to all your software bug problems! We're thrilled to have you as part of our community and look forward to helping you streamline your bug reporting process. Our user-friendly platform makes it easy to report and prioritize bugs, ensuring that your team can focus on delivering high-quality software. Plus, our commitment to sustainability means that you're not only improving your software but also contributing to a greener future. Thanks for choosing BugsForBugs - let's get started!
-                </p>
-            </div>
+            </p>
         </div>
-        <!-- cards -->
-    <div class="row row-cols-lg-3 row-cols-sm-1">
-            <div class="col">
-                <a style="color: #4E4E4E">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Our product</h5>
-                            <img src="/Images/OurProduct.png"
-                                 alt="Screenshot picturing the ticket overview page."
-                                 style="max-width: 10rem" />
-                            <p class="card-text">
-                                Looking for a better way to manage your software bugs?
-                                BugsForBugs has got you covered! Our user-friendly platform
-                                allows you to report bugs quickly and easily, so your team can
-                                focus on delivering high-quality software. Our platform is
-                                designed to streamline your bug reporting process and make it
-                                simple to prioritize issues, ensuring that your team stays on
-                                top of any problems that arise. Say goodbye to tedious bug
-                                reporting and hello to high-quality software!
-                            </p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col">
-            <a asp-controller="Home" asp-action="OurMission" style="color: #4E4E4E">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Our mission</h5>
-                            <img src="/Images/OurProduct.png"
-                                 alt="Screenshot picturing the ticket overview page."
-                                 style="max-width: 10rem" />
-                            <p class="card-text">
-                                At BugsforBugs, we're committed to sustainability. We help
-                                protect and promote biological diversity among pollinating
-                                insects like bees and butterflies by donating a significant
-                                portion of our profits to organizations that support
-                                pollinator conservation. We encourage sustainable
-                                consumption and ethical business practices. Join us on this
-                                journey towards sustainability and contribute to a greener
-                                future with BugsforBugs!
-                            </p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col">
+    </div>
+
+    <!-- Card Length -->
+    <style>
+        .card-equal-height {
+            display: flex;
+            flex-direction: column;
+            min-height: 100%; /* Adjust this value according to your desired height */
+        }
+
+            .card-equal-height .card-body {
+                flex-grow: 1;
+            }
+    </style>
+
+    <!-- cards -->
+    <div class="row row-cols-lg-3 row-cols-sm-1 d-flex">
+        <div class="col d-flex">
             <a style="color: #4E4E4E">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Get started</h5>
-                            <img src="/Images/OurProduct.png"
-                                 alt="Screenshot picturing the ticket overview page."
-                                 style="max-width: 10rem" />
-                            <p class="card-text">
-                                Getting started with BugsForBugs is easy! Simply create an
-                                account on our website and start reporting bugs. Our
-                                user-friendly platform will guide you through the process,
-                                making it easy to report and prioritize bugs. Once you've
-                                submitted a bug report, the product team will review it and
-                                work with you to find a solution. Join the BugsForBugs
-                                community today and streamline your bug reporting process!
-                            </p>
-                        </div>
+                <div class="card card-equal-height">
+                    <div class="card-body">
+                        <h5 class="card-title">Our product</h5>
+                        <img src="/Images/OurProduct.png"
+                             alt="Screenshot picturing the ticket overview page."
+                             style="max-width: 10rem" />
+                        <p class="card-text">
+                            Looking for a better way to manage your software bugs?
+                            BugsForBugs has got you covered! Our user-friendly platform
+                            allows you to report bugs quickly and easily, so your team can
+                            focus on delivering high-quality software. Our platform is
+                            designed to streamline your bug reporting process and make it
+                            simple to prioritize issues, ensuring that your team stays on
+                            top of any problems that arise. Say goodbye to tedious bug
+                            reporting and hello to high-quality software!
+                        </p>
                     </div>
-                </a>
-            </div>
+                </div>
+            </a>
         </div>
-    
+        <div class="col">
+            <a asp-controller="Home" asp-action="OurMission" style="color: #4E4E4E">
+                <div class="card card-equal-height">
+                    <div class="card-body">
+                        <h5 class="card-title">Our mission</h5>
+                        <img src="/Images/OurProduct.png"
+                             alt="Screenshot picturing the ticket overview page."
+                             style="max-width: 10rem" />
+                        <p class="card-text">
+                            At BugsforBugs, we're committed to sustainability. We help
+                            protect and promote biological diversity among pollinating
+                            insects like bees and butterflies by donating a significant
+                            portion of our profits to organizations that support
+                            pollinator conservation. We encourage sustainable
+                            consumption and ethical business practices. Join us on this
+                            journey towards sustainability and contribute to a greener
+                            future with BugsforBugs!
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col">
+            <a style="color: #4E4E4E">
+                <div class="card card-equal-height">
+                    <div class="card-body">
+                        <h5 class="card-title">Get started</h5>
+                        <img src="/Images/OurProduct.png"
+                             alt="Screenshot picturing the ticket overview page."
+                             style="max-width: 10rem" />
+                        <p class="card-text">
+                            Getting started with BugsForBugs is easy! Simply create an
+                            account on our website and start reporting bugs. Our
+                            user-friendly platform will guide you through the process,
+                            making it easy to report and prioritize bugs. Once you've
+                            submitted a bug report, the product team will review it and
+                            work with you to find a solution. Join the BugsForBugs
+                            community today and streamline your bug reporting process!
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
 
 </div>
