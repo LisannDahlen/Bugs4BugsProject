@@ -9,6 +9,7 @@
                     <tr>
                         <th scope="col">Name</th>
                         <th scope="col">Dates</th>
+                        <th scope="col"></th>
                         <th scope="col">Bug Type</th>
                         <th scope="col">Status</th>
                         <th scope="col">Urgency</th>
@@ -38,8 +39,12 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <p class="fw-normal mb-1">Submitted @ticket.Submitted</p>
-                                    <p class="fw-normal mb-1">Last updated @ticket.LastUpdated</p>
+                                    <p class="fw-normal mb-1">Submitted</p>
+                                    <p class="fw-normal mb-1">Last updated</p>
+                                </td>
+                                <td>
+                                    <p class="fw-normal mb-1">@ticket.Submitted</p>
+                                    <p class="fw-normal mb-1">@ticket.LastUpdated</p>
                                 </td>
                                 <td>
                                     <span class="badge badge-success rounded-pill d-inline">@ticket.BugType</span>
