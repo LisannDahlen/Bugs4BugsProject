@@ -47,7 +47,7 @@ namespace Bugs4Bugs.Models.Services
                             .ToArray();
         }
 
-        internal CreateTicketVM? GetProductByName(string prodName)
+        internal CreateTicketVM? GetCreateTicketVM(string prodName)
         {
             return products.Where(p => p.Name == prodName)
                 .Select(p => new CreateTicketVM
@@ -107,13 +107,21 @@ namespace Bugs4Bugs.Models.Services
                 .ToArray(); 
             return ticketVMs;
         }
-
+        public Product? GetProductByName(string prodName)
+        {
+            return products.SingleOrDefault(p=>p.Name == prodName);
+        }
         internal void SaveTicket(CreateTicketVM createTicketVM)
         {
             Ticket newTicket = new Ticket();
             newTicket.Description = createTicketVM.Description;
+            newTicket.SubmittedDate = DateTime.Now;
             newTicket.LastUpdated = DateTime.Now;
-            newTicket.LastUpdated = DateTime.Now;
+            newTicket.Title = createTicketVM.Title;
+            newTicket.TicketProduct = GetProductByName(createTicketVM.ProductName);
+            newTicket.TicketStatus = new Status();
+            newTicket.TicketBugType = new BugType(createTicketVM.SelectedBugType);
+            newTicket.TicketUrgency = new Urgency(createTicketVM.SelectedUrgencyLevel);
         }
     }
 }
