@@ -24,7 +24,7 @@
                         </div>
                         <div class="form-group">
                             <label for="bugType">Bug Type:</label>
-                            <select class="form-control" id="bugType" asp-for="BugTypes" asp-items="@new SelectList(Model.BugTypes)">
+                            <select class="form-control" id="bugType" asp-for="BugTypes" asp-items="@Model.BugTypes.Select(b => new SelectListItem{Value = b, Text = b});">
                                 <option value="">-- Select a bug type --</option>
                             </select>
                         </div>
