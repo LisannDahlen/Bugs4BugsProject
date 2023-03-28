@@ -49,10 +49,10 @@ namespace Bugs4Bugs.Controllers
             return View();
         }
 
-        [HttpGet("/AddTicket1")]
-        public IActionResult AddTicket1()
+        [HttpGet("/ChooseProduct")]
+        public IActionResult ChooseProduct()
         {
-            AddTicket1VM[] model = ticketDataservice.GetAllProducts();
+            ChooseProductVM[] model = ticketDataservice.GetAllProducts();
             return View(model);
         }
 

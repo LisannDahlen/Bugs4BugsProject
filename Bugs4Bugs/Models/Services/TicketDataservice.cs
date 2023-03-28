@@ -28,9 +28,9 @@ namespace Bugs4Bugs.Models.Services
                    Name = "Skynet"
                 }
             };
-        public AddTicket1VM[] GetAllProducts()
+        public ChooseProductVM[] GetAllProducts()
         {
-            return products.Select(p => new AddTicket1VM { productName = p.Name })
+            return products.Select(p => new ChooseProductVM { productName = p.Name })
                             .ToArray();
         }
 
