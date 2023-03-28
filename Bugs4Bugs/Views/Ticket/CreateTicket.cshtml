@@ -13,12 +13,13 @@
         <div class="col-6 offset-md-3 center-box">
             <div class="card">
                 <div class="card-header">
-                    Create Ticket
+                    <h6>Product: @Model.ProductName</h6>
                 </div>
                 <div class="card-body">
                     <form asp-controller="Ticket" asp-action="SaveTicket">
                         <div class="form-group">
-                            <label asp-for="ProductName">Product: @Model.ProductName</label>
+                            <label asp-for="Title">Title:</label>
+                            <input asp-for="Title"/>
                         </div>
                         <div class="form-outline mb-3">
                             <label asp-for="SelectedBugType" class="form-label">Bugtypes:</label>

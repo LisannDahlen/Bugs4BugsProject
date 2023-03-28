@@ -5,6 +5,8 @@ namespace Bugs4Bugs.Views.Ticket
     public class CreateTicketVM
     {
         public string ProductName { get; set; }
+        public string Title { get; set; }
+
         //public Product product { get; set; }
         public string[]? BugTypes { get; set; }
         public string SelectedBugType { get; set; }

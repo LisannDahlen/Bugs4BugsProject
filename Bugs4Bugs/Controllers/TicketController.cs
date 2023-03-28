@@ -19,7 +19,7 @@ namespace Bugs4Bugs.Controllers
         public IActionResult CreateTicket(string prodName)
         {
             
-            CreateTicketVM createTicketVM = ticketDataservice.GetProductByName(prodName);
+            CreateTicketVM createTicketVM = ticketDataservice.GetCreateTicketVM(prodName);
             TempData[CURRENT_PRODUCT_NAME] = prodName;
             return View(createTicketVM);
         }
