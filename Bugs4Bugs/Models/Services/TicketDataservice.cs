@@ -5,6 +5,12 @@ namespace Bugs4Bugs.Models.Services
 {
     public class TicketDataservice
     {
+        ApplicationContext applicationContext;
+        public TicketDataservice(ApplicationContext applicationContext)
+        {
+            applicationContext = applicationContext ?? throw new ArgumentNullException(nameof(applicationContext));
+        }
+
         static List<Product> products = new List<Product>
             {
                 new Product()
