@@ -3,35 +3,48 @@
 *@
 @{
 }
+<style>
+    .button-card {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        flex-direction: column-reverse;
+        align-content: space-around;
+        margin-bottom: 5px;
+    }
+</style>
 @model Bugs4Bugs.Views.Ticket.ChooseProductVM[]
 
 <h1>Available Products</h1>
-<input class="mb-3" type="text" placeholder="Search"  />
+<input class="mb-3" type="text" placeholder="Search" />
 
-<div class="row row-cols-3 row-cols-md-3 g-4 d-flex align-items-center">
-@for (int i = 0; i < Model.Length; i++)
-{
+<div class="row row-cols-lg-3 row-cols-sm-1 g-4 d-flex">
+    @for (int i = 0; i < Model.Length; i++)
+    {
         <div class="col-sm-6 mb-3 mb-sm-0 d-flex">
             <div class="card flex-fill" style="width: 12rem;">
                 <h5 class="card-header">@Model[i].productName</h5>
 
-                <div class="card-body d-flex flex-column">
-                    <img src="@Model[i].PhotoURL" class="card-img-top" alt="..." style="width: 10rem;">
-                         @*<p class="card-text"></p>*@
-                         <br/>
-                    <a asp-action="CreateTicket" asp-controller="Ticket" asp-route-prodName="@Model[i].productName" class="btn btn-primary">Create ticket</a>
-                          <br />
-                     </div>
+                <div class="card-body d-flex flex-column justify-content-between">
+
+                    <img src="@Model[i].PhotoURL" class="card-img-top d-block mx-auto" alt="@Model[i].productName.ToString()" style="width: 5rem;">
+                    <br />
+                    <div class="button-wrapper mt-auto">
+                        <h5>Discription:</h5>
+                        <p class="card-text">Text</p>
+                        <div class="button-card button">
+                            <a asp-action="CreateTicket" asp-controller="Ticket" asp-route-prodName="@Model[i].productName" class="btn btn-primary button-card">Create ticket</a>
+                            <a asp-action="TicketOverview" asp-controller="Ticket" class="btn btn-primary button-card">TicketOverview</a>
+                            <a asp-action="EditTicket" asp-controller="Ticket" asp-route-prodName="@Model[i].productName" class="btn btn-primary button-card">EditTicket</a>
+                            <br />
+                        </div>
+                    </div>
                 </div>
-          
             </div>
-        
-    
-    
-        
-        
-}
+
         </div>
-      
+    }
+</div>
+
 
 
