@@ -8,7 +8,7 @@ namespace Bugs4Bugs.Controllers
 {
     public class TicketController : Controller
     {
-
+        const string CURRENT_PRODUCT_NAME = "currentProduct";
         TicketDataservice ticketDataservice;
         public TicketController(TicketDataservice ticketDataservice)
         {
@@ -20,14 +20,15 @@ namespace Bugs4Bugs.Controllers
         {
             
             CreateTicketVM createTicketVM = ticketDataservice.GetProductByName(prodName);
-
+            TempData[CURRENT_PRODUCT_NAME] = prodName;
             return View(createTicketVM);
         }
 
-        [HttpPost("/CreateTicket")]
-        public IActionResult CreateTicket(CreateTicketVM createTicketVM)
+        [HttpPost("/SaveTicket")]
+        public IActionResult SaveTicket(CreateTicketVM createTicketVM)
         {
-            return View();
+            //dataservice.saveTicket()
+            return RedirectToAction(nameof(TicketOverview));
         }
 
 

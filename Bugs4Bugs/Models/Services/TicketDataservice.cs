@@ -108,5 +108,12 @@ namespace Bugs4Bugs.Models.Services
             return ticketVMs;
         }
 
+        internal void SaveTicket(CreateTicketVM createTicketVM)
+        {
+            Ticket newTicket = new Ticket();
+            newTicket.Description = createTicketVM.Description;
+            newTicket.LastUpdated = DateTime.Now;
+            newTicket.LastUpdated = DateTime.Now;
+        }
     }
 }
