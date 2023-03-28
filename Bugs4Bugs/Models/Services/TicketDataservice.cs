@@ -74,6 +74,25 @@ namespace Bugs4Bugs.Models.Services
             },
         };
 
+        public TicketVM[] GetAllTIckets()
+        {
+            TicketVM[] ticketVMs = tickets
+                .Select(t =>
+                new TicketVM {
+                    Title = t.Title,
+                    Description = t.Description,
+                    Submiter = t.Submitter.UserName,
+                    Status = t.TicketStatus.TicketStatus,
+                    BugType = t.TicketBugType.Type,
+                    Urgency = t.TicketUrgency.Level,
+                    Submitted = t.SubmittedDate.ToString(),
+                    LastUpdated = t.LastUpdated.ToString(),
+                    Developer = t.Developer == null ? "" : t.Developer.FirstName + t.Developer.LastName,
+                    Product = t.TicketProduct.Name
+                })
+                .ToArray(); 
+            return ticketVMs;
+        }
 
     }
 }
