@@ -12,6 +12,9 @@
 
         public Product()
         {
+            urgencies = ProductUtilities.GetDefaultUrgencyLevels();
+            statuses = ProductUtilities.GetDefaultStatuses();
+            bugTypes = ProductUtilities.GetDefaultBugTypes();
         }
 
         public int Id { get; set; }

@@ -34,7 +34,7 @@ namespace Bugs4Bugs.Controllers
         [HttpGet("/TicketOverview")]
         public IActionResult TicketOverview()
         {
-            return View(new TicketVM());
+            return View(ticketDataservice.GetAllTIckets());
         }
 
         [HttpGet("/EditTicket")]
