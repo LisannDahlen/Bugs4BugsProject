@@ -47,8 +47,7 @@
                     <img src="@Model[i].PhotoURL" class="card-img-top d-block mx-auto" alt="@Model[i].productName.ToString()" style="width: 5rem;">
                     <br />
                     <div class="button-wrapper mt-auto">
-                        <h5>Discription:</h5>
-                        <p class="card-text">Text</p>
+                      
                         <div class="button-card button">
                             <a asp-action="CreateTicket" asp-controller="Ticket" asp-route-prodName="@Model[i].productName" class="btn btn-primary button-card">Create ticket</a>
                             <a asp-action="TicketOverview" asp-controller="Ticket" class="btn btn-primary button-card">Ticket Overview</a>
