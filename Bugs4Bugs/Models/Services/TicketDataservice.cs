@@ -23,7 +23,7 @@ namespace Bugs4Bugs.Models.Services
         {
             return products
                 .OrderBy(p => p.Name)
-                .Select(p => new ChooseProductVM { productName = p.Name,
+                .Select(p => new ChooseProductVM { ProductName = p.Name,
                 PhotoURL = p.PhotoURL
             }).ToArray();
         }
