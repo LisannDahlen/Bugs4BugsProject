@@ -14,10 +14,11 @@ namespace Bugs4Bugs.Models.Services
         static Product[] products = ProductUtilities.GetDefaultProducts(); //Flyttade products listan till ProductUtilities-klassen
         public ChooseProductVM[] GetAllProducts()
         {
-            return products
-                .OrderBy(p => p.Name)
-                .Select(p => new ChooseProductVM { productName = p.Name,
-                PhotoURL = p.PhotoURL
+            return products.Select(p => new ChooseProductVM
+            {
+                Id = p.Id,
+                ProductName = p.Name,
+                PhotoURL = p.PhotoURL,
             })
                             .ToArray();
         }
@@ -49,7 +50,7 @@ namespace Bugs4Bugs.Models.Services
             },
             new Ticket
             {
-                Id = 1,
+                Id = 2,
                 Title = "Programmet åt min läxa",
                 Description = "Jag gjorde min matteläxa när programmet plötsligt ",
                 SubmittedDate = DateTime.Now,
@@ -62,11 +63,12 @@ namespace Bugs4Bugs.Models.Services
             },
         };
 
-        public TicketVM[] GetAllTIckets()
+        public TicketVM[] GetAllTickets()
         {
             TicketVM[] ticketVMs = tickets
                 .Select(t =>
-                new TicketVM {
+                new TicketVM
+                {
                     Title = t.Title,
                     Description = t.Description,
                     Submiter = t.Submitter.UserName,
@@ -79,12 +81,37 @@ namespace Bugs4Bugs.Models.Services
                     Product = t.TicketProduct.Name,
                     ProductPhotoURL = t.TicketProduct.PhotoURL
                 })
-                .ToArray(); 
+                .ToArray();
             return ticketVMs;
         }
+
+        public TicketVM[] GetAllTickets(string prodName)
+        {
+            var ticketVMs = tickets
+                .Where(t => t.TicketProduct.Name == prodName)
+                .Select(t =>
+                new TicketVM
+                {
+                    Title = t.Title,
+                    Description = t.Description,
+                    Submiter = t.Submitter.UserName,
+                    Status = t.TicketStatus.TicketStatus,
+                    BugType = t.TicketBugType.Type,
+                    Urgency = t.TicketUrgency.Level,
+                    Submitted = t.SubmittedDate.ToString("dd/MM/yyyy"),
+                    LastUpdated = t.LastUpdated.ToString("dd/MM/yyyy"),
+                    //Developer = t.Developer == null ? "Unassigned" : t.Developer.FirstName + t.Developer.LastName,
+                    Product = t.TicketProduct.Name,
+                    ProductPhotoURL = t.TicketProduct.PhotoURL
+                })
+                 .ToArray();
+            return ticketVMs;
+        }
+
+
         public Product? GetProductByName(string prodName)
         {
-            return products.SingleOrDefault(p=>p.Name == prodName);
+            return products.SingleOrDefault(p => p.Name == prodName);
         }
         internal void SaveTicket(CreateTicketVM createTicketVM)
         {

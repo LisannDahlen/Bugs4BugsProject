@@ -2,7 +2,8 @@
 {
     public class ChooseProductVM
     {
-        public string productName { get; set; }
+        public int Id { get; set; }
+        public string ProductName { get; set; }
         public string PhotoURL { get; set; }
         
 
