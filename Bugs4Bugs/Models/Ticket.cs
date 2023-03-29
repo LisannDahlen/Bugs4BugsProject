@@ -8,7 +8,7 @@
         public DateTime SubmittedDate { get; set; }
         public DateTime LastUpdated { get; set; }
         public string SubmitterId { get; set; }
-        public SiteUser Submitter { get; set; }
+        public SiteUser? Submitter { get; set; }
         //public string? DeveloperId { get; set; }
         //public SiteUser? Developer { get; set; }
         public int TicketProductId { get; set; }

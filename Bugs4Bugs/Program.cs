@@ -10,6 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<AccountDataservice>();
 builder.Services.AddTransient<TicketDataservice>();
+builder.Services.AddHttpContextAccessor();
+
 
 var connString = builder.Configuration
     .GetConnectionString("DefaultConnection");

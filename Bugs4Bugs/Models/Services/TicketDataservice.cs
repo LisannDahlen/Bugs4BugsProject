@@ -1,14 +1,21 @@
 ﻿using Bugs4Bugs.Views.Ticket;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 
 namespace Bugs4Bugs.Models.Services
 {
     public class TicketDataservice
     {
         ApplicationContext? applicationContext;
-        public TicketDataservice(ApplicationContext applicationContext)
+        IHttpContextAccessor accessor;
+        UserManager<SiteUser> userManager;
+
+        public TicketDataservice(ApplicationContext applicationContext, IHttpContextAccessor accessor, UserManager<SiteUser> userManager)
         {
-            applicationContext = applicationContext ?? throw new ArgumentNullException(nameof(applicationContext));
+            this.applicationContext = applicationContext ?? throw new ArgumentNullException(nameof(applicationContext));
+            this.accessor = accessor;
+            this.userManager = userManager;
         }
 
         static Product[] products = ProductUtilities.GetDefaultProducts(); //Flyttade products listan till ProductUtilities-klassen
@@ -92,11 +99,19 @@ namespace Bugs4Bugs.Models.Services
             newTicket.SubmittedDate = DateTime.Now;
             newTicket.LastUpdated = DateTime.Now;
             newTicket.Title = createTicketVM.Title;
-            newTicket.TicketProduct = GetProductByName(createTicketVM.ProductName);
-            newTicket.TicketStatus = new Status();
-            newTicket.TicketBugType = new BugType(createTicketVM.SelectedBugType);
-            newTicket.TicketUrgency = new Urgency(createTicketVM.SelectedUrgencyLevel);
-            //newTicket.SubmitterId = 
+            newTicket.TicketProductId = GetProductIDByName(createTicketVM.ProductName);
+            newTicket.TicketStatusId = 3; // 3 = "open"
+            newTicket.TicketBugTypeId = Convert.ToInt32(createTicketVM.SelectedBugType);
+            newTicket.TicketUrgencyId = Convert.ToInt32(createTicketVM.SelectedUrgencyLevel);
+            newTicket.SubmitterId = userManager.GetUserId(accessor.HttpContext.User);
+
+            applicationContext.Tickets.Add(newTicket);
+            applicationContext.SaveChanges();
+        }
+
+        private int GetProductIDByName(string productName)
+        {
+            return applicationContext.Products.Where(p => p.Name == productName).Select(p => p.Id).SingleOrDefault();
         }
     }
 }
