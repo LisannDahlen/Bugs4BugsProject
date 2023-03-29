@@ -18,6 +18,8 @@ namespace Bugs4Bugs.Models
             builder.Entity<Status>().HasData(ProductUtilities.GetDefaultStatuses());
             builder.Entity<Urgency>().HasData(ProductUtilities.GetDefaultUrgencyLevels());
             builder.Entity<Product>().HasData(ProductUtilities.GetDefaultProducts());
+            builder.Entity<SiteUser>().HasData(new SiteUser {Id = "DefaultId", FirstName = "John", LastName = "Connor", UserName = "JohnConnor" });
+            builder.Entity<Ticket>().HasData(ProductUtilities.GetDefaultTickets());
         }
         // Exponerar våra databas-modeller via properties av typen DbSet<T> 
         public DbSet<Ticket> Tickets { get; set; }
