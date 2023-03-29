@@ -46,6 +46,7 @@ namespace Bugs4Bugs.Controllers
         [HttpGet("/TicketOverview/{prodName}")]
         public IActionResult TicketOverview(string prodName)
         {
+            TempData["productView"] = prodName;
             return View(ticketDataservice.GetAllTickets(prodName));
         }
 
