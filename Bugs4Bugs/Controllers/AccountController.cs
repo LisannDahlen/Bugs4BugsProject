@@ -63,6 +63,11 @@ namespace Bugs4Bugs.Controllers
             return RedirectToAction(nameof(Login));
         }
 
-
+        [HttpGet("/logout")]
+        public IActionResult LogOut()
+        {
+            dataservice.LogOut();
+            return RedirectToAction("Index","Home");
+        }
     }
 }
