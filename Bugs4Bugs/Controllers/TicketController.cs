@@ -1,11 +1,13 @@
 ﻿using Bugs4Bugs.Models;
 using Bugs4Bugs.Models.Services;
 using Bugs4Bugs.Views.Ticket;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Bugs4Bugs.Controllers
 {
+    [Authorize]
     public class TicketController : Controller
     {
         const string CURRENT_PRODUCT_NAME = "currentProduct";
@@ -16,6 +18,7 @@ namespace Bugs4Bugs.Controllers
           
 
         }
+
 
         [HttpGet("/CreateTicket/{prodName}")]
         public IActionResult CreateTicket(string prodName)

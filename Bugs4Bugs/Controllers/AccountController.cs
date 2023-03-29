@@ -1,9 +1,11 @@
 ﻿using Bugs4Bugs.Models.Services;
 using Bugs4Bugs.Views.Account;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bugs4Bugs.Controllers
 {
+    
     public class AccountController : Controller
     {
         AccountDataservice dataservice;
