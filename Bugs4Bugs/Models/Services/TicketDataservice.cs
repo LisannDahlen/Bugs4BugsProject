@@ -14,7 +14,9 @@ namespace Bugs4Bugs.Models.Services
         static Product[] products = ProductUtilities.GetDefaultProducts(); //Flyttade products listan till ProductUtilities-klassen
         public ChooseProductVM[] GetAllProducts()
         {
-            return products.Select(p => new ChooseProductVM { productName = p.Name,
+            return products
+                .OrderBy(p => p.Name)
+                .Select(p => new ChooseProductVM { productName = p.Name,
                 PhotoURL = p.PhotoURL
             })
                             .ToArray();
