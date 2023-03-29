@@ -1,4 +1,7 @@
-﻿namespace Bugs4Bugs.Models
+﻿using Bugs4Bugs.Views.Ticket;
+using Microsoft.AspNetCore.Identity;
+
+namespace Bugs4Bugs.Models
 {
     public static class ProductUtilities
     {
@@ -70,6 +73,40 @@
                 new Status{Id = 4, TicketStatus = "Pending"},
                 new Status{Id = 5, TicketStatus = "Assigned"},
 
+            };
+        }
+
+        public static Ticket[] GetDefaultTickets()
+        {
+
+            return new Ticket[]
+            {
+                new Ticket
+                {
+                    Id = 1,
+                    Description = "En smältande polis jagar mig och en Österrikisk bodybuilder säger att jag ska rädda framtiden",
+                    SubmittedDate = DateTime.Now.AddDays(3),
+                    LastUpdated = DateTime.Now.AddDays(7),
+                    Title = "Mördarrobotar",
+                    TicketProductId = 5,
+                    TicketStatusId = 1, // 1 = "Closed"
+                    TicketBugTypeId = 1,
+                    TicketUrgencyId = 1,
+                    SubmitterId = "DefaultId",
+                },
+                new Ticket
+                {
+                    Id = 2,
+                    Description = "Jag gjorde min matteläxa när programmet plötsligt",
+                    SubmittedDate = DateTime.Now,
+                    LastUpdated = DateTime.Now,
+                    Title = "Programmet åt min läxa",
+                    TicketProductId = 1,
+                    TicketStatusId = 3, // 3 = "open,
+                    TicketBugTypeId = 3,
+                    TicketUrgencyId = 2,
+                    SubmitterId = "DefaultId",
+                },
             };
         }
     }
