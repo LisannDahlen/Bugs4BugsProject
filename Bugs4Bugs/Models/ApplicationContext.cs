@@ -15,6 +15,9 @@ namespace Bugs4Bugs.Models
         {
             base.OnModelCreating(builder);
             builder.Entity<BugType>().HasData(ProductUtilities.GetDefaultBugTypes());
+            builder.Entity<Status>().HasData(ProductUtilities.GetDefaultStatuses());
+            builder.Entity<Urgency>().HasData(ProductUtilities.GetDefaultUrgencyLevels());
+            builder.Entity<Product>().HasData(ProductUtilities.GetDefaultProducts());
         }
         // Exponerar våra databas-modeller via properties av typen DbSet<T> 
         public DbSet<Ticket> Tickets { get; set; }
