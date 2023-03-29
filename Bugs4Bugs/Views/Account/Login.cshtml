@@ -1,16 +1,39 @@
 ﻿@model LoginVM
+
 @{
-    ViewBag.Title = "Sign in";
+    ViewBag.Title = "Login";
 }
 
-<h1>@ViewData["Title"]</h1>
+<br />
+<h1 class="text-center">@ViewData["Title"]</h1>
+<br />
 
-<form asp-controller="Account" asp-action="Login">
-    <input asp-for="UserName" placeholder="Username" class="mb-3" />
-    <br />
-    <input asp-for="Password" placeholder="Password" class="mb-3" />
-    <br />
-    <input type="submit" value="Log In" />
-</form>
 
-<div asp-validation-summary="All"></div>
+<div class="container my-5">
+    <div class="row">
+        <div class="col-xl-4 offset-xl-4 col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-12 center-box">
+            <div class="card" style="margin-bottom: 50px">
+                <div class="card-header">
+                    <h4>Login</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-controller="Account" asp-action="Login">
+                        <div class="form-outline mb-3">
+                            <input type="text" asp-for="UserName" id="userName" class="form-control" />
+                            <label class="form-label" for="userName">Username</label>
+                        </div>
+
+                        <div class="form-outline mb-3">
+                            <input type="password" asp-for="Password" id="password" class="form-control" />
+                            <label class="form-label" for="password">Password</label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Log In</button>
+                    </form>
+                    <br />
+                    <div asp-validation-summary="All" class="alert @(ViewContext.ModelState.ErrorCount > 0 ? "alert-danger" : "")" role="alert"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

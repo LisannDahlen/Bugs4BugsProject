@@ -3,168 +3,76 @@
 *@
 @{
     <div class="container shadow min-vh-100 py-2">
-        <div class="table-responsive">
-            <table class="table accordion">
-                <thead>
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Dates</th>
-                        <th scope="col"></th>
-                        <th scope="col">Bug Type</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Urgency</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @{
-                        int i = 0;
-                        foreach (TicketVM ticket in Model)
-                        {
-                            <tr data-mdb-toggle="collapse"
-                                href="#r_@i"
-                                role="button"
-                                aria-expanded="false"
-                                aria-controls="r_@i">
-                                
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <img src="@ticket.ProductPhotoURL"
-                                             alt=""
-                                             style="width: 45px; height: 45px"
-                                             class="rounded-circle" />
-                                        <div class="ms-3">
-                                            <p class="fw-bold mb-1">@ticket.Title</p>
-                                            <p class="text-muted mb-0">@ticket.Product</p>
-                                        </div>
+    <div class="table-responsive">
+        <table class="table accordion">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col" class="d-none d-md-table-cell">Dates</th>
+                    <th scope="col" class="d-none d-md-table-cell"></th>
+                    <th scope="col" class="d-none d-md-table-cell">Bug Type</th>
+                    <th scope="col" class="d-none d-md-table-cell">Status</th>
+                    <th scope="col" class="d-none d-md-table-cell">Urgency</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int i = 0;
+                    foreach (TicketVM ticket in Model)
+                    {
+                        <tr data-mdb-toggle="collapse"
+                            href="#r_@i"
+                            role="button"
+                            aria-expanded="false"
+                            aria-controls="r_@i">
+                            
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="@ticket.ProductPhotoURL"
+                                            alt=""
+                                            style="width: 45px; height: 45px"
+                                            class="rounded-circle me-2" />
+                                    <div>
+                                        <p class="fw-bold mb-1">@ticket.Title</p>
+                                        <p class="text-muted mb-0">@ticket.Product</p>
                                     </div>
-                                </td>
-                                <td>
-                                    <p class="fw-normal mb-1">Submitted</p>
-                                    <p class="fw-normal mb-1">Last updated</p>
-                                </td>
-                                <td>
-                                    <p class="fw-normal mb-1">@ticket.Submitted</p>
-                                    <p class="fw-normal mb-1">@ticket.LastUpdated</p>
-                                </td>
-                                <td>
-                                    <span class="badge badge-success rounded-pill d-inline">@ticket.BugType</span>
-                                </td>
-                                <td>
-                                    <span class="badge badge-success rounded-pill d-inline">@ticket.Status</span>
-                                </td>
-                                <td>
-                                    <span class="badge badge-success rounded-pill d-inline">@ticket.Urgency</span>
-                                </td>
+                                </div>
+                                <div class="d-md-none mt-2">
+                                    <p class="fw-normal mb-1 d-inline-block me-2">Bug Type: <span class="badge badge-success rounded-pill">@ticket.BugType</span></p>
+                                    <p class="fw-normal mb-1 d-inline-block me-2">Status: <span class="badge badge-success rounded-pill">@ticket.Status</span></p>
+                                    <p class="fw-normal mb-1 d-inline-block">Urgency: <span class="badge badge-success rounded-pill">@ticket.Urgency</span></p>
+                                </div>
+                            </td>
+                            <td class="d-none d-md-table-cell">
+                                <p class="fw-normal mb-1">Submitted</p>
+                                <p class="fw-normal mb-1">Last updated</p>
+                            </td>
+                            <td class="d-none d-md-table-cell">
+                                <p class="fw-normal mb-1">@ticket.Submitted</p>
+                                <p class="fw-normal mb-1">@ticket.LastUpdated</p>
+                            </td>
+                            <td class="d-none d-md-table-cell">
+                                <span class="badge badge-success rounded-pill">@ticket.BugType</span>
+                            </td>
+                            <td class="d-none d-md-table-cell">
+                                <span class="badge badge-success rounded-pill">@ticket.Status</span>
+                            </td>
+                            <td class="d-none d-md-table-cell">
+                                <span class="badge badge-success rounded-pill">@ticket.Urgency</span>
+                            </td>
                             </tr>
-                            <tr class="collapse accordion-collapse" id="r_@i" data-bs-parent=".table">
-                                <td colspan="5">
-                                    <p>Submitted by: @ticket.Submiter</p>
-                                    <p>Developed by: @ticket.Developer</p>
-
-                                    <p><strong>Description:</strong><br />@ticket.Description</p>
-                                </td>
-                            </tr>
-                            i++;
-                        }
+                        <tr class="collapse accordion-collapse" id="r_@i" data-bs-parent=".table">
+                            <td colspan="6">
+                                <p>Submitted by: @ticket.Submiter</p>
+                                <p>Developed by: @ticket.Developer</p>
+                                <p><strong>Description:</strong><br />@ticket.Description</p>
+                            </td>
+                        </tr>
+                        i++;
                     }
-                </tbody>
-            </table>
-        </div>
+                }
+            </tbody>
+        </table>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //<div = class="table-responsive">
-    //    <table class="table accordian align-middle mb-0 bg-white">
-    //        <thead class="bg-light">
-    //            <tr>
-    //                <th scope="col">Name</th>
-    //                <th scope="col">Dates</th>
-    //                <th scope="col">Bug Type</th>
-    //                <th scope="col">Status</th>
-    //                <th scope="col">Urgency</th>
-    //            </tr>
-    //        </thead>
-    //        <tbody>
-    //            @{
-    //                int i = 0;
-    //                foreach (TicketVM ticket in Model)
-    //                {
-
-    //                    <tr>
-    //                        <div class="accordion-item">
-    //                            <h2 class="accordion-header" id="heading_@i">
-    //                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_@i" aria-expanded="false" aria-controls="collapse_@i">
-    //                                    @*Skriv det du vill ha i den kolapsade vyn här*@
-    //                        <td>
-    //                            <div class="d-flex align-items-center">
-    //                                <img src="@ticket.ProductPhotoURL"
-    //                                     alt=""
-    //                                     style="width: 45px; height: 45px"
-    //                                     class="rounded-circle" />
-    //                                <div class="ms-3">
-    //                                    <p class="fw-bold mb-1">@ticket.Title</p>
-    //                                    <p class="text-muted mb-0">@ticket.Product</p>
-    //                                </div>
-    //                            </div>
-    //                        </td>
-    //                        <td>
-    //                            <p class="fw-normal mb-1">submitted @ticket.Submitted</p>
-    //                            <p class="text-muted mb-0">Last updated @ticket.LastUpdated</p>
-    //                        </td>
-    //                        <td>
-    //                            <span class="badge badge-success rounded-pill d-inline">@ticket.BugType</span>
-    //                        </td>
-    //                        <td>
-    //                            <span class="badge badge-success rounded-pill d-inline">@ticket.Status</span>
-    //                        </td>
-    //                        <td>
-    //                            <span class="badge badge-success rounded-pill d-inline">@ticket.Urgency</span>
-    //                        </td>
-
-
-    //                        </button>
-    //                        </h2>
-    //                        <div id="collapse_@i" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-    //                            <div class="accordion-body">
-    //                                    @*Skriv det du vill ha i expanderade vyn här*@
-    //                                <p>Submitted by: @ticket.Submiter</p>
-    //                                <p>Product: @ticket.Product</p>
-    //                                <p>Developed by:@ticket.Developer</p>
-
-    //                                <p><strong>Description:</strong><br />@ticket.Description</p>
-    //                            </div>
-    //                        </div>
-    //        </div>
-    //                            </tr>
-    //                    i++;
-    //                }
-    //            }
-    //        </tbody>
-    //    </table>
-    //</div>
-
-
+    </div>
 }

@@ -16,29 +16,29 @@
 </style>
 @model Bugs4Bugs.Views.Ticket.ChooseProductVM[]
 
-<h1>Available Products</h1>
-<div class="container">
-    <div class="row">
-        <!-- Half the size of the card -->
-        <div class="col-6">
-            <div class="input-group mb-4">
-                <div class="form-outline">
-                    <input type="search" id="form1" class="form-control" />
-                    <label class="form-label" for="form1">Search</label>
-                </div>
-                <button type="button" class="btn btn-primary" id="search-button">
-                    <i class="fas fa-search"></i>
-                </button>
+<h1 class="text-center">Available Products</h1>
+<div class="row" style="justify-content: center">
+    <div class="col-6">
+        <div class="input-group mb-4">
+            <div class="form-outline">
+                <input type="search" id="form1" class="form-control" />
+                <label class="form-label" for="form1">Search</label>
             </div>
+            <button type="button" class="btn btn-primary" id="search-button">
+                <i class="fas fa-search"></i>
+            </button>
         </div>
     </div>
 </div>
 
+<div class="container mb-3">
 
-<div class="row row-cols-lg-3 row-cols-sm-1 g-4">
+
+
+<div class="row row-cols-lg-4 row-cols-sm-1 g-4">
     @for (int i = 0; i < Model.Length; i++)
     {
-        <div class="col-sm-6 mb-3 mb-sm-0">
+        <div class="col-sm-6 mb-3 mb-sm-0" style="display: flex;">
             <div class="card flex-fill product-card" data-product-name="@Model[i].productName" style="width: 12rem;" id="@Model[i].productName">
                 <h5 class="card-header">@Model[i].productName</h5>
 
@@ -62,35 +62,22 @@
     }
 </div>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var searchButton = document.getElementById("search-button");
-        searchButton.addEventListener("click", searchProducts);
-    });
+    $(document).ready(function () {
+        $("#search-button").click(function () {
+            var searchTerm = $("#form1").val().toLowerCase().trim();
 
-    function searchProducts() {
-        var searchTerm = document.getElementById("form1").value.toLowerCase().trim();
-        console.log("searchTerm:", searchTerm); // Log the search term
-
-        var allColumns = document.querySelectorAll(".col-sm-6");
-
-        for (var i = 0; i < allColumns.length; i++) {
-            var column = allColumns[i];
-            if (column.querySelector(".product-card")) {
-                var productName = column.querySelector(".product-card").getAttribute("data-product-name").toLowerCase();
-                console.log("productName:", productName); // Log the product name
-
+            $(".product-card").each(function () {
+                var productName = $(this).attr("data-product-name").toLowerCase();
                 if (productName.includes(searchTerm)) {
-                    console.log("Showing:", productName); // Log if the product card is shown
-                    column.style.display = "flex";
+                    $(this).parent().show();
                 } else {
-                    console.log("Hiding:", productName); // Log if the product card is hidden
-                    column.style.display = "none";
+                    $(this).parent().hide();
                 }
-            }
-        }
-    }
-
+            });
+        });
+    });
 </script>
 
 
