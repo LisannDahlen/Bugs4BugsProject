@@ -18,12 +18,14 @@ namespace Bugs4Bugs.Controllers
           
 
         }
-
-
+        [HttpGet("/CreateTicket")]
         [HttpGet("/CreateTicket/{prodName}")]
         public IActionResult CreateTicket(string prodName)
         {
-            
+            if (prodName == null)
+            {
+                return RedirectToAction(nameof(ChooseProduct));
+            }
             CreateTicketVM createTicketVM = ticketDataservice.GetCreateTicketVM(prodName);
             TempData[CURRENT_PRODUCT_NAME] = prodName;
             return View(createTicketVM);
