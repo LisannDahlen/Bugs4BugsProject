@@ -1,4 +1,6 @@
-﻿namespace Bugs4Bugs.Models
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+
+namespace Bugs4Bugs.Models
 {
     public class Product
     {
@@ -29,14 +31,14 @@
         public Status[] statuses;
         public Urgency[] urgencies;
 
-        public string[] GetBugtypesArray()
+        public SelectListItem[] GetBugtypesArray()
         {
-            return bugTypes.Select(b => b.Type).ToArray();
+            return bugTypes.Select(b => new SelectListItem {Value = b.Id.ToString(),Text = b.Type}).ToArray();
         }
 
-        public string[] GetUrgencyArray()
+        public SelectListItem[] GetUrgencyArray()
         {
-            return urgencies.Select(u => u.Level).ToArray();
+            return urgencies.Select(u => new SelectListItem { Value = u.Id.ToString(), Text = u.Level }).ToArray();
         }
 
     }

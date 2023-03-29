@@ -25,21 +25,15 @@
                             <label for="title" class="form-label">Title..</label>
                         </div>
                         <div class="form-outline mb-3">
-                            <select asp-for="SelectedBugType" class="form-select">
+                            <select asp-for="SelectedBugType" asp-items = "Model.BugTypes" class="form-select">
                                 <option value="">-- Select a bug type --</option>
-                                @foreach (string option in Model.BugTypes)
-                                {
-                                    <option value="@option">@option</option>
-                                }
+                                
                             </select>
                         </div>
                         <div class="form-outline mb-3">
-                            <select asp-for="SelectedUrgencyLevel" class="form-select">
+                            <select asp-for="SelectedUrgencyLevel" asp-items="Model.UrgencyLevels" class="form-select">
                                 <option value="">-- Select an urgency level --</option>
-                                @foreach (string option in Model.UrgencyLevels)
-                                {
-                                    <option value="@option">@option</option>
-                                }
+                                
                             </select>
                         </div>
                         <div class="form-outline mb-3">
