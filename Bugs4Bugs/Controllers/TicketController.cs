@@ -13,6 +13,8 @@ namespace Bugs4Bugs.Controllers
         public TicketController(TicketDataservice ticketDataservice)
         {
             this.ticketDataservice = ticketDataservice;
+          
+
         }
 
         [HttpGet("/CreateTicket/{prodName}")]
