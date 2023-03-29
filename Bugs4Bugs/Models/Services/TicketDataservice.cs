@@ -18,8 +18,7 @@ namespace Bugs4Bugs.Models.Services
                 .OrderBy(p => p.Name)
                 .Select(p => new ChooseProductVM { productName = p.Name,
                 PhotoURL = p.PhotoURL
-            })
-                            .ToArray();
+            }).ToArray();
         }
 
         internal CreateTicketVM? GetCreateTicketVM(string prodName)
