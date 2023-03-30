@@ -37,7 +37,49 @@ namespace Bugs4Bugs.Models
                    Id = 5,
                    Name = "Skynet",
                    PhotoURL = "Images/Skynet.png"
-                }
+                },
+                 new Product()
+                {
+                   Id = 6,
+                   Name = "Spotify",
+                   PhotoURL = "Images/Spotify.png"
+                }, 
+                new Product()
+                {
+                   Id = 7,
+                   Name = "Netflix",
+                   PhotoURL = "Images/Netflix.png"
+                },
+                new Product()
+                {
+                   Id = 8,
+                   Name = "BookBeat",
+                   PhotoURL = "Images/BookBeat.png"
+                },
+                new Product()
+                {
+                   Id = 9,
+                   Name = "Blocket",
+                   PhotoURL = "Images/Blocket.png"
+                },
+                new Product()
+                {
+                   Id = 10,
+                   Name = "Ebay",
+                   PhotoURL = "Images/Ebay.png"
+                },  
+                new Product()
+                {
+                   Id = 11,
+                   Name = "Microsoft Teams",
+                   PhotoURL = "Images/Teams.jpg"
+                },  
+                new Product()
+                {
+                   Id = 12,
+                   Name = "Youtube",
+                   PhotoURL = "Images/Youtube.png"
+                },
             };
 
         }
