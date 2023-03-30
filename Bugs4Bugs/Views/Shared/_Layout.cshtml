@@ -227,12 +227,22 @@
                                     </ul>
                                 </ul>
                             </h5>
-                            <ul class="nav-item">
-                                <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
+                           
+                               
+                                     
+                            @if (User.Identity.IsAuthenticated)
+                            { <ul class="nav-item">
+                                    <a class="nav-link" asp-controller="Account" asp-action="LogOut">Logout</a>
+                            </ul>}
+                            else {
+                                 <ul class="nav-item">
+                                    <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
                             </ul>
                             <ul class="nav-item">
                                 <a class="nav-link" asp-controller="Account" asp-action="Register">Register</a>
                             </ul>
+
+                            }
                             </ul>
                         </div>
                         <!-- Grid column -->
