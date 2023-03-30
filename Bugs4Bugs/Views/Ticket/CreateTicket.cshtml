@@ -21,8 +21,9 @@
                             <!--<label asp-for="Title">Title:</label>-->
                             <!--<input asp-for="Title" placeholder="Title"/>-->
                             <!--<br />-->
-                            <input type="text" asp-for="Title" class="form-control" >
-                            <label asp-for="Title" class="form-label">Topic..</label>
+                            <input type="text" asp-for="Topic" class="form-control" >
+                            <label asp-for="Topic" class="form-label">Topic..</label>
+                            <span asp-validation-for="Topic"></span>
                         </div>
                         <div class="form-outline mb-3">
                             <select asp-for="SelectedBugType" asp-items = "Model.BugTypes" class="form-select">

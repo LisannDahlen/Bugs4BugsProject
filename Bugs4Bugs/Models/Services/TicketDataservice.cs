@@ -97,7 +97,7 @@ namespace Bugs4Bugs.Models.Services
             newTicket.Description = createTicketVM.Description;
             newTicket.SubmittedDate = DateTime.Now;
             newTicket.LastUpdated = DateTime.Now;
-            newTicket.Title = createTicketVM.Title;
+            newTicket.Title = createTicketVM.Topic;
             newTicket.TicketProductId = GetProductIDByName(createTicketVM.ProductName);
             newTicket.TicketStatusId = 3; // 3 = "open"
             newTicket.TicketBugTypeId = Convert.ToInt32(createTicketVM.SelectedBugType);
