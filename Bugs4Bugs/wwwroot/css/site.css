@@ -54,36 +54,7 @@ body {
     }
 }
 
-@media (max-width: 767px) {
-    .table thead {
-        display: none;
-    }
 
-    .table tbody tr:not(.accordion-collapse) {
-        display: flex;
-        flex-wrap: wrap;
-        border-bottom: 1px solid #dee2e6;
-        padding-bottom: 1rem;
-    }
-
-        .table tbody tr:not(.accordion-collapse) td {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            padding: 0.5rem;
-            flex-basis: 50%;
-        }
-
-            .table tbody tr:not(.accordion-collapse) td:before {
-                content: attr(data-label);
-                font-weight: bold;
-                margin-bottom: 0.25rem;
-            }
-    .mobile-photo-right {
-        display: flex;
-        justify-content: space-between;
-    }
-}
 
 .hr.hr-blurry.white-divider {
     background-color: white;
@@ -106,6 +77,27 @@ body, html {
 .header-table {
     position: sticky;
     top: 0;
+    z-index: 1000;
+    background-color: white;
 }
 
 
+/* Fix table layout */
+.table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+/* Make header cells sticky */
+.header-table th {
+    position: sticky;
+    top: 60px; /* Adjust this value according to your navbar height */
+    background-color: white;
+    z-index: 1000;
+}
+
+th {
+    position: sticky;
+    top: 50px; /* 0px if you don't have a navbar, but something is required */
+    background: white;
+}
