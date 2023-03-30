@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace Bugs4Bugs.Models.Services
 {
@@ -19,14 +20,21 @@ namespace Bugs4Bugs.Models.Services
             this.userManager = userManager;
         }
 
+        public string GetCurrentUserId()
+        {
+            return userManager.GetUserId(accessor.HttpContext.User);
+        }
+
         static Product[] products = ProductUtilities.GetDefaultProducts(); //Flyttade products listan till ProductUtilities-klassen
         public ChooseProductVM[] GetAllProducts()
         {
             return applicationContext.Products
                 .OrderBy(p => p.Name)
-                .Select(p => new ChooseProductVM { ProductName = p.Name,
-                PhotoURL = p.PhotoURL
-            }).ToArray();
+                .Select(p => new ChooseProductVM
+                {
+                    ProductName = p.Name,
+                    PhotoURL = p.PhotoURL
+                }).ToArray();
         }
 
         internal CreateTicketVM? GetCreateTicketVM(string prodName)
@@ -42,51 +50,74 @@ namespace Bugs4Bugs.Models.Services
         }
 
 
-        public TicketVM[] GetAllTickets()
+        //public TicketVM[] GetAllTickets()
+        //{
+        //    return applicationContext.Tickets
+        //        .Select(t => TicketToticketVMConvert(t))
+        //        .ToArray();
+        //}
+
+        //public TicketVM[] GetAllTickets(string prodName)
+        //{
+        //    return GetAllTickets(t => t.TicketProduct.Name == prodName);
+        //}
+
+        internal TicketVM[] GetYourTickets()
         {
-            TicketVM[] ticketVMs = applicationContext.Tickets
+            return GetAllTickets();
+        }
+        //t => t.SubmitterId == GetCurrentUserId()
+        //internal TicketVM[] GetTicketsByUser(string submitterID)
+        //{
+        //    return GetAllTickets();
+        //}
+        //t => t.SubmitterId == submitterID
+
+        public TicketVM[] GetAllTickets(string prodName = null, bool filterByLogedInUser = false)
+        {
+            var UserId = GetCurrentUserId();
+            return applicationContext.Tickets
+                .Where(t => (prodName == null || t.TicketProduct.Name == prodName) && (!filterByLogedInUser || t.SubmitterId == UserId))
                 .Select(t =>
-                new TicketVM
-                {
-                    Title = t.Title,
-                    Description = t.Description,
-                    Submiter = t.Submitter.UserName,
-                    Status = t.TicketStatus.TicketStatus,
-                    BugType = t.TicketBugType.Type,
-                    Urgency = t.TicketUrgency.Level,
-                    Submitted = t.SubmittedDate.ToString("dd/MM/yyyy"),
-                    LastUpdated = t.LastUpdated.ToString("dd/MM/yyyy"),
-                    //Developer = t.Developer == null ? "Unassigned" : t.Developer.FirstName + t.Developer.LastName,
-                    Product = t.TicketProduct.Name,
-                    ProductPhotoURL = t.TicketProduct.PhotoURL
-                })
+                           new TicketVM
+                           {
+                               Title = t.Title,
+                               Description = t.Description,
+                               Submitter = t.Submitter.UserName,
+                               Status = t.TicketStatus.TicketStatus,
+                               BugType = t.TicketBugType.Type,
+                               Urgency = t.TicketUrgency.Level,
+                               Submitted = t.SubmittedDate.ToString("dd/MM/yyyy"),
+                               LastUpdated = t.LastUpdated.ToString("dd/MM/yyyy"),
+                               //Developer = t.Developer == null ? "Unassigned" : t.Developer.FirstName + t.Developer.LastName,
+                               Product = t.TicketProduct.Name,
+                               ProductPhotoURL = t.TicketProduct.PhotoURL
+                           })
+                //.AsEnumerable()
+                //.Where(t => filter(t))
                 .ToArray();
-            return ticketVMs;
         }
 
-        public TicketVM[] GetAllTickets(string prodName)
-        {
-            var ticketVMs = applicationContext.Tickets
-                .Where(t => t.TicketProduct.Name == prodName)
-                .Select(t =>
-                new TicketVM
-                {
-                    Title = t.Title,
-                    Description = t.Description,
-                    Submiter = t.Submitter.UserName,
-                    Status = t.TicketStatus.TicketStatus,
-                    BugType = t.TicketBugType.Type,
-                    Urgency = t.TicketUrgency.Level,
-                    Submitted = t.SubmittedDate.ToString("dd/MM/yyyy"),
-                    LastUpdated = t.LastUpdated.ToString("dd/MM/yyyy"),
-                    //Developer = t.Developer == null ? "Unassigned" : t.Developer.FirstName + t.Developer.LastName,
-                    Product = t.TicketProduct.Name,
-                    ProductPhotoURL = t.TicketProduct.PhotoURL
-                })
-                 .ToArray();
-            return ticketVMs;
-        }
 
+        //static private TicketVM TicketToticketVMConvert(Ticket t)
+        //{
+
+        //    return new TicketVM
+        //    {
+        //        Title = t.Title,
+        //        Description = t.Description,
+        //        Submitter = t.Submitter.UserName,
+        //        Status = t.TicketStatus.TicketStatus,
+        //        BugType = t.TicketBugType.Type,
+        //        Urgency = t.TicketUrgency.Level,
+        //        Submitted = t.SubmittedDate.ToString("dd/MM/yyyy"),
+        //        LastUpdated = t.LastUpdated.ToString("dd/MM/yyyy"),
+        //        //Developer = t.Developer == null ? "Unassigned" : t.Developer.FirstName + t.Developer.LastName,
+        //        Product = t.TicketProduct.Name,
+        //        ProductPhotoURL = t.TicketProduct.PhotoURL
+        //    };
+
+        //}
 
         public Product? GetProductByName(string prodName)
         {

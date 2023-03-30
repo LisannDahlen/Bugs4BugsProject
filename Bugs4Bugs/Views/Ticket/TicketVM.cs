@@ -3,7 +3,7 @@
     public class TicketVM
     {
         public string Title { get; set; }
-        public string Submiter { get; set; }
+        public string Submitter { get; set; }
         public string Status { get; set; }
         public string BugType { get; set; }
         public string Urgency { get; set; }
