@@ -34,14 +34,20 @@ namespace Bugs4Bugs.Controllers
         }
 
         [HttpPost("/CreateTicket/{prodName}")]
-        public IActionResult CreateTicket(CreateTicketVM createTicketVM)
+        public IActionResult CreateTicket(CreateTicketVM createTicketVM,string prodName)
         {
-            
 
-            createTicketVM.ProductName = (string)TempData[CURRENT_PRODUCT_NAME];
+
+            //createTicketVM.ProductName = (string)TempData[CURRENT_PRODUCT_NAME];
+            createTicketVM.ProductName = prodName;
+           
             if (!ModelState.IsValid)
+            {
+                createTicketVM.BugTypes = ticketDataservice.GetBugTypes(prodName);
+                createTicketVM.UrgencyLevels = ticketDataservice.GetUrgencyLevels(prodName);
+                
                 return View(createTicketVM);
-
+            }
             ticketDataservice.SaveTicket(createTicketVM);
             
             //dataservice.saveTicket()

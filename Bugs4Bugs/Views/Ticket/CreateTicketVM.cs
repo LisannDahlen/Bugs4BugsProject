@@ -6,7 +6,7 @@ namespace Bugs4Bugs.Views.Ticket
 {
     public class CreateTicketVM
     {
-        public string ProductName { get; set; }
+        public string? ProductName { get; set; }
 
         [Required (ErrorMessage ="Ticket topic is required")]
         

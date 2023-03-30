@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Bugs4Bugs.Models.Services
 {
@@ -112,5 +113,21 @@ namespace Bugs4Bugs.Models.Services
         {
             return applicationContext.Products.Where(p => p.Name == productName).Select(p => p.Id).SingleOrDefault();
         }
+
+        public SelectListItem[] GetBugTypes(string prodName)
+        {
+            return applicationContext.Products.Where(p => p.Name == prodName)
+               .Select(p => p.GetBugtypesArray())
+               .FirstOrDefault();
+        }
+
+        public SelectListItem[] GetUrgencyLevels(string prodName)
+        {
+            return applicationContext.Products.Where(p => p.Name == prodName)
+               .Select(p => p.GetUrgencyArray())
+               .FirstOrDefault();
+        }
+
+
     }
 }
