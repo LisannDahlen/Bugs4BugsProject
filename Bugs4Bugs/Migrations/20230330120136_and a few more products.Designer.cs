@@ -4,6 +4,7 @@ using Bugs4Bugs.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bugs4Bugs.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20230330120136_and a few more products")]
+    partial class andafewmoreproducts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -152,7 +155,7 @@ namespace Bugs4Bugs.Migrations
                         {
                             Id = 11,
                             Name = "Microsoft Teams",
-                            PhotoURL = "Images/Teams.jpg"
+                            PhotoURL = "Images/Teams.png"
                         },
                         new
                         {
@@ -258,13 +261,13 @@ namespace Bugs4Bugs.Migrations
                         {
                             Id = "DefaultId",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "dba4e99a-ec28-4f6d-9f18-40e12e3ea6d5",
+                            ConcurrencyStamp = "a76c5cbf-c53c-4ba2-bf57-b28e32bcc620",
                             EmailConfirmed = false,
                             FirstName = "John",
                             LastName = "Connor",
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "53f013e3-9d57-49f6-b9b1-3bb64a0e2542",
+                            SecurityStamp = "441c2d5c-6fbe-41d3-b45f-abaef25bc211",
                             TwoFactorEnabled = false,
                             UserName = "JohnConnor"
                         });
@@ -408,8 +411,8 @@ namespace Bugs4Bugs.Migrations
                         {
                             Id = 1,
                             Description = "En smältande polis jagar mig och en Österrikisk bodybuilder säger att jag ska rädda framtiden",
-                            LastUpdated = new DateTime(2023, 4, 6, 14, 13, 40, 278, DateTimeKind.Local).AddTicks(338),
-                            SubmittedDate = new DateTime(2023, 4, 2, 14, 13, 40, 278, DateTimeKind.Local).AddTicks(266),
+                            LastUpdated = new DateTime(2023, 4, 6, 14, 1, 36, 634, DateTimeKind.Local).AddTicks(4093),
+                            SubmittedDate = new DateTime(2023, 4, 2, 14, 1, 36, 634, DateTimeKind.Local).AddTicks(4029),
                             SubmitterId = "DefaultId",
                             TicketBugTypeId = 1,
                             TicketProductId = 5,
@@ -421,8 +424,8 @@ namespace Bugs4Bugs.Migrations
                         {
                             Id = 2,
                             Description = "Jag gjorde min matteläxa när programmet plötsligt",
-                            LastUpdated = new DateTime(2023, 3, 30, 14, 13, 40, 278, DateTimeKind.Local).AddTicks(354),
-                            SubmittedDate = new DateTime(2023, 3, 30, 14, 13, 40, 278, DateTimeKind.Local).AddTicks(352),
+                            LastUpdated = new DateTime(2023, 3, 30, 14, 1, 36, 634, DateTimeKind.Local).AddTicks(4099),
+                            SubmittedDate = new DateTime(2023, 3, 30, 14, 1, 36, 634, DateTimeKind.Local).AddTicks(4098),
                             SubmitterId = "DefaultId",
                             TicketBugTypeId = 3,
                             TicketProductId = 1,
