@@ -16,12 +16,15 @@ namespace Bugs4Bugs.Views.Ticket
         
         public SelectListItem[]? BugTypes { get; set; }
 
+
         [Required(ErrorMessage = "Select a bug type")]
         public string SelectedBugType { get; set; }
         public SelectListItem[]? UrgencyLevels { get; set; }
 
+
         [Required(ErrorMessage = "Select urgency level")]
         public string SelectedUrgencyLevel { get; set; }
+
 
         [Required(ErrorMessage = "Please write a description")]
         public string Description { get; set; }

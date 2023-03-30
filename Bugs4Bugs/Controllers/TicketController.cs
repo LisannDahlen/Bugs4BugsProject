@@ -19,7 +19,7 @@ namespace Bugs4Bugs.Controllers
 
         }
 
-        [HttpGet("/CreateTicket")]
+        //[HttpGet("/CreateTicket")]
         [HttpGet("/CreateTicket/{prodName}")]
         public IActionResult CreateTicket(string prodName)
         {
@@ -33,13 +33,15 @@ namespace Bugs4Bugs.Controllers
             return View(createTicketVM);
         }
 
-        [HttpPost("/CreateTicket")]
+        [HttpPost("/CreateTicket/{prodName}")]
         public IActionResult CreateTicket(CreateTicketVM createTicketVM)
         {
-            if (!ModelState.IsValid)
-                return View();
+            
 
             createTicketVM.ProductName = (string)TempData[CURRENT_PRODUCT_NAME];
+            if (!ModelState.IsValid)
+                return View(createTicketVM);
+
             ticketDataservice.SaveTicket(createTicketVM);
             
             //dataservice.saveTicket()
