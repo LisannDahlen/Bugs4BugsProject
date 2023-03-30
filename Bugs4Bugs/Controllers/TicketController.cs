@@ -67,12 +67,14 @@ namespace Bugs4Bugs.Controllers
             TempData["productView"] = prodName;
             return View(ticketDataservice.GetAllTickets(prodName));
         }
+        //p => p.TicketProduct.Name == prodName
+        //Func<Ticket, bool> filter
 
-        //[HttpGet("/YourTickets")]
-        //public IActionResult YourTickets()
-        //{
-
-        //}
+        [HttpGet("/YourTickets")]
+        public IActionResult YourTickets()
+        {
+            return View(ticketDataservice.GetAllTickets(null, true));
+        }
 
         [HttpGet("/EditTicket")]
         public IActionResult EditTicket()
