@@ -27,11 +27,11 @@
             <div class="container">
                 <!-- Navbar brand -->
                 <a class="navbar-brand me-2" href="/">
-                    <img src="/Images/Bug tracker logo3.png"
+                    <img src="/Images/Logov1 (1).png"
                          height="auto"
                          alt="BugSmash Logo"
                          loading="lazy"
-                         width="130"
+                         width="140"
                          style="margin-top: -1px;" />
                 </a>
 
@@ -58,9 +58,6 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Ticket" asp-action="ChooseProduct">ChooseProduct</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Ticket" asp-action="EditTicket">EditTicket</a>
                         </li>
                     </ul>
                     <!-- Right links -->
@@ -224,12 +221,22 @@
                                     </ul>
                                 </ul>
                             </h5>
-                            <ul class="nav-item">
-                                <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
+                           
+                               
+                                     
+                            @if (User.Identity.IsAuthenticated)
+                            { <ul class="nav-item">
+                                    <a class="nav-link" asp-controller="Account" asp-action="LogOut">Logout</a>
+                            </ul>}
+                            else {
+                                 <ul class="nav-item">
+                                    <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
                             </ul>
                             <ul class="nav-item">
                                 <a class="nav-link" asp-controller="Account" asp-action="Register">Register</a>
                             </ul>
+
+                            }
                             </ul>
                         </div>
                         <!-- Grid column -->

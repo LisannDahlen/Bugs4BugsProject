@@ -18,10 +18,12 @@ namespace Bugs4Bugs.Controllers
           
 
         }
-        [HttpGet("/CreateTicket")]
+
+        //[HttpGet("/CreateTicket")]
         [HttpGet("/CreateTicket/{prodName}")]
         public IActionResult CreateTicket(string prodName)
         {
+           
             if (prodName == null)
             {
                 return RedirectToAction(nameof(ChooseProduct));
@@ -31,10 +33,21 @@ namespace Bugs4Bugs.Controllers
             return View(createTicketVM);
         }
 
-        [HttpPost("/SaveTicket")]
-        public IActionResult SaveTicket(CreateTicketVM createTicketVM)
+        [HttpPost("/CreateTicket/{prodName}")]
+        public IActionResult CreateTicket(CreateTicketVM createTicketVM,string prodName)
         {
-            createTicketVM.ProductName = (string)TempData[CURRENT_PRODUCT_NAME];
+
+
+            //createTicketVM.ProductName = (string)TempData[CURRENT_PRODUCT_NAME];
+            createTicketVM.ProductName = prodName;
+           
+            if (!ModelState.IsValid)
+            {
+                createTicketVM.BugTypes = ticketDataservice.GetBugTypes(prodName);
+                createTicketVM.UrgencyLevels = ticketDataservice.GetUrgencyLevels(prodName);
+                
+                return View(createTicketVM);
+            }
             ticketDataservice.SaveTicket(createTicketVM);
             
             //dataservice.saveTicket()

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Bugs4Bugs.Models.Services
 {
@@ -97,7 +98,7 @@ namespace Bugs4Bugs.Models.Services
             newTicket.Description = createTicketVM.Description;
             newTicket.SubmittedDate = DateTime.Now;
             newTicket.LastUpdated = DateTime.Now;
-            newTicket.Title = createTicketVM.Title;
+            newTicket.Title = createTicketVM.Topic;
             newTicket.TicketProductId = GetProductIDByName(createTicketVM.ProductName);
             newTicket.TicketStatusId = 3; // 3 = "open"
             newTicket.TicketBugTypeId = Convert.ToInt32(createTicketVM.SelectedBugType);
@@ -112,5 +113,21 @@ namespace Bugs4Bugs.Models.Services
         {
             return applicationContext.Products.Where(p => p.Name == productName).Select(p => p.Id).SingleOrDefault();
         }
+
+        public SelectListItem[] GetBugTypes(string prodName)
+        {
+            return applicationContext.Products.Where(p => p.Name == prodName)
+               .Select(p => p.GetBugtypesArray())
+               .FirstOrDefault();
+        }
+
+        public SelectListItem[] GetUrgencyLevels(string prodName)
+        {
+            return applicationContext.Products.Where(p => p.Name == prodName)
+               .Select(p => p.GetUrgencyArray())
+               .FirstOrDefault();
+        }
+
+
     }
 }
