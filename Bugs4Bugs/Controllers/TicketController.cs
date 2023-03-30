@@ -51,7 +51,7 @@ namespace Bugs4Bugs.Controllers
             ticketDataservice.SaveTicket(createTicketVM);
             
             //dataservice.saveTicket()
-            return RedirectToAction(nameof(TicketOverview));
+            return RedirectToAction("TicketOverview", new {prodName = prodName});
         }
 
         [AllowAnonymous]
@@ -67,6 +67,12 @@ namespace Bugs4Bugs.Controllers
             TempData["productView"] = prodName;
             return View(ticketDataservice.GetAllTickets(prodName));
         }
+
+        //[HttpGet("/YourTickets")]
+        //public IActionResult YourTickets()
+        //{
+
+        //}
 
         [HttpGet("/EditTicket")]
         public IActionResult EditTicket()
