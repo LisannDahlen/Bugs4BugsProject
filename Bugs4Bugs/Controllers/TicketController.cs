@@ -80,6 +80,7 @@ namespace Bugs4Bugs.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         [HttpGet("/ChooseProduct")]
         public IActionResult ChooseProduct()
         {

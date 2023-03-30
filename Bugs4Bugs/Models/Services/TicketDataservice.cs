@@ -66,7 +66,7 @@ namespace Bugs4Bugs.Models.Services
 
         public TicketVM[] GetAllTickets(string prodName)
         {
-            var ticketVMs =applicationContext.Tickets
+            var ticketVMs = applicationContext.Tickets
                 .Where(t => t.TicketProduct.Name == prodName)
                 .Select(t =>
                 new TicketVM
