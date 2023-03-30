@@ -23,7 +23,6 @@
                             <!--<br />-->
                             <input type="text" asp-for="Topic" class="form-control">
                             <label asp-for="Topic" class="form-label">Topic..</label>
-                            <span asp-validation-for="Topic"></span>
                         </div>
                         <div class="form-outline mb-3">
                             <select asp-for="SelectedBugType" asp-items = "Model.BugTypes" class="form-select">
@@ -43,7 +42,8 @@
                         </div>
                         <input type="submit" value="Add ticket" class="btn btn-primary" />
                     </form>
-                    <div asp-validation-summary="All"></div>
+                    </br>
+                    <div asp-validation-summary="All" class="alert @(ViewContext.ModelState.ErrorCount > 0 ? "alert-danger" : "")"></div>
                 </div>
             </div>
         </div>
