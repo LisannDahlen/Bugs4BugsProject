@@ -7,6 +7,8 @@
         public string Status { get; set; }
         public string BugType { get; set; }
         public string Urgency { get; set; }
+        public string UrgencyColor { get; set; }
+        public string StatusColor { get; set; }
         public string Submitted { get; set; }
         public string LastUpdated { get; set; }
         public string Product { get; set; }

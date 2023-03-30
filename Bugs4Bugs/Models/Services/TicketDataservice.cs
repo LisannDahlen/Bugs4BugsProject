@@ -87,6 +87,8 @@ namespace Bugs4Bugs.Models.Services
                                Status = t.TicketStatus.TicketStatus,
                                BugType = t.TicketBugType.Type,
                                Urgency = t.TicketUrgency.Level,
+                               UrgencyColor = t.TicketUrgency.ColorHexString,
+                               StatusColor = t.TicketStatus.ColorHexString,
                                Submitted = t.SubmittedDate.ToString("dd/MM/yyyy"),
                                LastUpdated = t.LastUpdated.ToString("dd/MM/yyyy"),
                                //Developer = t.Developer == null ? "Unassigned" : t.Developer.FirstName + t.Developer.LastName,

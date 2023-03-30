@@ -87,10 +87,10 @@ namespace Bugs4Bugs.Models
         {
             return new Urgency[] {
 
-                new Urgency{Id = 1,Level = "Low"},
-                new Urgency{Id = 2,Level = "Medium"},
-                new Urgency{Id = 3,Level = "High"},
-                new Urgency{Id = 4,Level = "Critical"},
+                new Urgency{Id = 1,Level = "Low", ColorHexString = "#0D6EFD"},
+                new Urgency{Id = 2,Level = "Medium", ColorHexString = "FFCD29"},
+                new Urgency{Id = 3,Level = "High", ColorHexString = "#FD7E14"},
+                new Urgency{Id = 4,Level = "Critical", ColorHexString = "#DC3545"},
             };
         }
 
@@ -109,11 +109,11 @@ namespace Bugs4Bugs.Models
         public static Status[] GetDefaultStatuses()
         {
             return new Status[] {
-                new Status{Id = 1,TicketStatus = "Closed"},
-                new Status{Id = 2,TicketStatus = "Resolved"},
-                new Status{Id = 3, TicketStatus = "Opened"},
-                new Status{Id = 4, TicketStatus = "Pending"},
-                new Status{Id = 5, TicketStatus = "Assigned"},
+                new Status{Id = 1,TicketStatus = "Closed", ColorHexString = "#adb5bd"},
+                new Status{Id = 2,TicketStatus = "Resolved", ColorHexString = "#198754"},
+                new Status{Id = 3, TicketStatus = "Opened", ColorHexString = "#0d6efd"},
+                new Status{Id = 4, TicketStatus = "Pending", ColorHexString = "#FFCD29"},
+                new Status{Id = 5, TicketStatus = "Assigned", ColorHexString = "#0d6efd"},
 
             };
         }

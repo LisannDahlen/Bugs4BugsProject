@@ -4,6 +4,7 @@ using Bugs4Bugs.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bugs4Bugs.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20230330204719_color prop for statuses")]
+    partial class colorpropforstatuses
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -258,13 +261,13 @@ namespace Bugs4Bugs.Migrations
                         {
                             Id = "DefaultId",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "42352816-d31d-4541-b0b9-7164af3bf334",
+                            ConcurrencyStamp = "5994df93-23f6-4334-974e-08ed4941398a",
                             EmailConfirmed = false,
                             FirstName = "John",
                             LastName = "Connor",
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6d267d1d-1d37-4c89-aac1-6443ba2dcb54",
+                            SecurityStamp = "796a3f3d-2287-4ed8-968e-4c46fc4418b8",
                             TwoFactorEnabled = false,
                             UserName = "JohnConnor"
                         });
@@ -326,7 +329,7 @@ namespace Bugs4Bugs.Migrations
                         new
                         {
                             Id = 1,
-                            ColorHexString = "#adb5bd",
+                            ColorHexString = "#f8f9fa",
                             Description = "This ticket is open and currently waiting to be assigned to a developer.",
                             TicketStatus = "Closed"
                         },
@@ -417,8 +420,8 @@ namespace Bugs4Bugs.Migrations
                         {
                             Id = 1,
                             Description = "En smältande polis jagar mig och en Österrikisk bodybuilder säger att jag ska rädda framtiden",
-                            LastUpdated = new DateTime(2023, 4, 6, 23, 2, 4, 908, DateTimeKind.Local).AddTicks(7586),
-                            SubmittedDate = new DateTime(2023, 4, 2, 23, 2, 4, 908, DateTimeKind.Local).AddTicks(7483),
+                            LastUpdated = new DateTime(2023, 4, 6, 22, 47, 19, 241, DateTimeKind.Local).AddTicks(9945),
+                            SubmittedDate = new DateTime(2023, 4, 2, 22, 47, 19, 241, DateTimeKind.Local).AddTicks(9796),
                             SubmitterId = "DefaultId",
                             TicketBugTypeId = 1,
                             TicketProductId = 5,
@@ -430,8 +433,8 @@ namespace Bugs4Bugs.Migrations
                         {
                             Id = 2,
                             Description = "Jag gjorde min matteläxa när programmet plötsligt",
-                            LastUpdated = new DateTime(2023, 3, 30, 23, 2, 4, 908, DateTimeKind.Local).AddTicks(7603),
-                            SubmittedDate = new DateTime(2023, 3, 30, 23, 2, 4, 908, DateTimeKind.Local).AddTicks(7599),
+                            LastUpdated = new DateTime(2023, 3, 30, 22, 47, 19, 241, DateTimeKind.Local).AddTicks(9964),
+                            SubmittedDate = new DateTime(2023, 3, 30, 22, 47, 19, 241, DateTimeKind.Local).AddTicks(9959),
                             SubmitterId = "DefaultId",
                             TicketBugTypeId = 3,
                             TicketProductId = 1,
@@ -468,7 +471,7 @@ namespace Bugs4Bugs.Migrations
                         new
                         {
                             Id = 1,
-                            ColorHexString = "#0D6EFD",
+                            ColorHexString = "80E615",
                             Level = "Low"
                         },
                         new
@@ -480,13 +483,13 @@ namespace Bugs4Bugs.Migrations
                         new
                         {
                             Id = 3,
-                            ColorHexString = "#FD7E14",
+                            ColorHexString = "FF6715",
                             Level = "High"
                         },
                         new
                         {
                             Id = 4,
-                            ColorHexString = "#DC3545",
+                            ColorHexString = "FF0000",
                             Level = "Critical"
                         });
                 });

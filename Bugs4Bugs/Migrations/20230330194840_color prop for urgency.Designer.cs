@@ -4,6 +4,7 @@ using Bugs4Bugs.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bugs4Bugs.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20230330194840_color prop for urgency")]
+    partial class colorpropforurgency
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -258,13 +261,13 @@ namespace Bugs4Bugs.Migrations
                         {
                             Id = "DefaultId",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "42352816-d31d-4541-b0b9-7164af3bf334",
+                            ConcurrencyStamp = "4100b5ee-880c-422d-8731-858599713fd8",
                             EmailConfirmed = false,
                             FirstName = "John",
                             LastName = "Connor",
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6d267d1d-1d37-4c89-aac1-6443ba2dcb54",
+                            SecurityStamp = "a38b8bf7-1b13-4538-9475-f0f4a94a6632",
                             TwoFactorEnabled = false,
                             UserName = "JohnConnor"
                         });
@@ -307,10 +310,6 @@ namespace Bugs4Bugs.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("ColorHexString")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
@@ -326,35 +325,30 @@ namespace Bugs4Bugs.Migrations
                         new
                         {
                             Id = 1,
-                            ColorHexString = "#adb5bd",
                             Description = "This ticket is open and currently waiting to be assigned to a developer.",
                             TicketStatus = "Closed"
                         },
                         new
                         {
                             Id = 2,
-                            ColorHexString = "#198754",
                             Description = "This ticket is open and currently waiting to be assigned to a developer.",
                             TicketStatus = "Resolved"
                         },
                         new
                         {
                             Id = 3,
-                            ColorHexString = "#0d6efd",
                             Description = "This ticket is open and currently waiting to be assigned to a developer.",
                             TicketStatus = "Opened"
                         },
                         new
                         {
                             Id = 4,
-                            ColorHexString = "#FFCD29",
                             Description = "This ticket is open and currently waiting to be assigned to a developer.",
                             TicketStatus = "Pending"
                         },
                         new
                         {
                             Id = 5,
-                            ColorHexString = "#0d6efd",
                             Description = "This ticket is open and currently waiting to be assigned to a developer.",
                             TicketStatus = "Assigned"
                         });
@@ -417,8 +411,8 @@ namespace Bugs4Bugs.Migrations
                         {
                             Id = 1,
                             Description = "En smältande polis jagar mig och en Österrikisk bodybuilder säger att jag ska rädda framtiden",
-                            LastUpdated = new DateTime(2023, 4, 6, 23, 2, 4, 908, DateTimeKind.Local).AddTicks(7586),
-                            SubmittedDate = new DateTime(2023, 4, 2, 23, 2, 4, 908, DateTimeKind.Local).AddTicks(7483),
+                            LastUpdated = new DateTime(2023, 4, 6, 21, 48, 40, 166, DateTimeKind.Local).AddTicks(2059),
+                            SubmittedDate = new DateTime(2023, 4, 2, 21, 48, 40, 166, DateTimeKind.Local).AddTicks(1933),
                             SubmitterId = "DefaultId",
                             TicketBugTypeId = 1,
                             TicketProductId = 5,
@@ -430,8 +424,8 @@ namespace Bugs4Bugs.Migrations
                         {
                             Id = 2,
                             Description = "Jag gjorde min matteläxa när programmet plötsligt",
-                            LastUpdated = new DateTime(2023, 3, 30, 23, 2, 4, 908, DateTimeKind.Local).AddTicks(7603),
-                            SubmittedDate = new DateTime(2023, 3, 30, 23, 2, 4, 908, DateTimeKind.Local).AddTicks(7599),
+                            LastUpdated = new DateTime(2023, 3, 30, 21, 48, 40, 166, DateTimeKind.Local).AddTicks(2087),
+                            SubmittedDate = new DateTime(2023, 3, 30, 21, 48, 40, 166, DateTimeKind.Local).AddTicks(2080),
                             SubmitterId = "DefaultId",
                             TicketBugTypeId = 3,
                             TicketProductId = 1,
@@ -468,7 +462,7 @@ namespace Bugs4Bugs.Migrations
                         new
                         {
                             Id = 1,
-                            ColorHexString = "#0D6EFD",
+                            ColorHexString = "80E615",
                             Level = "Low"
                         },
                         new
@@ -480,13 +474,13 @@ namespace Bugs4Bugs.Migrations
                         new
                         {
                             Id = 3,
-                            ColorHexString = "#FD7E14",
+                            ColorHexString = "FF6715",
                             Level = "High"
                         },
                         new
                         {
                             Id = 4,
-                            ColorHexString = "#DC3545",
+                            ColorHexString = "FF0000",
                             Level = "Critical"
                         });
                 });
