@@ -41,13 +41,13 @@ namespace Bugs4Bugs.Controllers
             return RedirectToAction(nameof(TicketOverview));
         }
 
-
+        [AllowAnonymous]
         [HttpGet("/TicketOverview")]
         public IActionResult TicketOverview()
         {
             return View(ticketDataservice.GetAllTickets());
         }
-
+        [AllowAnonymous]
         [HttpGet("/TicketOverview/{prodName}")]
         public IActionResult TicketOverview(string prodName)
         {

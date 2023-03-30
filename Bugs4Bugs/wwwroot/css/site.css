@@ -103,4 +103,9 @@ body, html {
     display: flex;
 }
 
+.header-table {
+    position: sticky;
+    top: 0;
+}
+
 
