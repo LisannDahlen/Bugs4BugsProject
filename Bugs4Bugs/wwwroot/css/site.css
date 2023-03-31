@@ -83,10 +83,10 @@ body, html {
 
 
 /* Fix table layout */
-.table {
+/*.table {
     table-layout: fixed;
     width: 100%;
-}
+}*/
 
 /* Make header cells sticky */
 .header-table th {
