@@ -88,7 +88,7 @@ namespace Bugs4Bugs.Models
             return new Urgency[] {
 
                 new Urgency{Id = 1,Level = "Low", ColorHexString = "#0D6EFD"},
-                new Urgency{Id = 2,Level = "Medium", ColorHexString = "FFCD29"},
+                new Urgency{Id = 2,Level = "Medium", ColorHexString = "#FFCD29"},
                 new Urgency{Id = 3,Level = "High", ColorHexString = "#FD7E14"},
                 new Urgency{Id = 4,Level = "Critical", ColorHexString = "#DC3545"},
             };
