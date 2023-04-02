@@ -2,6 +2,7 @@
 using Bugs4Bugs.Views.Account;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Bugs4Bugs.Models;
 
 namespace Bugs4Bugs.Controllers
 {
@@ -35,6 +36,13 @@ namespace Bugs4Bugs.Controllers
             }
 
             // Redirect user
+            
+            string pickedProduct = (string)TempData[AppConstants.CURRENT_PRODUCT_KEY];
+                if (pickedProduct != null)
+                {
+                   return RedirectToAction(nameof(TicketController.CreateTicket), "Ticket",new { prodName = pickedProduct});
+                }
+            
             return RedirectToAction(nameof(TicketController.ChooseProduct), "Ticket");
         }
 

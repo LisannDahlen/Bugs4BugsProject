@@ -10,7 +10,7 @@ namespace Bugs4Bugs.Controllers
     [Authorize]
     public class TicketController : Controller
     {
-        const string CURRENT_PRODUCT_NAME = "currentProduct";
+        const string CURRENT_PRODUCT_KEY = AppConstants.CURRENT_PRODUCT_KEY;
         TicketDataservice ticketDataservice;
         public TicketController(TicketDataservice ticketDataservice)
         {
@@ -29,7 +29,7 @@ namespace Bugs4Bugs.Controllers
                 return RedirectToAction(nameof(ChooseProduct));
             }
             CreateTicketVM createTicketVM = ticketDataservice.GetCreateTicketVM(prodName);
-            TempData[CURRENT_PRODUCT_NAME] = prodName;
+            TempData[CURRENT_PRODUCT_KEY] = prodName;
             return View(createTicketVM);
         }
 
