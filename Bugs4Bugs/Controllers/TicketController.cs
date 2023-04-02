@@ -19,7 +19,7 @@ namespace Bugs4Bugs.Controllers
 
         }
 
-        //[HttpGet("/CreateTicket")]
+        [HttpGet("/CreateTicket")]
         [HttpGet("/CreateTicket/{prodName}")]
         public IActionResult CreateTicket(string prodName)
         {
