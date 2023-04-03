@@ -26,9 +26,11 @@ namespace Bugs4Bugs.Models.Services
         }
 
         static Product[] products = ProductUtilities.GetDefaultProducts(); //Flyttade products listan till ProductUtilities-klassen
-        public ChooseProductVM[] GetAllProducts()
+        public ChooseProductVM[] GetAllProducts(bool filterByLogedInUser = false)
         {
+            var UserId = GetCurrentUserId();
             return applicationContext.Products
+                .Where(t => (!filterByLogedInUser || t.OwnerId == UserId))
                 .OrderBy(p => p.Name)
                 .Select(p => new ChooseProductVM
                 {

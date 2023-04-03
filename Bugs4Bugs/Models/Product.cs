@@ -24,7 +24,11 @@ namespace Bugs4Bugs.Models
         public string Name { get; set; }
         public string? Description { get; set; }
 
-        public string PhotoURL { get; set; }    
+        public string PhotoURL { get; set; }
+
+        public string? OwnerId { get; set; }
+        public SiteUser? Owner { get; set; }
+
         public List<SiteUserRole> ProductTeam { get; set; }
 
         public BugType[] bugTypes;
