@@ -1,0 +1,118 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    <div class="container shadow min-vh-100 py-2">
+        <a asp-action="CreateTicket" asp-controller="Ticket" asp-route-prodName=@TempData["productView"] class="btn btn-primary button-card">Create ticket</a>
+        <div style="padding-top: 20px">
+            <table class="table accordion header-table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col" class="d-none d-md-table-cell">Submitted</th>
+                        <th scope="col" class="d-none d-md-table-cell">Last Updated</th>
+                        <th scope="col" class="d-none d-md-table-cell" id="bug-type-btn">Bug Type</th>
+                        <th scope="col" class="d-none d-md-table-cell">Status</th>
+                        <th scope="col" class="d-none d-md-table-cell">Urgency</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int i = 0;
+                        foreach (TicketVM ticket in Model)
+                        {
+                            <tr data-mdb-toggle="collapse"
+                                href="#r_@i"
+                                role="button"
+                                aria-expanded="false"
+                                aria-controls="r_@i"
+                                class="sortable-row r_@i">
+
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img src="/@ticket.ProductPhotoURL"
+                                             alt=""
+                                             style="width: 45px; height: 45px"
+                                             class="rounded-circle me-2" />
+                                        <div>
+                                            <p class="fw-bold mb-1">@ticket.Title</p>
+                                            <p class="text-muted mb-0">@ticket.Product</p>
+                                        </div>
+                                    </div>
+                                    <div class="d-md-none mt-2">
+                                        <p class="fw-normal mb-1 d-inline-block me-2">Bug Type: <span class="badge badge-success rounded-pill">@ticket.BugType</span></p>
+                                        <p class="fw-normal mb-1 d-inline-block me-2">Status: <span class="badge rounded-pill" style="background-color: @ticket.StatusColor">@ticket.Status</span></p>
+                                        <p class="fw-normal mb-1 d-inline-block me-2">Urgency: <span class="badge rounded-pill" style="background-color: @ticket.UrgencyColor">@ticket.Urgency</span></p>
+                                    </div>
+                                </td>
+                                <td class="d-none d-md-table-cell">@ticket.Submitted</td>
+                                <td class="d-none d-md-table-cell">@ticket.LastUpdated</td>
+                                <td class="d-none d-md-table-cell">
+                                    <span class="badge rounded-pill value-bug-type" style="background-color: #FFCD29">@ticket.BugType</span>
+                                </td>
+                                <td class="d-none d-md-table-cell">
+                                    <span class="badge rounded-pill" style="background-color: @ticket.StatusColor">@ticket.Status</span>
+                                </td>
+                                <td class="d-none d-md-table-cell">
+                                    <span class="badge rounded-pill" style="background-color: @ticket.UrgencyColor">@ticket.Urgency</span>
+                                </td>
+
+                            </tr>
+                            <tr class="collapse accordion-collapse" id="r_@i" data-bs-parent=".table">
+                                <td colspan="6">
+                                    <p>Submitter: @ticket.Submitter</p>
+                                    <p>Assigned technician: @ticket.Developer</p>
+                                    <p><strong>Description:</strong><br />@ticket.Description</p>
+                                </td>
+                            </tr>
+                            i++;
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+        <a asp-action="CreateTicket" asp-controller="Ticket" asp-route-prodName=@TempData["productView"] class="btn btn-primary button-card">Create ticket</a>
+    </div>
+}
+@*<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        $('th').each(function (col) {
+            $(this).hover(
+                function () {
+                    $(this).addClass('focus');
+                },
+                function () {
+                    $(this).removeClass('focus');
+                }
+            );
+            $(this).click(function () {
+                if ($(this).is('.asc')) {
+                    $(this).removeClass('asc');
+                    $(this).addClass('desc selected');
+                    sortOrder = -1;
+                } else {
+                    $(this).addClass('asc selected');
+                    $(this).removeClass('desc');
+                    sortOrder = 1;
+                }
+                $(this).siblings().removeClass('asc selected');
+                $(this).siblings().removeClass('desc selected');
+                var arrData = $('table').find('tbody >tr:has(td)').get();
+                arrData.sort(function (a, b) {
+                    var val1 = $(a).children('td').eq(col).text().toUpperCase();
+                    var val2 = $(b).children('td').eq(col).text().toUpperCase();
+                    if ($.isNumeric(val1) && $.isNumeric(val2))
+                        return sortOrder == 1 ? val1 - val2 : val2 - val1;
+                    else
+                        return (val1 < val2) ? -sortOrder : (val1 > val2) ? sortOrder : 0;
+                });
+                $.each(arrData, function (index, row) {
+                    $('tbody').append(row);
+                });
+            });
+        });
+    });
+
+</script>*@
