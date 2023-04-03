@@ -7,6 +7,10 @@
 
 <h3>My Profile</h3>
 
+@if (Model.ProductVMs != null)
+{
 <partial name="_ProductList" model="Model.ProductVMs" />
+    
+}
 
 <partial name="_TicketList" model="Model.TicketVMs" />

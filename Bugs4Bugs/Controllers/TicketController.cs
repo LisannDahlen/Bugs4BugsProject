@@ -99,11 +99,11 @@ namespace Bugs4Bugs.Controllers
         public IActionResult MyProfile()
         {
             TicketVM[] ticketModel = ticketDataservice.GetAllTickets(null, true);
-            ChooseProductVM[] productModel = ticketDataservice.GetAllProducts();
+        //    ChooseProductVM[] productModel = ticketDataservice.GetAllProducts();
 
             MyProfileVM myProfileVM = new MyProfileVM()
             {
-                ProductVMs = productModel,
+         //       ProductVMs = productModel,
                 TicketVMs = ticketModel
             };
             return View(myProfileVM);
