@@ -10,9 +10,11 @@ namespace Bugs4Bugs.Controllers
     public class AccountController : Controller
     {
         AccountDataservice dataservice;
+        
         public AccountController(AccountDataservice dataservice) 
         {
             this.dataservice = dataservice;
+            
         }
         [HttpGet("/login")]
         public IActionResult Login()
@@ -21,8 +23,10 @@ namespace Bugs4Bugs.Controllers
         }
 
         [HttpPost("/login")]
-        public async Task<IActionResult> LoginAsync(LoginVM loginVM)
+        [HttpPost("/login/{product}")]
+        public async Task<IActionResult> LoginAsync(LoginVM loginVM, string product = null)
         {
+            
             if (!ModelState.IsValid)
                 return View();
 
