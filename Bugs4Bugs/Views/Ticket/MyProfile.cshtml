@@ -9,8 +9,10 @@
 
 @if (Model.ProductVMs != null)
 {
+    <h5>My Products</h5>
 <partial name="_ProductList" model="Model.ProductVMs" />
     
 }
 
+<h5>My Tickets</h5>
 <partial name="_TicketList" model="Model.TicketVMs" />
