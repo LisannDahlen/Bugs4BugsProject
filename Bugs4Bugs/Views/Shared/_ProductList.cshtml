@@ -1,0 +1,44 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    <style>
+        .button-card {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            flex-direction: column-reverse;
+            align-content: space-around;
+            margin-bottom: 5px;
+        }
+    </style>
+
+    <div class="container mb-3">
+        <div class="row row-cols-lg-4 row-cols-sm-1 g-4">
+            @for (int i = 0; i < Model.Length; i++)
+            {
+                <div class="col-sm-6 mb-3 mb-sm-0" style="display: flex;">
+                    <div class="card flex-fill product-card" data-product-name="@Model[i].ProductName" style="width: 12rem;" id="@Model[i].ProductName">
+                        <h5 class="card-header">@Model[i].ProductName</h5>
+
+                        <div class="card-body d-flex flex-column justify-content-between">
+
+                            <img src="@Model[i].PhotoURL" class="card-img-top d-block mx-auto" alt="@Model[i].ProductName.ToString()" style="width: 5rem;">
+                            <br />
+                            <div class="button-wrapper mt-auto">
+
+                                <div class="button-card button">
+                                    <a asp-action="CreateTicket" asp-controller="Ticket" asp-route-prodName="@Model[i].ProductName" class="btn btn-primary button-card">Create ticket</a>
+                                    <a asp-action="TicketOverview" asp-controller="Ticket" asp-route-prodName="@Model[i].ProductName" class="btn btn-primary button-card">Ticket Overview</a>
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            }
+        </div>
+    </div>
+
+}

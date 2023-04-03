@@ -1,12 +1,8 @@
 html {
-    font-size: 14px;
+    font-size: 17px;
 }
 
-@media (min-width: 768px) {
-    html {
-        font-size: 16px;
-    }
-}
+
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
     box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
@@ -21,38 +17,11 @@ body {
     margin-bottom: 60px;
 }
 
-.center-box {
-    display: flex;
-    justify-content: center;
-}
-
 .custom-card {
     width: 100%;
 }
 
-@media (min-width: 768px) {
-    .custom-card {
-        width: 75%;
-    }
-}
 
-@media (min-width: 992px) {
-    .custom-card {
-        width: 50%;
-    }
-}
-
-@media (min-width: 1200px) {
-    .custom-card {
-        width: 35%;
-    }
-}
-
-@media (min-width: 1400px) {
-    .custom-card {
-        width: 20%;
-    }
-}
 
 
 
@@ -70,9 +39,7 @@ body, html {
     flex: 1;
 }
 
-.boxloginfill{
-    display: flex;
-}
+
 
 .header-table {
     position: sticky;
@@ -91,7 +58,7 @@ body, html {
 /* Make header cells sticky */
 .header-table th {
     position: sticky;
-    top: 60px; /* Adjust this value according to your navbar height */
+    top: 55px; /* Adjust this value according to your navbar height */
     background-color: white;
     z-index: 1000;
 }

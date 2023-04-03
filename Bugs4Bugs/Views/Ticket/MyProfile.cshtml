@@ -1,0 +1,16 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model MyProfileVM
+
+<h3>My Profile</h3>
+
+@if (Model.ProductVMs != null)
+{
+<partial name="_ProductList" model="Model.ProductVMs" />
+    
+}
+
+<partial name="_TicketList" model="Model.TicketVMs" />
