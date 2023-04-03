@@ -28,6 +28,21 @@ namespace Bugs4Bugs.Controllers
         {
             return View();
         }
+
+        [HttpGet("/GetStarted")]
+        public IActionResult GetStarted()
+        {
+            return View();
+        }
+        
+        [HttpGet("/OurProduct")]
+        public IActionResult OurProduct()
+        {
+            return View();
+        }
+
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
