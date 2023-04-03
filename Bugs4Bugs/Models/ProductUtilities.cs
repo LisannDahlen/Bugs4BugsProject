@@ -80,6 +80,12 @@ namespace Bugs4Bugs.Models
                    Name = "Youtube",
                    PhotoURL = "Images/Youtube.png"
                 },
+                new Product()
+                {
+                   Id = 13,
+                   Name = "Bugs4Bugs",
+                   PhotoURL = "Images/Logov1 (1).png"
+                },
             };
 
         }
