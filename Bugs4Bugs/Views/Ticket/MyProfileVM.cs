@@ -3,7 +3,7 @@
     public class MyProfileVM
     {
         public TicketVM[] TicketVMs { get; set; }
-        public ChooseProductVM[] ProductVMs { get; set; }
+        public ChooseProductVM[]? ProductVMs { get; set; }
 
     }
 }

@@ -3,8 +3,14 @@
 *@
 @{
 }
-@model TicketVM[]
+@model MyProfileVM
 
 <h3>My Profile</h3>
 
-<partial name="_TicketList" model="Model" />
+@if (Model.ProductVMs != null)
+{
+<partial name="_ProductList" model="Model.ProductVMs" />
+    
+}
+
+<partial name="_TicketList" model="Model.TicketVMs" />

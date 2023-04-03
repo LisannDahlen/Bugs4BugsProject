@@ -1,15 +1,20 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Bugs4Bugs.Models.Services;
+using System.Reflection.Emit;
 
 namespace Bugs4Bugs.Models
 {
 	public class ApplicationContext : IdentityDbContext<SiteUser, IdentityRole, string>
 	{
         // Denna konstruktor krävs för att konfigurationen ska fungera
-        public ApplicationContext(DbContextOptions<ApplicationContext> options) :
+        private readonly IHttpContextAccessor httpContextAccessor;
+
+        public ApplicationContext(DbContextOptions<ApplicationContext> options, IHttpContextAccessor httpContextAccessor) :
             base(options)
         {
+            this.httpContextAccessor = httpContextAccessor;
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -18,8 +23,13 @@ namespace Bugs4Bugs.Models
             builder.Entity<Status>().HasData(ProductUtilities.GetDefaultStatuses());
             builder.Entity<Urgency>().HasData(ProductUtilities.GetDefaultUrgencyLevels());
             builder.Entity<Product>().HasData(ProductUtilities.GetDefaultProducts());
-            builder.Entity<SiteUser>().HasData(new SiteUser {Id = "DefaultId", FirstName = "John", LastName = "Connor", UserName = "JohnConnor" });
             builder.Entity<Ticket>().HasData(ProductUtilities.GetDefaultTickets());
+            builder.Entity<IdentityRole>().HasData(ProductUtilities.GetRoles());
+            builder.Entity<IdentityUserRole<string>>().HasData(ProductUtilities.GetIdentityUserRoles());
+
+            var users = ProductUtilities.GetDefaultSiteUsers();
+            builder.Entity<SiteUser>().HasData(users);
+            
         }
         // Exponerar våra databas-modeller via properties av typen DbSet<T> 
         public DbSet<Ticket> Tickets { get; set; }

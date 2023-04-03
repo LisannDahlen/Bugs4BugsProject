@@ -1,4 +1,5 @@
-﻿using Bugs4Bugs.Views.Ticket;
+﻿using Bugs4Bugs.Models.Services;
+using Bugs4Bugs.Views.Ticket;
 using Microsoft.AspNetCore.Identity;
 
 namespace Bugs4Bugs.Models
@@ -43,7 +44,7 @@ namespace Bugs4Bugs.Models
                    Id = 6,
                    Name = "Spotify",
                    PhotoURL = "Images/Spotify.png"
-                }, 
+                },
                 new Product()
                 {
                    Id = 7,
@@ -67,13 +68,13 @@ namespace Bugs4Bugs.Models
                    Id = 10,
                    Name = "Ebay",
                    PhotoURL = "Images/Ebay.png"
-                },  
+                },
                 new Product()
                 {
                    Id = 11,
                    Name = "Microsoft Teams",
                    PhotoURL = "Images/Teams.jpg"
-                },  
+                },
                 new Product()
                 {
                    Id = 12,
@@ -89,6 +90,34 @@ namespace Bugs4Bugs.Models
             };
 
         }
+        public static IdentityRole[] GetRoles()
+        {
+            return new IdentityRole[]
+            {
+                new IdentityRole { Id = "UserRoleId", Name = "User", NormalizedName = "USER".ToUpper() },
+                new IdentityRole { Id = "TechnicianRoleId", Name = "Technician", NormalizedName = "Technician".ToUpper() },
+                new IdentityRole { Id = "ManagerRoleId", Name = "Manager", NormalizedName = "MANAGER".ToUpper() },
+            };
+        }
+        public static IdentityUserRole<string>[] GetIdentityUserRoles()
+        {
+            return new IdentityUserRole<string>[]
+            {
+                new IdentityUserRole<string>{RoleId = "UserRoleId", UserId = "defaultUser"},
+                new IdentityUserRole<string>{RoleId = "TechnicianRoleId", UserId = "defaultDeveloper"},
+                new IdentityUserRole<string>{RoleId = "ManagerRoleId", UserId = "defaultOwner"},
+            };
+        }
+        public static SiteUser[] GetDefaultSiteUsers()
+        {
+            var pwHasher = new PasswordHasher<SiteUser>();
+            SiteUser defaultUser = new SiteUser { Id = "defaultUser", FirstName = "John", LastName = "Connor", UserName = "JohnConnor", PasswordHash = pwHasher.HashPassword(null, "Default123#") };
+            SiteUser defaultDeveloper = new SiteUser { Id = "defaultDeveloper", FirstName = "Dev", LastName = "Code", UserName = "DevCode", PasswordHash = pwHasher.HashPassword(null, "Default123#") };
+            SiteUser defaultProductManager = new SiteUser { Id = "defaultOwner", FirstName = "Owen", LastName = "Er", UserName = "OwenEr", PasswordHash = pwHasher.HashPassword(null, "Default123#") };
+
+            return new SiteUser[] { defaultUser, defaultDeveloper, defaultProductManager };
+        }
+
         public static Urgency[] GetDefaultUrgencyLevels()
         {
             return new Urgency[] {
@@ -140,7 +169,7 @@ namespace Bugs4Bugs.Models
                     TicketStatusId = 1, // 1 = "Closed"
                     TicketBugTypeId = 1,
                     TicketUrgencyId = 1,
-                    SubmitterId = "DefaultId",
+                    SubmitterId = "defaultUser",
                 },
                 new Ticket
                 {
@@ -153,7 +182,7 @@ namespace Bugs4Bugs.Models
                     TicketStatusId = 3, // 3 = "open,
                     TicketBugTypeId = 3,
                     TicketUrgencyId = 2,
-                    SubmitterId = "DefaultId",
+                    SubmitterId = "defaultUser",
                 },
             };
         }
