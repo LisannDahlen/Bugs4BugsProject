@@ -50,7 +50,6 @@ namespace Bugs4Bugs.Controllers
             }
             ticketDataservice.SaveTicket(createTicketVM);
             
-            //dataservice.saveTicket()
             return RedirectToAction("TicketOverview", new {prodName = prodName});
         }
 

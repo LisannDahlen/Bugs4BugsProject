@@ -74,6 +74,7 @@ namespace Bugs4Bugs.Controllers
         [HttpGet("/logout")]
         public IActionResult LogOut()
         {
+            TempData[AppConstants.CURRENT_PRODUCT_KEY] = null;
             dataservice.LogOut();
             return RedirectToAction("Index","Home");
         }
