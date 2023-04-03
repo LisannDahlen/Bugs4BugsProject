@@ -13,6 +13,7 @@ namespace Bugs4Bugs.Views.Account
         [Required(ErrorMessage = "Please enter your UserName")]
         public string UserName { get; set; }
         [Required(ErrorMessage = "Please enter your E-Mail")]
+        [EmailAddress]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Please enter your Password")]
