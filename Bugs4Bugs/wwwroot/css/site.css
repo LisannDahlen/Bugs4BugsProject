@@ -110,6 +110,6 @@ tbody{
     background-color: #f5f5f5 !important; /* set your desired color here */
 }
 
-h1, h2, h3, h4, h5 {
+h1, h2, h3, h4, h5, .b4b-font {
     font-family: 'Gowun Batang', sans-serif;
 }
