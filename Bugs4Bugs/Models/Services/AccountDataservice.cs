@@ -1,4 +1,5 @@
 ﻿using Bugs4Bugs.Views.Account;
+using Microsoft.AspNetCore.Http.Connections;
 using Microsoft.AspNetCore.Identity;
 
 namespace Bugs4Bugs.Models.Services
@@ -19,7 +20,18 @@ namespace Bugs4Bugs.Models.Services
             this.roleManager = roleManager;
         }
 
-
+        public async void SetRole(SiteUser user, string roleName)
+        {
+            if (!await roleManager.RoleExistsAsync(roleName))
+            {
+                await roleManager.CreateAsync(new IdentityRole(roleName));
+            }
+            
+            if (!await userManager.IsInRoleAsync(user, roleName))
+            {
+                await userManager.AddToRoleAsync(user, roleName);
+            }
+        }
         public async Task<string> TryRegisterAsync(RegisterVM viewModel)
         {
             // Todo: Try to create a new user
