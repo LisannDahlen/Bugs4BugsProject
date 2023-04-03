@@ -84,7 +84,7 @@ namespace Bugs4Bugs.Models
                 {
                    Id = 13,
                    Name = "Bugs4Bugs",
-                   PhotoURL = "Images/Logov1 (1).png"
+                   PhotoURL = "Images/bee.png"
                 },
             };
 
