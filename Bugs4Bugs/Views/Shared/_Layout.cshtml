@@ -53,25 +53,30 @@
                 <div class="collapse navbar-collapse" id="navbarButtons">
                     <!-- Left links -->
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                     
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Home" asp-action="OurMission">Our Mission</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Home" asp-action="OurProduct">Our Product</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Home" asp-action="GetStarted">Get started</a>
+                            </li>
+                        }
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Home" asp-action="OurMission">Our Mission</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Home" asp-action="OurProduct">Our Product</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Home" asp-action="GetStarted">Get started</a>
-                        </li>
-                        
-                          <li class="nav-item">
                             <a class="nav-link" asp-controller="Ticket" asp-action="ChooseProduct">Products</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Ticket" asp-action="TicketOverview" asp-route-prodName="">Tickets</a>
                         </li>
+
                       
                     </ul>
                     <!-- Right links -->
