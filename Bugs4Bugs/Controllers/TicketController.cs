@@ -98,7 +98,7 @@ namespace Bugs4Bugs.Controllers
         [HttpGet ("/MyProfile")]
         public IActionResult MyProfile()
         {
-            TicketVM[] model = ticketDataservice.GetAllTickets();
+            TicketVM[] model = ticketDataservice.GetAllTickets(null, true);
             return View(model);
         }
 
