@@ -35,6 +35,14 @@ namespace Bugs4Bugs.Models
         public Status[] statuses;
         public Urgency[] urgencies;
 
+        public SelectListItem[] GetTechniciansArray()
+        {
+            return ProductTeam.Select(t => new SelectListItem { Value = t.Id.ToString(), Text = t.SiteUser.UserName }).ToArray();
+        }
+        public SelectListItem[] GetStatusesArray()
+        {
+            return statuses.Select(s => new SelectListItem { Value = s.Id.ToString(), Text = s.TicketStatus}).ToArray();
+        }
         public SelectListItem[] GetBugtypesArray()
         {
             return bugTypes.Select(b => new SelectListItem {Value = b.Id.ToString(),Text = b.Type}).ToArray();
