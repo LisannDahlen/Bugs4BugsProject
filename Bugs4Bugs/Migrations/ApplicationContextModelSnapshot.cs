@@ -39,7 +39,7 @@ namespace Bugs4Bugs.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("BuggTypes");
+                    b.ToTable("BuggTypes", (string)null);
 
                     b.HasData(
                         new
@@ -85,7 +85,7 @@ namespace Bugs4Bugs.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
 
                     b.HasData(
                         new
@@ -186,7 +186,7 @@ namespace Bugs4Bugs.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Role");
+                    b.ToTable("Role", (string)null);
                 });
 
             modelBuilder.Entity("Bugs4Bugs.Models.SiteUser", b =>
@@ -262,48 +262,17 @@ namespace Bugs4Bugs.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "defaultUser",
+                            Id = "DefaultId",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "aeb1066b-f10f-4cf4-8b15-df7153dff986",
+                            ConcurrencyStamp = "67a5c16d-18a1-4d09-b779-8c03677bcc19",
                             EmailConfirmed = false,
                             FirstName = "John",
                             LastName = "Connor",
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAENFbPoWzVw2IpPMtEmrykq2/iIGSSbERoQdAfqbNZTmrDEakL2Cr6wSoWac1iHGkOA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b0d0ccda-d7f3-4f31-83e3-f75e69e63b83",
+                            SecurityStamp = "e04bae74-5a54-4675-a4a8-e6a634d8b9f0",
                             TwoFactorEnabled = false,
                             UserName = "JohnConnor"
-                        },
-                        new
-                        {
-                            Id = "defaultDeveloper",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "7e1cfce5-12ae-4a96-94eb-d0679601939e",
-                            EmailConfirmed = false,
-                            FirstName = "Dev",
-                            LastName = "Code",
-                            LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAECiiHi73liPw0NRzU+2JZMRDoi3I/504RmsNNKShcAHlBxx9N6cqhuTisCYH9M7fYg==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "a9326ab5-a422-42e4-a78e-2de5bfa1d647",
-                            TwoFactorEnabled = false,
-                            UserName = "DevCode"
-                        },
-                        new
-                        {
-                            Id = "defaultOwner",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "954bd290-d091-41e3-900f-6545dda508ce",
-                            EmailConfirmed = false,
-                            FirstName = "Owen",
-                            LastName = "Er",
-                            LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAECajnVPqnyn4Q9ESMyJWXP71pGToVU1JUN6+O29LndX4jYE02JTWsW8yVDy5Pqf5sw==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "fddb81c9-df2e-4fb0-a8af-9dfa14ae6f50",
-                            TwoFactorEnabled = false,
-                            UserName = "OwenEr"
                         });
                 });
 
@@ -333,7 +302,7 @@ namespace Bugs4Bugs.Migrations
 
                     b.HasIndex("SiteUserId");
 
-                    b.ToTable("SiteUserRole");
+                    b.ToTable("SiteUserRole", (string)null);
                 });
 
             modelBuilder.Entity("Bugs4Bugs.Models.Status", b =>
@@ -357,7 +326,7 @@ namespace Bugs4Bugs.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Statuses");
+                    b.ToTable("Statuses", (string)null);
 
                     b.HasData(
                         new
@@ -447,16 +416,16 @@ namespace Bugs4Bugs.Migrations
 
                     b.HasIndex("TicketUrgencyId");
 
-                    b.ToTable("Tickets");
+                    b.ToTable("Tickets", (string)null);
 
                     b.HasData(
                         new
                         {
                             Id = 1,
                             Description = "En smältande polis jagar mig och en Österrikisk bodybuilder säger att jag ska rädda framtiden",
-                            LastUpdated = new DateTime(2023, 4, 10, 15, 49, 40, 411, DateTimeKind.Local).AddTicks(1604),
-                            SubmittedDate = new DateTime(2023, 4, 6, 15, 49, 40, 411, DateTimeKind.Local).AddTicks(1540),
-                            SubmitterId = "defaultUser",
+                            LastUpdated = new DateTime(2023, 4, 10, 10, 37, 34, 678, DateTimeKind.Local).AddTicks(4433),
+                            SubmittedDate = new DateTime(2023, 4, 6, 10, 37, 34, 678, DateTimeKind.Local).AddTicks(4384),
+                            SubmitterId = "DefaultId",
                             TicketBugTypeId = 1,
                             TicketProductId = 5,
                             TicketStatusId = 1,
@@ -467,9 +436,9 @@ namespace Bugs4Bugs.Migrations
                         {
                             Id = 2,
                             Description = "Jag gjorde min matteläxa när programmet plötsligt",
-                            LastUpdated = new DateTime(2023, 4, 3, 15, 49, 40, 411, DateTimeKind.Local).AddTicks(1612),
-                            SubmittedDate = new DateTime(2023, 4, 3, 15, 49, 40, 411, DateTimeKind.Local).AddTicks(1610),
-                            SubmitterId = "defaultUser",
+                            LastUpdated = new DateTime(2023, 4, 3, 10, 37, 34, 678, DateTimeKind.Local).AddTicks(4442),
+                            SubmittedDate = new DateTime(2023, 4, 3, 10, 37, 34, 678, DateTimeKind.Local).AddTicks(4440),
+                            SubmitterId = "DefaultId",
                             TicketBugTypeId = 3,
                             TicketProductId = 1,
                             TicketStatusId = 3,
@@ -499,7 +468,7 @@ namespace Bugs4Bugs.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Urgencies");
+                    b.ToTable("Urgencies", (string)null);
 
                     b.HasData(
                         new
@@ -553,26 +522,6 @@ namespace Bugs4Bugs.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "UserRoleId",
-                            Name = "User",
-                            NormalizedName = "USER"
-                        },
-                        new
-                        {
-                            Id = "TechnicianRoleId",
-                            Name = "Technician",
-                            NormalizedName = "TECHNICIAN"
-                        },
-                        new
-                        {
-                            Id = "ManagerRoleId",
-                            Name = "Manager",
-                            NormalizedName = "MANAGER"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -660,23 +609,6 @@ namespace Bugs4Bugs.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = "defaultUser",
-                            RoleId = "UserRoleId"
-                        },
-                        new
-                        {
-                            UserId = "defaultDeveloper",
-                            RoleId = "TechnicianRoleId"
-                        },
-                        new
-                        {
-                            UserId = "defaultOwner",
-                            RoleId = "ManagerRoleId"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
