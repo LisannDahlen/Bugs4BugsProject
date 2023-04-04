@@ -75,8 +75,8 @@ namespace Bugs4Bugs.Controllers
             return View(ticketDataservice.GetAllTickets(null, true));
         }
 
-        [HttpGet("/EditTicket")]
-        public IActionResult EditTicket()
+        [HttpGet("/EditTicket/{Id}")]
+        public IActionResult EditTicket(int Id)
         {
             return View();
         }
