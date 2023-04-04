@@ -1,6 +1,69 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model CreateTicketVM
+
 @{
-    <h1>Edit ticket</h1>
+    ViewBag.Title = "Edit Ticket";
 }
+
+<br />
+<h1 class="text-center">@ViewData["Title"]</h1>
+<br />
+
+<div class="container">
+    <div class="row">
+        <div class="col-xl-4 offset-xl-4 col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-12 center-box">
+            <div class="card" style="margin-bottom: 50px">
+                <div class="card-header">
+                    <h6>Product: @Model.ProductName</h6>
+                </div>
+                <div class="card-body">
+                    <form asp-route-ProdName="@Model.ProductName" asp-controller="Ticket" asp-action="CreateTicket">
+                        <div class="form-outline mb-3">
+                            <!--<label asp-for="Title">Title:</label>-->
+                            <!--<input asp-for="Title" placeholder="Title"/>-->
+                            <!--<br />-->
+                            <input type="text" asp-for="Topic" class="form-control">
+                            <label asp-for="Topic" class="form-label">Topic..</label>
+                        </div>
+                        
+
+@*                        <div class="form-outline mb-3">
+                        <select asp-for="SelectedTechnician" asp-items="Model.Technician" class="form-select">
+                        <option value="">-- Select a status --</option>
+
+                        </select>
+
+                        </div>
+
+                        <div class="form-outline mb-3">
+                        <select asp-for="SelectedStatus" asp-items="Model.Status" class="form-select">
+                        <option value="">-- Select a status --</option>
+
+                        </select>
+
+                        </div>*@
+                        
+                        <div class="form-outline mb-3">
+                            <select asp-for="SelectedBugType" asp-items="Model.BugTypes" class="form-select">
+                                <option value="">-- Select a bug type --</option>
+
+                            </select>
+                        </div>
+                        <div class="form-outline mb-3">
+                            <select asp-for="SelectedUrgencyLevel" asp-items="Model.UrgencyLevels" class="form-select">
+                                <option value="">-- Select an urgency level --</option>
+
+                            </select>
+                        </div>
+                        <div class="form-outline mb-3">
+                            <textarea asp-for="Description" class="form-control border 1px" rows="3" style="background: #FAFAFA" id="description"></textarea>
+                            <label for="description" class="form-label">Description..</label>
+                        </div>
+                        <input type="submit" value="Add ticket" class="btn btn-primary" />
+                    </form>
+                    </br>
+                    <div asp-validation-summary="All" class="alert @(ViewContext.ModelState.ErrorCount > 0 ? "alert-danger" : "")"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

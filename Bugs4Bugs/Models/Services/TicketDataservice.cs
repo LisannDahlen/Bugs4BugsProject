@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace Bugs4Bugs.Models.Services
 {
@@ -164,6 +165,39 @@ namespace Bugs4Bugs.Models.Services
                .FirstOrDefault();
         }
 
+        internal EditTicketVM GetEditTicketVM(int id)
+        {
+            return null;
+            //            return applicationContext.Tickets.Where(p => p.Id == id)
+            //                .Select(p => new EditTicketVM
+            //                {
+            //                    public string? ProductName { get; set; }
 
+            //        [Required(ErrorMessage = "Ticket topic is required")]
+
+            //        public string Topic { get; set; }
+
+            //        //public Product product { get; set; }
+
+            //        public SelectListItem[]? Technicians { get; set; }
+            //        public string SelectedTechnician { get; set; }
+
+            //        public SelectListItem[]? Statuses { get; set; }
+            //        [Required(ErrorMessage = "Select a status")]
+            //        public string SelectedStatus { get; set; }
+            //        public SelectListItem[]? BugTypes { get; set; }
+            //        [Required(ErrorMessage = "Select a bug type")]
+            //        public string SelectedBugType { get; set; }
+
+            //        public SelectListItem[]? UrgencyLevels { get; set; }
+            //        [Required(ErrorMessage = "Select urgency level")]
+            //        public string SelectedUrgencyLevel { get; set; }
+
+
+            //        [Required(ErrorMessage = "Please write a description")]
+            //        public string Description { get; set; }
+            //    })
+            //                .FirstOrDefault();
+        }
     }
 }

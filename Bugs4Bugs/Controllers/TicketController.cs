@@ -78,7 +78,13 @@ namespace Bugs4Bugs.Controllers
         [HttpGet("/EditTicket/{Id}")]
         public IActionResult EditTicket(int Id)
         {
-            return View();
+            if (Id == null)
+            {
+                return RedirectToAction(nameof(MyProfile));
+            }
+            EditTicketVM editTicketVM = ticketDataservice.GetEditTicketVM(Id);
+            TempData[CURRENT_PRODUCT_KEY] = Id;
+            return View(editTicketVM);
         }
 
         [HttpPost("/EditTicket")]
@@ -87,7 +93,40 @@ namespace Bugs4Bugs.Controllers
             return View();
         }
 
-        [AllowAnonymous]
+        //[HttpGet("/CreateTicket")]
+        //[HttpGet("/CreateTicket/{prodName}")]
+        //public IActionResult CreateTicket(string prodName)
+        //{
+
+        //    if (prodName == null)
+        //    {
+        //        return RedirectToAction(nameof(ChooseProduct));
+        //    }
+        //    CreateTicketVM createTicketVM = ticketDataservice.GetCreateTicketVM(prodName);
+        //    TempData[CURRENT_PRODUCT_KEY] = prodName;
+        //    return View(createTicketVM);
+        //}
+
+        //[HttpPost("/CreateTicket/{prodName}")]
+        //public IActionResult CreateTicket(CreateTicketVM createTicketVM, string prodName)
+        //{
+
+
+        //    //createTicketVM.ProductName = (string)TempData[CURRENT_PRODUCT_NAME];
+        //    createTicketVM.ProductName = prodName;
+
+        //    if (!ModelState.IsValid)
+        //    {
+        //        createTicketVM.BugTypes = ticketDataservice.GetBugTypes(prodName);
+        //        createTicketVM.UrgencyLevels = ticketDataservice.GetUrgencyLevels(prodName);
+
+        //        return View(createTicketVM);
+        //    }
+        //    ticketDataservice.SaveTicket(createTicketVM);
+
+        //    return RedirectToAction("TicketOverview", new { prodName = prodName });
+
+            [AllowAnonymous]
         [HttpGet("/ChooseProduct")]
         public IActionResult ChooseProduct()
         {
