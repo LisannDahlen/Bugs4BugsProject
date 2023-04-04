@@ -20,17 +20,23 @@ namespace Bugs4Bugs.Models.Services
             this.roleManager = roleManager;
         }
 
-        public async void SetRole(SiteUser user, string roleName)
+        public async Task SetRole(string roleName)
         {
+
             if (!await roleManager.RoleExistsAsync(roleName))
             {
                 await roleManager.CreateAsync(new IdentityRole(roleName));
             }
+
+            var userId = userManager.GetUserId(signInManager.Context.User);
+            var user = await userManager.FindByIdAsync(userId);
             
             if (!await userManager.IsInRoleAsync(user, roleName))
             {
                 await userManager.AddToRoleAsync(user, roleName);
             }
+            await LogOut();
+            await signInManager.SignInAsync(user, isPersistent: false);
         }
 
         public async Task<string> TryRegisterAsync(RegisterVM viewModel)
@@ -79,9 +85,9 @@ namespace Bugs4Bugs.Models.Services
             return "Login failed";
         }
 
-        internal void LogOut()
+        internal async void LogOut()
         {
-            signInManager.SignOutAsync();
+            await signInManager.SignOutAsync();
         }
 
     }
