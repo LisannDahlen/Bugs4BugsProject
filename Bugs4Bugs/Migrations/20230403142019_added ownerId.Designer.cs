@@ -4,6 +4,7 @@ using Bugs4Bugs.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bugs4Bugs.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20230403142019_added ownerId")]
+    partial class addedownerId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,7 +42,7 @@ namespace Bugs4Bugs.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("BuggTypes", (string)null);
+                    b.ToTable("BuggTypes");
 
                     b.HasData(
                         new
@@ -191,7 +194,7 @@ namespace Bugs4Bugs.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Role", (string)null);
+                    b.ToTable("Role");
                 });
 
             modelBuilder.Entity("Bugs4Bugs.Models.SiteUser", b =>
@@ -267,7 +270,7 @@ namespace Bugs4Bugs.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "DefaultId",
+                            Id = "defaultUser",
                             AccessFailedCount = 0,
                             ConcurrencyStamp = "0dcde5e4-e888-4e14-9332-6a63dee250f4",
                             EmailConfirmed = false,
@@ -338,7 +341,7 @@ namespace Bugs4Bugs.Migrations
 
                     b.HasIndex("SiteUserId");
 
-                    b.ToTable("SiteUserRole", (string)null);
+                    b.ToTable("SiteUserRole");
                 });
 
             modelBuilder.Entity("Bugs4Bugs.Models.Status", b =>
@@ -362,7 +365,7 @@ namespace Bugs4Bugs.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Statuses", (string)null);
+                    b.ToTable("Statuses");
 
                     b.HasData(
                         new
@@ -452,7 +455,7 @@ namespace Bugs4Bugs.Migrations
 
                     b.HasIndex("TicketUrgencyId");
 
-                    b.ToTable("Tickets", (string)null);
+                    b.ToTable("Tickets");
 
                     b.HasData(
                         new
@@ -504,7 +507,7 @@ namespace Bugs4Bugs.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Urgencies", (string)null);
+                    b.ToTable("Urgencies");
 
                     b.HasData(
                         new
@@ -558,6 +561,26 @@ namespace Bugs4Bugs.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "UserRoleId",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        },
+                        new
+                        {
+                            Id = "TechnicianRoleId",
+                            Name = "Technician",
+                            NormalizedName = "TECHNICIAN"
+                        },
+                        new
+                        {
+                            Id = "ManagerRoleId",
+                            Name = "Manager",
+                            NormalizedName = "MANAGER"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -645,6 +668,23 @@ namespace Bugs4Bugs.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "defaultUser",
+                            RoleId = "UserRoleId"
+                        },
+                        new
+                        {
+                            UserId = "defaultDeveloper",
+                            RoleId = "TechnicianRoleId"
+                        },
+                        new
+                        {
+                            UserId = "defaultOwner",
+                            RoleId = "ManagerRoleId"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>

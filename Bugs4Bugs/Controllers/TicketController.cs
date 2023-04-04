@@ -75,8 +75,8 @@ namespace Bugs4Bugs.Controllers
             return View(ticketDataservice.GetAllTickets(null, true));
         }
 
-        [HttpGet("/EditTicket")]
-        public IActionResult EditTicket()
+        [HttpGet("/EditTicket/{Id}")]
+        public IActionResult EditTicket(int Id)
         {
             return View();
         }
@@ -99,11 +99,11 @@ namespace Bugs4Bugs.Controllers
         public IActionResult MyProfile()
         {
             TicketVM[] ticketModel = ticketDataservice.GetAllTickets(null, true);
-        //    ChooseProductVM[] productModel = ticketDataservice.GetAllProducts();
+            ChooseProductVM[] productModel = ticketDataservice.GetAllProducts(true);
 
             MyProfileVM myProfileVM = new MyProfileVM()
             {
-         //       ProductVMs = productModel,
+                ProductVMs = productModel,
                 TicketVMs = ticketModel
             };
             return View(myProfileVM);
