@@ -62,7 +62,7 @@ namespace Bugs4Bugs.Controllers
                 return RedirectToAction(nameof(MyProfile));
             }
             EditTicketVM editTicketVM = ticketDataservice.GetEditTicketVM(Id);
-            TempData[CURRENT_PRODUCT_KEY] = Id;
+            TempData["Ticket"] = Id;
             return View(editTicketVM);
         }
 
