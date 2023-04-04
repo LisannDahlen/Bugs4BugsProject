@@ -7,7 +7,7 @@
 
 <h3>My Profile</h3>
 
-@if (Model.ProductVMs != null)
+@if (Model.ProductVMs.Length != 0 && Model.ProductVMs != null)
 {
     <h5>My Products</h5>
 <partial name="_ProductList" model="Model.ProductVMs" />

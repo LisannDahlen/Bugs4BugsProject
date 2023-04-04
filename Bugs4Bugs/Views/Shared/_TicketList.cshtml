@@ -69,8 +69,14 @@
                                     <p>Submitter: @ticket.Submitter</p>
                                     <p>Assigned technician: @ticket.Developer</p>
                                     <p><strong>Description:</strong><br />@ticket.Description</p>
+                                    <div class="d-flex justify-content-end">
+                                        <button asp-action="EditTicket" asp-controller="Ticket" asp-route-Id=@ticket.Id class="btn btn-primary">Create ticket</button>
+
+                                    </div>
                                 </td>
                             </tr>
+                            
+
                             i++;
                         }
                     }

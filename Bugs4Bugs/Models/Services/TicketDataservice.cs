@@ -83,6 +83,7 @@ namespace Bugs4Bugs.Models.Services
                 .Select(t =>
                            new TicketVM
                            {
+                               Id = t.Id,
                                Title = t.Title,
                                Description = t.Description,
                                Submitter = t.Submitter.UserName,
