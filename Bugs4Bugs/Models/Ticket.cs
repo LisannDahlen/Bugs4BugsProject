@@ -9,8 +9,8 @@
         public DateTime LastUpdated { get; set; }
         public string SubmitterId { get; set; }
         public SiteUser? Submitter { get; set; }
-        //public string? DeveloperId { get; set; }
-        //public SiteUser? Developer { get; set; }
+        //public string? TechnicianId { get; set; }
+        //public SiteUser? Technician { get; set; }
         public int TicketProductId { get; set; }
         public Product TicketProduct { get; set; }
         public int TicketBugTypeId { get; set; }
