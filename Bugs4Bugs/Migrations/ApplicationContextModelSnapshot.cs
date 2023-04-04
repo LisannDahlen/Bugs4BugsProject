@@ -39,7 +39,7 @@ namespace Bugs4Bugs.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("BuggTypes");
+                    b.ToTable("BuggTypes", (string)null);
 
                     b.HasData(
                         new
@@ -191,7 +191,7 @@ namespace Bugs4Bugs.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Role");
+                    b.ToTable("Role", (string)null);
                 });
 
             modelBuilder.Entity("Bugs4Bugs.Models.SiteUser", b =>
@@ -267,7 +267,7 @@ namespace Bugs4Bugs.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "defaultUser",
+                            Id = "DefaultId",
                             AccessFailedCount = 0,
                             ConcurrencyStamp = "0dcde5e4-e888-4e14-9332-6a63dee250f4",
                             EmailConfirmed = false,
@@ -338,7 +338,7 @@ namespace Bugs4Bugs.Migrations
 
                     b.HasIndex("SiteUserId");
 
-                    b.ToTable("SiteUserRole");
+                    b.ToTable("SiteUserRole", (string)null);
                 });
 
             modelBuilder.Entity("Bugs4Bugs.Models.Status", b =>
@@ -362,7 +362,7 @@ namespace Bugs4Bugs.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Statuses");
+                    b.ToTable("Statuses", (string)null);
 
                     b.HasData(
                         new
@@ -452,7 +452,7 @@ namespace Bugs4Bugs.Migrations
 
                     b.HasIndex("TicketUrgencyId");
 
-                    b.ToTable("Tickets");
+                    b.ToTable("Tickets", (string)null);
 
                     b.HasData(
                         new
@@ -504,7 +504,7 @@ namespace Bugs4Bugs.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Urgencies");
+                    b.ToTable("Urgencies", (string)null);
 
                     b.HasData(
                         new
@@ -558,26 +558,6 @@ namespace Bugs4Bugs.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "UserRoleId",
-                            Name = "User",
-                            NormalizedName = "USER"
-                        },
-                        new
-                        {
-                            Id = "TechnicianRoleId",
-                            Name = "Technician",
-                            NormalizedName = "TECHNICIAN"
-                        },
-                        new
-                        {
-                            Id = "ManagerRoleId",
-                            Name = "Manager",
-                            NormalizedName = "MANAGER"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -665,23 +645,6 @@ namespace Bugs4Bugs.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = "defaultUser",
-                            RoleId = "UserRoleId"
-                        },
-                        new
-                        {
-                            UserId = "defaultDeveloper",
-                            RoleId = "TechnicianRoleId"
-                        },
-                        new
-                        {
-                            UserId = "defaultOwner",
-                            RoleId = "ManagerRoleId"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>

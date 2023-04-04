@@ -10,11 +10,13 @@ namespace Bugs4Bugs.Models
 	{
         // Denna konstruktor krävs för att konfigurationen ska fungera
         private readonly IHttpContextAccessor httpContextAccessor;
+        private readonly IPasswordHasher<SiteUser> passwordHasher;
 
-        public ApplicationContext(DbContextOptions<ApplicationContext> options, IHttpContextAccessor httpContextAccessor) :
+        public ApplicationContext(DbContextOptions<ApplicationContext> options, IHttpContextAccessor httpContextAccessor, IPasswordHasher<SiteUser> passwordHasher) :
             base(options)
         {
             this.httpContextAccessor = httpContextAccessor;
+            this.passwordHasher = passwordHasher;
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -25,10 +27,10 @@ namespace Bugs4Bugs.Models
             builder.Entity<Product>().HasData(ProductUtilities.GetDefaultProducts());
             builder.Entity<Ticket>().HasData(ProductUtilities.GetDefaultTickets());
 
-            builder.Entity<SiteUser>().HasData(ProductUtilities.GetDefaultSiteUsers());
+            builder.Entity<SiteUser>().HasData(ProductUtilities.GetDefaultSiteUsers(passwordHasher));
             builder.Entity<IdentityRole>().HasData(ProductUtilities.GetRoles());
             builder.Entity<IdentityUserRole<string>>().HasData(ProductUtilities.GetIdentityUserRoles());
-            
+
         }
         // Exponerar våra databas-modeller via properties av typen DbSet<T> 
         public DbSet<Ticket> Tickets { get; set; }

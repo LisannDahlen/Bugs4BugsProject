@@ -90,30 +90,36 @@ namespace Bugs4Bugs.Models
             };
 
         }
+        static readonly string defaultUserId = Guid.NewGuid().ToString();
+        static readonly string defaultTechnicianId = Guid.NewGuid().ToString();
+        static readonly string defaultOwnerId = Guid.NewGuid().ToString();
+        static readonly string defaultUserRoleId = Guid.NewGuid().ToString();
+        static readonly string defaultTechnicianRoleId = Guid.NewGuid().ToString();
+        static readonly string defaultOwnerRoleId = Guid.NewGuid().ToString();
         public static IdentityRole[] GetRoles()
         {
             return new IdentityRole[]
             {
-                new IdentityRole { Id = "UserRoleId", Name = "User", NormalizedName = "USER".ToUpper() },
-                new IdentityRole { Id = "TechnicianRoleId", Name = "Technician", NormalizedName = "Technician".ToUpper() },
-                new IdentityRole { Id = "OwnerRoleId", Name = "Owner", NormalizedName = "Owner".ToUpper() },
+                new IdentityRole { Id = defaultUserRoleId, Name = "User", NormalizedName = "USER".ToUpper() },
+                new IdentityRole { Id = defaultTechnicianRoleId, Name = "Technician", NormalizedName = "Technician".ToUpper() },
+                new IdentityRole { Id = defaultOwnerRoleId, Name = "Owner", NormalizedName = "Owner".ToUpper() },
             };
         }
         public static IdentityUserRole<string>[] GetIdentityUserRoles()
         {
             return new IdentityUserRole<string>[]
             {
-                new IdentityUserRole<string>{RoleId = "UserRoleId", UserId = "defaultUser"},
-                new IdentityUserRole<string>{RoleId = "TechnicianRoleId", UserId = "defaultDeveloper"},
-                new IdentityUserRole<string>{RoleId = "OwnerRoleId", UserId = "defaultOwner"},
+                new IdentityUserRole<string>{RoleId = defaultUserRoleId, UserId = defaultUserId},
+                new IdentityUserRole<string>{RoleId = defaultTechnicianRoleId, UserId = defaultTechnicianId},
+                new IdentityUserRole<string>{RoleId = defaultOwnerRoleId, UserId = defaultOwnerId},
             };
         }
-        public static SiteUser[] GetDefaultSiteUsers()
+        public static SiteUser[] GetDefaultSiteUsers(IPasswordHasher<SiteUser> passwordHasher)
         {
-            var pwHasher = new PasswordHasher<SiteUser>();
-            SiteUser defaultUser = new SiteUser { Id = "defaultUser", FirstName = "John", LastName = "Connor", UserName = "JohnConnor", PasswordHash = pwHasher.HashPassword(null, "Default123#") };
-            SiteUser defaultDeveloper = new SiteUser { Id = "defaultDeveloper", FirstName = "Dev", LastName = "Code", UserName = "DevCode", PasswordHash = pwHasher.HashPassword(null, "Default123#") };
-            SiteUser defaultProductManager = new SiteUser { Id = "defaultOwner", FirstName = "Owen", LastName = "Er", UserName = "OwenEr", PasswordHash = pwHasher.HashPassword(null, "Default123#") };
+            
+            SiteUser defaultUser = new SiteUser { Id = defaultUserId, FirstName = "John", LastName = "Connor", UserName = "JohnConnor", PasswordHash = passwordHasher.HashPassword(null, "Default123#"), NormalizedEmail = "USER@MAIL.COM", NormalizedUserName = "JOHNCONNOR" };
+            SiteUser defaultDeveloper = new SiteUser { Id = defaultTechnicianId, FirstName = "Dev", LastName = "Code", UserName = "DevCode", PasswordHash = passwordHasher.HashPassword(null, "Default123#"), NormalizedEmail = "TECHNICHIAN@MAIL.COM", NormalizedUserName = "DEVCODE" };
+            SiteUser defaultProductManager = new SiteUser { Id = defaultOwnerId, FirstName = "Owen", LastName = "Er", UserName = "OwenEr", PasswordHash = passwordHasher.HashPassword(null, "Default123#"), NormalizedEmail = "OWENER@MAIL.COM", NormalizedUserName = "OWENER" };
 
             return new SiteUser[] { defaultUser, defaultDeveloper, defaultProductManager };
         }
