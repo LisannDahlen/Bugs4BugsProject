@@ -146,6 +146,18 @@ namespace Bugs4Bugs.Models.Services
             applicationContext.SaveChanges();
         }
 
+        internal void SaveTicket(EditTicketVM editTicketVM)
+        {
+            Ticket newTicket = applicationContext.Tickets.First(t => t.Id == editTicketVM.Id);
+            newTicket.LastUpdated = DateTime.Now;
+            newTicket.TechnicianId = editTicketVM.SelectedTechnician;
+            newTicket.TicketStatusId = Convert.ToInt32(editTicketVM.SelectedStatus);
+            newTicket.TicketBugTypeId = Convert.ToInt32(editTicketVM.SelectedBugType);
+            newTicket.TicketUrgencyId = Convert.ToInt32(editTicketVM.SelectedUrgencyLevel);
+
+            applicationContext.SaveChanges();
+        }
+
         private int GetProductIDByName(string productName)
         {
             return applicationContext.Products.Where(p => p.Name == productName).Select(p => p.Id).SingleOrDefault();
@@ -171,6 +183,7 @@ namespace Bugs4Bugs.Models.Services
             return applicationContext.Tickets.Where(t => t.Id == id)
                 .Select(t => new EditTicketVM
                 {
+                    Id = t.Id,
                     ProductName = t.TicketProduct.Name,
                     Topic = t.Title,
                     SelectedTechnician = t.Technician.Id,
