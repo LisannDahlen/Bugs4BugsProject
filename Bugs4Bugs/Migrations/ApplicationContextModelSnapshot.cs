@@ -39,7 +39,7 @@ namespace Bugs4Bugs.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("BuggTypes");
+                    b.ToTable("BuggTypes", (string)null);
 
                     b.HasData(
                         new
@@ -90,7 +90,7 @@ namespace Bugs4Bugs.Migrations
 
                     b.HasIndex("OwnerId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
 
                     b.HasData(
                         new
@@ -191,7 +191,7 @@ namespace Bugs4Bugs.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Role");
+                    b.ToTable("Role", (string)null);
                 });
 
             modelBuilder.Entity("Bugs4Bugs.Models.SiteUser", b =>
@@ -267,52 +267,46 @@ namespace Bugs4Bugs.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "3903c0b1-f4b5-40eb-b171-4723bb372538",
+                            Id = "defaultUser",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "daf42732-7a08-4e9d-b810-192375644898",
+                            ConcurrencyStamp = "0dcde5e4-e888-4e14-9332-6a63dee250f4",
                             EmailConfirmed = false,
                             FirstName = "John",
                             LastName = "Connor",
                             LockoutEnabled = false,
-                            NormalizedEmail = "USER@MAIL.COM",
-                            NormalizedUserName = "JOHNCONNOR",
-                            PasswordHash = "AQAAAAIAAYagAAAAEC5cttYR+PcbuaT8RKCSH/UFmIQGObG9S8dIeSbikwIKlJvtaRAv7jokodZkHvSf/g==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEG7VISv8FNsC1AjLFvpL/b2Qk2axA8uQrXw15JPlbYthh4scuryCMXa3pMkj0qfe4w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5023651a-3464-4ca1-912b-2377dac3abed",
+                            SecurityStamp = "49f4f132-0786-4d1b-b225-e20b81c89841",
                             TwoFactorEnabled = false,
                             UserName = "JohnConnor"
                         },
                         new
                         {
-                            Id = "ad59bbc5-ef03-4922-bb60-291eb9b70160",
+                            Id = "defaultDeveloper",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5845f937-f584-46b9-948a-8afeab80d0cf",
+                            ConcurrencyStamp = "e48acb72-c188-4ee5-ae31-9bf2905b9a83",
                             EmailConfirmed = false,
                             FirstName = "Dev",
                             LastName = "Code",
                             LockoutEnabled = false,
-                            NormalizedEmail = "TECHNICHIAN@MAIL.COM",
-                            NormalizedUserName = "DEVCODE",
-                            PasswordHash = "AQAAAAIAAYagAAAAEPPLsbSUJfxN9kCBGV8K39RC9dDaf7iPHZ+wp+iwus+b6LKT0wMMm3yS0S6erBxteQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBOwraAXZ2t4kqwZix760KXSwsHq79Uej1UhUo5KIT9t7cmeBopnhT2+kjFr61wnGA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f49f802b-7b5f-469b-a957-430e77c9b3af",
+                            SecurityStamp = "3ea79bc1-543a-4e8e-9d1f-85a4021c1a51",
                             TwoFactorEnabled = false,
                             UserName = "DevCode"
                         },
                         new
                         {
-                            Id = "77dfe50f-9c83-49d3-8eeb-5eef4585f9c2",
+                            Id = "defaultOwner",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "87cb7c43-ecdf-4bc2-b301-75b67eb7b8da",
+                            ConcurrencyStamp = "d40b7243-fe1d-451b-a13d-503f2a012335",
                             EmailConfirmed = false,
                             FirstName = "Owen",
                             LastName = "Er",
                             LockoutEnabled = false,
-                            NormalizedEmail = "OWENER@MAIL.COM",
-                            NormalizedUserName = "OWENER",
-                            PasswordHash = "AQAAAAIAAYagAAAAEFppLtctHv0ro8hTnHvaDL0856lKiSE/pIU/bd5atuyFNdU1vBCFYcZ4ofTAYY6xZQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDvnUqbkSMo0pmMzVD1PM1wk6DuMDogZz2u5JRCKwqCm2vP4bgZvlgrgB6G0fzCtOA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "21343fe9-1458-403b-99d2-3bed4eba6deb",
+                            SecurityStamp = "2c1fd222-4832-45a8-ad30-d2c2991bd7d9",
                             TwoFactorEnabled = false,
                             UserName = "OwenEr"
                         });
@@ -344,7 +338,7 @@ namespace Bugs4Bugs.Migrations
 
                     b.HasIndex("SiteUserId");
 
-                    b.ToTable("SiteUserRole");
+                    b.ToTable("SiteUserRole", (string)null);
                 });
 
             modelBuilder.Entity("Bugs4Bugs.Models.Status", b =>
@@ -368,7 +362,7 @@ namespace Bugs4Bugs.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Statuses");
+                    b.ToTable("Statuses", (string)null);
 
                     b.HasData(
                         new
@@ -430,9 +424,6 @@ namespace Bugs4Bugs.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("TechnicianId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<int>("TicketBugTypeId")
                         .HasColumnType("int");
 
@@ -453,8 +444,6 @@ namespace Bugs4Bugs.Migrations
 
                     b.HasIndex("SubmitterId");
 
-                    b.HasIndex("TechnicianId");
-
                     b.HasIndex("TicketBugTypeId");
 
                     b.HasIndex("TicketProductId");
@@ -463,7 +452,35 @@ namespace Bugs4Bugs.Migrations
 
                     b.HasIndex("TicketUrgencyId");
 
-                    b.ToTable("Tickets");
+                    b.ToTable("Tickets", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "En smältande polis jagar mig och en Österrikisk bodybuilder säger att jag ska rädda framtiden",
+                            LastUpdated = new DateTime(2023, 4, 10, 16, 20, 19, 93, DateTimeKind.Local).AddTicks(7351),
+                            SubmittedDate = new DateTime(2023, 4, 6, 16, 20, 19, 93, DateTimeKind.Local).AddTicks(7259),
+                            SubmitterId = "defaultUser",
+                            TicketBugTypeId = 1,
+                            TicketProductId = 5,
+                            TicketStatusId = 1,
+                            TicketUrgencyId = 1,
+                            Title = "Mördarrobotar"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Jag gjorde min matteläxa när programmet plötsligt",
+                            LastUpdated = new DateTime(2023, 4, 3, 16, 20, 19, 93, DateTimeKind.Local).AddTicks(7356),
+                            SubmittedDate = new DateTime(2023, 4, 3, 16, 20, 19, 93, DateTimeKind.Local).AddTicks(7355),
+                            SubmitterId = "defaultUser",
+                            TicketBugTypeId = 3,
+                            TicketProductId = 1,
+                            TicketStatusId = 3,
+                            TicketUrgencyId = 2,
+                            Title = "Programmet åt min läxa"
+                        });
                 });
 
             modelBuilder.Entity("Bugs4Bugs.Models.Urgency", b =>
@@ -487,7 +504,7 @@ namespace Bugs4Bugs.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Urgencies");
+                    b.ToTable("Urgencies", (string)null);
 
                     b.HasData(
                         new
@@ -545,21 +562,21 @@ namespace Bugs4Bugs.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "0020526e-dbb1-4162-80c0-282908a3dc6a",
+                            Id = "UserRoleId",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "14488ddd-1f16-41a0-b6fa-70da9fb826c7",
+                            Id = "TechnicianRoleId",
                             Name = "Technician",
                             NormalizedName = "TECHNICIAN"
                         },
                         new
                         {
-                            Id = "9ea77062-d470-4774-8090-84b3f74273a9",
-                            Name = "Owner",
-                            NormalizedName = "OWNER"
+                            Id = "ManagerRoleId",
+                            Name = "Manager",
+                            NormalizedName = "MANAGER"
                         });
                 });
 
@@ -652,18 +669,18 @@ namespace Bugs4Bugs.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "3903c0b1-f4b5-40eb-b171-4723bb372538",
-                            RoleId = "0020526e-dbb1-4162-80c0-282908a3dc6a"
+                            UserId = "defaultUser",
+                            RoleId = "UserRoleId"
                         },
                         new
                         {
-                            UserId = "ad59bbc5-ef03-4922-bb60-291eb9b70160",
-                            RoleId = "14488ddd-1f16-41a0-b6fa-70da9fb826c7"
+                            UserId = "defaultDeveloper",
+                            RoleId = "TechnicianRoleId"
                         },
                         new
                         {
-                            UserId = "77dfe50f-9c83-49d3-8eeb-5eef4585f9c2",
-                            RoleId = "9ea77062-d470-4774-8090-84b3f74273a9"
+                            UserId = "defaultOwner",
+                            RoleId = "ManagerRoleId"
                         });
                 });
 
@@ -726,10 +743,6 @@ namespace Bugs4Bugs.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Bugs4Bugs.Models.SiteUser", "Technician")
-                        .WithMany()
-                        .HasForeignKey("TechnicianId");
-
                     b.HasOne("Bugs4Bugs.Models.BugType", "TicketBugType")
                         .WithMany()
                         .HasForeignKey("TicketBugTypeId")
@@ -755,8 +768,6 @@ namespace Bugs4Bugs.Migrations
                         .IsRequired();
 
                     b.Navigation("Submitter");
-
-                    b.Navigation("Technician");
 
                     b.Navigation("TicketBugType");
 
