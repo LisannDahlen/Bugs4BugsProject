@@ -6,7 +6,7 @@
 
         <div class="container">
             <div class="d-flex justify-content-end">
-                <button asp-action="CreateTicket" asp-controller="Ticket" asp-route-prodName=@TempData["productView"] class="btn btn-primary">Create ticket</button>
+                <a asp-action="ChooseProduct" asp-controller="Ticket" class="btn btn-primary">Create ticket</a>
          
             </div>
         </div>
@@ -70,7 +70,7 @@
                                     <p>Assigned technician: @ticket.Developer</p>
                                     <p><strong>Description:</strong><br />@ticket.Description</p>
                                     <div class="d-flex justify-content-end">
-                                        <button asp-action="EditTicket" asp-controller="Ticket" asp-route-Id=@ticket.Id class="btn btn-primary">Create ticket</button>
+                                        <a asp-action="EditTicket" asp-controller="Ticket" asp-route-Id=@ticket.Id class="btn btn-primary">Edit ticket</a>
 
                                     </div>
                                 </td>
@@ -85,7 +85,7 @@
         </div>
         <div class="container">
             <div class="d-flex justify-content-end">
-                <button asp-action="CreateTicket" asp-controller="Ticket" asp-route-prodName=@TempData["productView"] class="btn btn-primary">Create ticket</button>
+                <a asp-action="CreateTicket" asp-controller="Ticket" asp-route-prodName=@TempData["productView"] class="btn btn-primary">Create ticket</a>
 
             </div>
         </div>
