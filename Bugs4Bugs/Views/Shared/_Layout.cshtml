@@ -72,10 +72,10 @@
                             </li>
                         }
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Ticket" asp-action="ChooseProduct">Products</a>
+                            <a class="nav-link" asp-controller="Ticket"  asp-action="ChooseProduct">Products</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Ticket" asp-action="TicketOverview" >Tickets</a>
+                            <a class="nav-link" asp-controller="Ticket" asp-route-prodName="" asp-action="TicketOverview">Tickets</a>
                         </li>
                        
                         @if (User.Identity.IsAuthenticated)
