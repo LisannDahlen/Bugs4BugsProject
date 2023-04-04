@@ -3,6 +3,7 @@ using Bugs4Bugs.Views.Account;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Bugs4Bugs.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace Bugs4Bugs.Controllers
 {
@@ -78,11 +79,26 @@ namespace Bugs4Bugs.Controllers
         }
 
         [HttpGet("/logout")]
-        public IActionResult LogOut()
+        public async Task<IActionResult> LogOutAsync()
         {
             TempData[AppConstants.CURRENT_PRODUCT_KEY] = null;
-            dataservice.LogOut();
+            await dataservice.LogOut();
             return RedirectToAction("Index","Home");
         }
+
+
+        
+        [HttpGet("/Secret")]
+        [HttpGet("/Secret/{role}")]
+        public async Task<IActionResult> SecretAsync(string role)
+        {
+            if (role != null)
+            {
+                await dataservice.SetRole(role);
+                return RedirectToAction("SecretAsync");
+            }
+            else return View();
+        }
+
     }
 }
