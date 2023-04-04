@@ -17,7 +17,7 @@
                     <h4>Login</h4>
                 </div>
                 <div class="card-body">
-                    <form asp-controller="Account" asp-action="Login">
+                    <form class="post-on-enter" asp-controller="Account" asp-action="Login">
                         <div class="form-outline mb-3">
                             <input type="text" asp-for="UserName" id="userName" class="form-control" />
                             <label class="form-label" for="userName">Username</label>
@@ -29,6 +29,7 @@
                         </div>
 
                         <button type="submit" class="btn btn-primary">Log In</button>
+                        <a class="btn btn-primary" asp-controller="Account" asp-action="Register">Register</a>
                     </form>
                     <br />
                     <div asp-validation-summary="All" class="alert @(ViewContext.ModelState.ErrorCount > 0 ? "alert-danger" : "")" role="alert"></div>
@@ -74,3 +75,4 @@
 <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#loginModal">
     Login
 </button>
+
