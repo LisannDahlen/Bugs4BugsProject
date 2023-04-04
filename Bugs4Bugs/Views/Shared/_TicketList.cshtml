@@ -69,10 +69,13 @@
                                     <p>Submitter: @ticket.Submitter</p>
                                     <p>Assigned technician: @ticket.Developer</p>
                                     <p><strong>Description:</strong><br />@ticket.Description</p>
-                                    <div class="d-flex justify-content-end">
-                                        <a asp-action="EditTicket" asp-controller="Ticket" asp-route-Id=@ticket.Id class="btn btn-primary">Edit ticket</a>
+                                    @if (@User.IsInRole("Owner") || @User.IsInRole("Technician"))
+                                    {
+                                        <div class="d-flex justify-content-end">
+                                            <a asp-action="EditTicket" asp-controller="Ticket" asp-route-Id=@ticket.Id class="btn btn-primary">Edit ticket</a>
 
-                                    </div>
+                                        </div>
+                                    }
                                 </td>
                             </tr>
                             
