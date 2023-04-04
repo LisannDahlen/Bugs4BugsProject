@@ -8,6 +8,7 @@ namespace Bugs4Bugs.Models
         {
             Name = name;
             PhotoURL = photoURL;
+            ProductTeam = new List<SiteUserRole>();
             urgencies = ProductUtilities.GetDefaultUrgencyLevels();
             statuses =  ProductUtilities.GetDefaultStatuses();
             bugTypes =  ProductUtilities.GetDefaultBugTypes();
@@ -15,6 +16,7 @@ namespace Bugs4Bugs.Models
 
         public Product()
         {
+            ProductTeam = new List<SiteUserRole>();
             urgencies = ProductUtilities.GetDefaultUrgencyLevels();
             statuses = ProductUtilities.GetDefaultStatuses();
             bugTypes = ProductUtilities.GetDefaultBugTypes();
