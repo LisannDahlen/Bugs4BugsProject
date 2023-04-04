@@ -42,7 +42,7 @@ namespace Bugs4Bugs.Models.Services
                 LastName = viewModel.LastName,
                 UserName = viewModel.UserName,
                 Email = viewModel.Email,
-                PasswordHash = viewModel.Password,
+                //PasswordHash = viewModel.Password,
             };
             
             
