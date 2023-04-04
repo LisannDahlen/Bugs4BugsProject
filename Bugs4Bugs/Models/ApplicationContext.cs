@@ -25,7 +25,7 @@ namespace Bugs4Bugs.Models
             builder.Entity<Status>().HasData(ProductUtilities.GetDefaultStatuses());
             builder.Entity<Urgency>().HasData(ProductUtilities.GetDefaultUrgencyLevels());
             builder.Entity<Product>().HasData(ProductUtilities.GetDefaultProducts());
-            builder.Entity<Ticket>().HasData(ProductUtilities.GetDefaultTickets());
+            //builder.Entity<Ticket>().HasData(ProductUtilities.GetDefaultTickets());
 
             builder.Entity<SiteUser>().HasData(ProductUtilities.GetDefaultSiteUsers(passwordHasher));
             builder.Entity<IdentityRole>().HasData(ProductUtilities.GetRoles());
