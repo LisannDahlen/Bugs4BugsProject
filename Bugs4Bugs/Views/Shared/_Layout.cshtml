@@ -95,6 +95,10 @@
                             <button type="button" class="btn btn-link px-3 me-2">
                                 <a class="nav-link" asp-controller="Account" asp-action="LogOut">Log out</a>
                             </button>
+                           <p>
+                                Logged in as: @User.Identity.Name
+
+                           </p> 
 
                         }
                         else
