@@ -60,19 +60,21 @@ namespace Bugs4Bugs.Controllers
         public async Task<IActionResult> RegisterAsync(RegisterVM registerVM)
         {
             if (!ModelState.IsValid)
-                return View();
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
+                return Json(new { status = "error", errors = errors });
+            }
 
             // Try to register user
             var errorMessage = await dataservice.TryRegisterAsync(registerVM);
             if (errorMessage != null)
             {
                 // Show error
-                ModelState.AddModelError(string.Empty, errorMessage);
-                return View();
+                return Json(new { status = "error", errors = new List<string> { errorMessage } });
             }
 
             // Redirect user
-            return RedirectToAction(nameof(Login));
+            return Json(new { status = "success" });
         }
 
         [HttpGet("/logout")]

@@ -59,7 +59,7 @@
 
 
                 <!--Neeeeeeeeeeeed AJAX någon duktig?-->
-                @*<div class="container my-5">
+                <div class="container my-5">
                 <!-- Register button -->
                 <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#registerModal">
                 Register
@@ -95,7 +95,7 @@
                 <input type="email" asp-for="Email" id="email" class="form-control" />
                 <label class="form-label" for="email">Email</label>
                 </div>
-
+                <br />
                 <div class="form-outline mb-3">
                 <input type="password" asp-for="Password" id="password" class="form-control" />
                 <label class="form-label" for="password">Password</label>
@@ -106,13 +106,57 @@
                 <label class="form-label" for="passwordRepeat">Confirm password</label>
                 </div>
                 </form>
-                <div asp-validation-summary="All" class="alert @(ViewContext.ModelState.ErrorCount > 0 ? "alert-danger" : "")" role="alert"></div>
+                <div asp-validation-summary="All" id="errorMessages" class="alert @(ViewContext.ModelState.ErrorCount > 0 ? "alert-danger" : "")" role="alert"></div>
                 </div>
+            <div id="error-alert" class="alert alert-danger d-none" role="alert">
+                <strong>Error:</strong> <span id="error-message"></span>
+            </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
                 <button type="submit" form="registerForm" class="btn btn-primary">Sign me up</button>
                 </div>
                 </div>
                 </div>
-                </div>*@
+                </div>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function showErrorAlert(message) {
+        $('#error-message').text(message);
+        $('#error-alert').removeClass('d-none');
+    }
+
+    function hideErrorAlert() {
+        $('#error-alert').addClass('d-none');
+    }
+  $(document).ready(function () {
+    $("#registerForm").on("submit", function (e) {
+      e.preventDefault();
+      const form = $(this);
+
+      $.ajax({
+        url: form.attr("asp-action"),
+        type: "POST",
+        data: form.serialize(),
+        success: function (response) {
+          if (response.status === "success") {
+            location.reload();
+          } else if (response.status === "error") {
+            const errorMessages = $("#errorMessages");
+            errorMessages.html("");
+                        errorMessages.addClass("alert-danger");
+            errorMessages.removeClass("d-none");
+
+            response.errors.forEach(function (error) {
+              errorMessages.append(`<p>${error}</p>`);
+            });
+          }
+        },
+                error: function (xhr, status, error) {
+                    console.log("Error: " + error);
+                    showErrorAlert("An error occurred while submitting the form. Please try again.");
+                },
+      });
+    });
+  });
+</script>
