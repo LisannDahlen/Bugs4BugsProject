@@ -96,7 +96,7 @@ namespace Bugs4Bugs.Models
             {
                 new IdentityRole { Id = "UserRoleId", Name = "User", NormalizedName = "USER".ToUpper() },
                 new IdentityRole { Id = "TechnicianRoleId", Name = "Technician", NormalizedName = "Technician".ToUpper() },
-                new IdentityRole { Id = "ManagerRoleId", Name = "Manager", NormalizedName = "MANAGER".ToUpper() },
+                new IdentityRole { Id = "OwnerRoleId", Name = "Owner", NormalizedName = "Owner".ToUpper() },
             };
         }
         public static IdentityUserRole<string>[] GetIdentityUserRoles()
@@ -105,7 +105,7 @@ namespace Bugs4Bugs.Models
             {
                 new IdentityUserRole<string>{RoleId = "UserRoleId", UserId = "defaultUser"},
                 new IdentityUserRole<string>{RoleId = "TechnicianRoleId", UserId = "defaultDeveloper"},
-                new IdentityUserRole<string>{RoleId = "ManagerRoleId", UserId = "defaultOwner"},
+                new IdentityUserRole<string>{RoleId = "OwnerRoleId", UserId = "defaultOwner"},
             };
         }
         public static SiteUser[] GetDefaultSiteUsers()
