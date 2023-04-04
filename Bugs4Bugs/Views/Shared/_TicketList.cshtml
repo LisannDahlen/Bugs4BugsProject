@@ -117,14 +117,12 @@
         const columnIndex = Array.from(th.parentNode.children).indexOf(th);
         const isAscending = !th.getAttribute('data-ascending') || th.getAttribute('data-ascending') === 'false';
 
-        // Remove the data-ascending attribute from all column headers
         table.querySelectorAll('th[data-sortable]').forEach(header => {
             header.removeAttribute('data-ascending');
             header.querySelector('i').classList.remove('fa-sort-up', 'fa-sort-down');
             header.querySelector('i').classList.add('fa-sort');
         });
 
-        // Add the data-ascending attribute to the clicked column header
         th.setAttribute('data-ascending', isAscending);
 
         // Update the arrow icon based on the sorting state
