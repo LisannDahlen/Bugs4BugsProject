@@ -24,11 +24,10 @@ namespace Bugs4Bugs.Models
             builder.Entity<Urgency>().HasData(ProductUtilities.GetDefaultUrgencyLevels());
             builder.Entity<Product>().HasData(ProductUtilities.GetDefaultProducts());
             builder.Entity<Ticket>().HasData(ProductUtilities.GetDefaultTickets());
+
+            builder.Entity<SiteUser>().HasData(ProductUtilities.GetDefaultSiteUsers());
             builder.Entity<IdentityRole>().HasData(ProductUtilities.GetRoles());
             builder.Entity<IdentityUserRole<string>>().HasData(ProductUtilities.GetIdentityUserRoles());
-
-            var users = ProductUtilities.GetDefaultSiteUsers();
-            builder.Entity<SiteUser>().HasData(users);
             
         }
         // Exponerar våra databas-modeller via properties av typen DbSet<T> 

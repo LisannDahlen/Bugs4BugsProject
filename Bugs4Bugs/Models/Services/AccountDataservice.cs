@@ -32,6 +32,7 @@ namespace Bugs4Bugs.Models.Services
                 await userManager.AddToRoleAsync(user, roleName);
             }
         }
+
         public async Task<string> TryRegisterAsync(RegisterVM viewModel)
         {
             // Todo: Try to create a new user
@@ -66,7 +67,8 @@ namespace Bugs4Bugs.Models.Services
                 isPersistent: false,
                 lockoutOnFailure: false
                 );
-
+            var user = await userManager.GetUsersInRoleAsync("Manager");
+            
             bool wasUserSignedIn = result.Succeeded;
 
             if (wasUserSignedIn)
