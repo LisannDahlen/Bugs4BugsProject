@@ -53,6 +53,25 @@ namespace Bugs4Bugs.Controllers
             return RedirectToAction("TicketOverview", new {prodName = prodName});
         }
 
+        [HttpGet("/EditTicket/")]
+        [HttpGet("/EditTicket/{Id}")]
+        public IActionResult EditTicket(int Id)
+        {
+            if (Id == null)
+            {
+                return RedirectToAction(nameof(MyProfile));
+            }
+            EditTicketVM editTicketVM = ticketDataservice.GetEditTicketVM(Id);
+            TempData[CURRENT_PRODUCT_KEY] = Id;
+            return View(editTicketVM);
+        }
+
+        [HttpPost("/EditTicket/{Id}")]
+        public IActionResult EditTicket(EditTicketVM editTicketVM)
+        {
+            return View();
+        }
+
         [AllowAnonymous]
         [HttpGet("/TicketOverview")]
         public IActionResult TicketOverview()
@@ -75,23 +94,7 @@ namespace Bugs4Bugs.Controllers
             return View(ticketDataservice.GetAllTickets(null, true));
         }
 
-        [HttpGet("/EditTicket/{Id}")]
-        public IActionResult EditTicket(int Id)
-        {
-            if (Id == null)
-            {
-                return RedirectToAction(nameof(MyProfile));
-            }
-            EditTicketVM editTicketVM = ticketDataservice.GetEditTicketVM(Id);
-            TempData[CURRENT_PRODUCT_KEY] = Id;
-            return View(editTicketVM);
-        }
-
-        [HttpPost("/EditTicket")]
-        public IActionResult EditTicket(EditTicketVM editTicketVM)
-        {
-            return View();
-        }
+        
 
         //[HttpGet("/CreateTicket")]
         //[HttpGet("/CreateTicket/{prodName}")]

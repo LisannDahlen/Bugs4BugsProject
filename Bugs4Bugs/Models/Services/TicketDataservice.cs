@@ -165,7 +165,7 @@ namespace Bugs4Bugs.Models.Services
                .FirstOrDefault();
         }
 
-        internal EditTicketVM GetEditTicketVM(int id)
+        internal EditTicketVM? GetEditTicketVM(int id)
         {
             //Product p = applicationContext.Products.FirstOrDefault(applicationContext.Tickets.Id ==)
             return applicationContext.Tickets.Where(t => t.Id == id)
@@ -173,16 +173,20 @@ namespace Bugs4Bugs.Models.Services
                 {
                     ProductName = t.TicketProduct.Name,
                     Topic = t.Title,
-                    SelectedTechnician = t.Technician.UserName,
-                    SelectedStatus = t.TicketStatus.TicketStatus,
-                    SelectedBugType = t.TicketBugType.Type,
-                    SelectedUrgencyLevel = t.TicketUrgency.Level,
+                    SelectedTechnician = t.Technician.Id,
+                    //SelectedTechnicianName = t.Technician.UserName,
+                    SelectedStatus = t.TicketStatus.Id.ToString(),
+                    //SelectedStatusName = t.TicketStatus.TicketStatus,
+                    SelectedBugType = t.TicketBugType.Id.ToString(),
+                    //SelectedBugTypeName = t.TicketBugType.Type,
+                    SelectedUrgencyLevel = t.TicketUrgency.Id.ToString(),
+                    //SelectedUrgencyLevelName = t.TicketUrgency.Level,
                     Description = t.Description,
                     Technicians = t.TicketProduct.GetTechniciansArray(),
                     Statuses = t.TicketProduct.GetStatusesArray(),
                     BugTypes = t.TicketProduct.GetBugtypesArray(),
                     UrgencyLevels = t.TicketProduct.GetUrgencyArray()
-
+                    //.Select(s => new SelectListItem { Text = s.Text, Value = s.Value, Selected = (s.Text == t.TicketStatus.TicketStatus) }).ToArray()
 
                 })
                 .FirstOrDefault();

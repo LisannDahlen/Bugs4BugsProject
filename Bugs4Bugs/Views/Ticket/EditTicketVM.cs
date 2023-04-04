@@ -15,18 +15,23 @@ namespace Bugs4Bugs.Views.Ticket
         //public Product product { get; set; }
 
         public SelectListItem[]? Technicians { get; set; }
-        public string SelectedTechnician { get; set; }
+        public string? SelectedTechnician { get; set; }
+        //public string? SelectedTechnicianName { get; set; }
 
         public SelectListItem[]? Statuses { get; set; }
         [Required(ErrorMessage = "Select a status")]
-        public string SelectedStatus { get; set; }
+        public string? SelectedStatus { get; set; }
+        //public string? SelectedStatusName { get; set; }
+
         public SelectListItem[]? BugTypes { get; set; }
         [Required(ErrorMessage = "Select a bug type")]
         public string SelectedBugType { get; set; }
+        //public string SelectedBugTypeName { get; set; }
 
         public SelectListItem[]? UrgencyLevels { get; set; }
         [Required(ErrorMessage = "Select urgency level")]
         public string SelectedUrgencyLevel { get; set; }
+        //public string SelectedUrgencyLevelName { get; set; }
 
 
         [Required(ErrorMessage = "Please write a description")]
