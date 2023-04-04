@@ -29,7 +29,7 @@ namespace Bugs4Bugs.Controllers
                 return RedirectToAction(nameof(ChooseProduct));
             }
             CreateTicketVM createTicketVM = ticketDataservice.GetCreateTicketVM(prodName);
-            TempData[CURRENT_PRODUCT_KEY] = prodName;
+            //TempData[CURRENT_PRODUCT_KEY] = prodName;
             return View(createTicketVM);
         }
 
@@ -66,10 +66,24 @@ namespace Bugs4Bugs.Controllers
             return View(editTicketVM);
         }
 
+        [HttpPost("/EditTicket")]
         [HttpPost("/EditTicket/{Id}")]
-        public IActionResult EditTicket(EditTicketVM editTicketVM)
+        public IActionResult EditTicket(EditTicketVM editTicketVM, int Id)
         {
-            return View();
+            //createTicketVM.ProductName = (string)TempData[CURRENT_PRODUCT_NAME];
+            editTicketVM.Id = Id;
+            
+            //if (!ModelState.IsValid)
+            //{
+            //    editTicketVM.BugTypes = ticketDataservice.GetBugTypes(editTicketVM.ProductName);
+            //    editTicketVM.UrgencyLevels = ticketDataservice.GetUrgencyLevels(editTicketVM.ProductName);
+            //    editTicketVM.Statuses = ticketDataservice.GetStatuses (editTicketVM.ProductName);
+
+            //    return View(createTicketVM);
+            //}
+            ticketDataservice.SaveTicket(editTicketVM);
+
+            return RedirectToAction("MyProfile");
         }
 
         [AllowAnonymous]
