@@ -85,7 +85,7 @@ namespace Bugs4Bugs.Models.Services
             return "Login failed";
         }
 
-        internal async void LogOut()
+        internal async Task LogOut()
         {
             await signInManager.SignOutAsync();
         }
