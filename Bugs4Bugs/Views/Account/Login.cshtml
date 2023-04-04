@@ -37,3 +37,40 @@
         </div>
     </div>
 </div>
+
+
+<!-- Login modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Login form -->
+                <form asp-controller="Account" asp-action="Login" id="loginForm">
+                    <div class="form-outline mb-3">
+                        <input type="text" asp-for="UserName" id="userName" class="form-control" />
+                        <label class="form-label" for="userName">Username</label>
+                    </div>
+
+                    <div class="form-outline mb-3">
+                        <input type="password" asp-for="Password" id="password" class="form-control" />
+                        <label class="form-label" for="password">Password</label>
+                    </div>
+                </form>
+                <div asp-validation-summary="All" id="loginErrorMessages" class="alert @(ViewContext.ModelState.ErrorCount > 0 ? "alert-danger" : "")" role="alert"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+                <button type="submit" form="loginForm" class="btn btn-primary">Log In</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Login button -->
+<button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#loginModal">
+    Login
+</button>
