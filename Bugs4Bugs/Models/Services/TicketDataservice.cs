@@ -45,7 +45,8 @@ namespace Bugs4Bugs.Models.Services
             return applicationContext.Products.Where(p => p.Name == prodName)
                 .Select(p => new CreateTicketVM
                 {
-                    ProductName = prodName,
+                    ProductPhotoURL = p.PhotoURL,
+                    ProductName = p.Name,
                     BugTypes = p.GetBugtypesArray(),
                     UrgencyLevels = p.GetUrgencyArray(),
                 })
@@ -185,15 +186,12 @@ namespace Bugs4Bugs.Models.Services
                 {
                     Id = t.Id,
                     ProductName = t.TicketProduct.Name,
+                    ProductPhotoURL = t.TicketProduct.PhotoURL,
                     Topic = t.Title,
                     SelectedTechnician = t.Technician.Id,
-                    //SelectedTechnicianName = t.Technician.UserName,
                     SelectedStatus = t.TicketStatus.Id.ToString(),
-                    //SelectedStatusName = t.TicketStatus.TicketStatus,
                     SelectedBugType = t.TicketBugType.Id.ToString(),
-                    //SelectedBugTypeName = t.TicketBugType.Type,
                     SelectedUrgencyLevel = t.TicketUrgency.Id.ToString(),
-                    //SelectedUrgencyLevelName = t.TicketUrgency.Level,
                     Description = t.Description,
                     Technicians = t.TicketProduct.GetTechniciansArray(),
                     Statuses = t.TicketProduct.GetStatusesArray(),
