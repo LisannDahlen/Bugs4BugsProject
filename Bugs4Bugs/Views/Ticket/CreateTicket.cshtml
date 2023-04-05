@@ -13,7 +13,13 @@
         <div class="col-xl-4 offset-xl-4 col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-12 center-box">
             <div class="card" style="margin-bottom: 50px">
                 <div class="card-header">
-                    <h6>Product: @Model.ProductName</h6>
+                    <h6>
+                        <img src="/@Model.ProductPhotoURL"
+                             alt=""
+                             style="width: 45px; height: 45px"
+                             class="rounded-circle me-2" />
+                             @Model.ProductName
+                    </h6>
                 </div>
                 <div class="card-body">
                     <form class="post-on-enter" asp-route-ProdName="@Model.ProductName" asp-controller="Ticket" asp-action="CreateTicket">
