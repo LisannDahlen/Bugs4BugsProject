@@ -54,15 +54,12 @@
                                         <label class="form-label" for="passwordRepeat">Confirm password</label>
                                     </div>
                                 </form>
-                                <div asp-validation-summary="All" id="errorMessages" class="alert @(ViewContext.ModelState.ErrorCount > 0 ? "alert-danger" : "")" role="alert"></div>
-                            </div>
-                            <div id="error-alert" class="alert alert-danger d-none" role="alert">
-                                <strong>Error:</strong> <span id="error-message"></span>
-                            </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
                                 <button type="submit" form="registerForm" class="btn btn-primary">Sign me up</button>
                             </div>
+                            </div>
+                                <div asp-validation-summary="All" id="errorMessages" class="alert @(ViewContext.ModelState.ErrorCount > 0 ? "alert-danger" : "")" role="alert"></div>
                         </div>
                     </div>
                 </div>
