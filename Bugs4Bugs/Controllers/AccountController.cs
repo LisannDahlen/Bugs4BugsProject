@@ -27,29 +27,30 @@ namespace Bugs4Bugs.Controllers
         [HttpPost("/login/{product}")]
         public async Task<IActionResult> LoginAsync(LoginVM loginVM, string product = null)
         {
-            
             if (!ModelState.IsValid)
-                return View();
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
+                return Json(new { status = "error", errors });
+            }
 
-            // Check if credentials is valid (and set auth cookie)
+            // Check if credentials are valid (and set auth cookie)
             var errorMessage = await dataservice.TryLoginAsync(loginVM);
             if (errorMessage != null)
             {
                 // Show error
-                ModelState.AddModelError(string.Empty, errorMessage);
-                return View();
+                return Json(new { status = "error", errors = new List<string> { errorMessage } });
             }
 
             // Redirect user
-            
             string pickedProduct = (string)TempData[AppConstants.CURRENT_PRODUCT_KEY];
-                if (pickedProduct != null)
-                {
-                   return RedirectToAction(nameof(TicketController.CreateTicket), "Ticket",new { prodName = pickedProduct});
-                }
-            
-            return RedirectToAction(nameof(TicketController.ChooseProduct), "Ticket");
+            if (pickedProduct != null)
+            {
+                return Json(new { status = "success", redirectUrl = Url.Action(nameof(TicketController.CreateTicket), "Ticket", new { prodName = pickedProduct }) });
+            }
+
+            return Json(new { status = "success", redirectUrl = Url.Action(nameof(TicketController.ChooseProduct), "Ticket") });
         }
+
 
         [HttpGet("/register")]
         public IActionResult Register()
