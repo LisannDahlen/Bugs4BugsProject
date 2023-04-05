@@ -80,7 +80,7 @@
                 type: "POST",
                 data: form.serialize(),
                 success: function (response) {
-                    console.log("Response:", response); // Add this line
+                    console.log("Response:", response);
                     if (response.status === "success") {
                         location.reload();
                     } else if (response.status === "error") {
@@ -88,14 +88,18 @@
                         errorMessages.html("");
                         errorMessages.removeClass("d-none");
 
+                        let alertDiv = $('<div class="alert alert-danger" role="alert"></div>');
+
                         response.errors.forEach(function (error) {
-                            errorMessages.append(`<p>${error}</p>`);
+                            alertDiv.append(`<p>${error}</p>`);
                         });
+
+                        errorMessages.append(alertDiv);
                     }
                 },
                 error: function (xhr, status, error) {
-                    console.log("XHR:", xhr); // Add this line
-                    console.log("Status:", status); // Add this line
+                    console.log("XHR:", xhr);
+                    console.log("Status:", status);
                     console.log("Error:", error);
                 },
             });
