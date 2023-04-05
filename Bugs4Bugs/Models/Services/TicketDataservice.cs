@@ -40,6 +40,10 @@ namespace Bugs4Bugs.Models.Services
                 }).ToArray();
         }
 
+        public string GetPhotoUrlByProduct(string prodName)
+        {
+            return applicationContext.Products.Where(p => p.Name == prodName).Select(products => products.PhotoURL).FirstOrDefault();
+        }
         internal CreateTicketVM? GetCreateTicketVM(string prodName)
         {
             return applicationContext.Products.Where(p => p.Name == prodName)
