@@ -73,30 +73,22 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    function showErrorAlert(message) {
-        $('#error-message').text(message);
-        $('#error-alert').removeClass('d-none');
-    }
-
-    function hideErrorAlert() {
-        $('#error-alert').addClass('d-none');
-    }
     $(document).ready(function () {
         $("#registerForm").on("submit", function (e) {
             e.preventDefault();
             const form = $(this);
 
             $.ajax({
-                url: form.attr("asp-action"),
+                url: "/register",
                 type: "POST",
                 data: form.serialize(),
                 success: function (response) {
+                    console.log("Response:", response); // Add this line
                     if (response.status === "success") {
                         location.reload();
                     } else if (response.status === "error") {
                         const errorMessages = $("#errorMessages");
                         errorMessages.html("");
-                        errorMessages.addClass("alert-danger");
                         errorMessages.removeClass("d-none");
 
                         response.errors.forEach(function (error) {
@@ -105,10 +97,12 @@
                     }
                 },
                 error: function (xhr, status, error) {
-                    console.log("Error: " + error);
-                    showErrorAlert("An error occurred while submitting the form. Please try again.");
+                    console.log("XHR:", xhr); // Add this line
+                    console.log("Status:", status); // Add this line
+                    console.log("Error:", error);
                 },
             });
+
         });
     });
 </script>
