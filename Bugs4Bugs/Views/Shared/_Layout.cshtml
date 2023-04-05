@@ -106,8 +106,8 @@
                             <button type="button" class="btn btn-link px-3 me-2">
                                 <a class="nav-link" asp-controller="Account" asp-action="Login">Log in</a>
                             </button>
-                            <button type="button" class="btn btn-primary me-3">
-                                <a class="nav-link" asp-controller="Account" asp-action="Register">Register</a>
+                            <button type="button" class="btn btn-primary me-2" data-mdb-toggle="modal" data-mdb-target="#registerModal">
+                                Register
                             </button>
                         }
                         <a class="nav-link dropdown-toggle"
@@ -139,7 +139,7 @@
         <!-- Navbar end-->
 
 
-        <main class="container-fluid flex-fill" style="background-color: #FFCD29;display: flex;">
+        <main class="container-fluid flex-fill" style="background-color: #FFCD29;display: flex; position: relative;">
             <div class="container" style="background-color: #FAFAFA;">
                 <div class="row">
                     <div class="col-2" style="padding-top: 80px">
@@ -311,6 +311,8 @@
     </div>
 
     <!--Scripts-->
+    <!-- Add jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- MDB -->
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
@@ -328,5 +330,6 @@
             }
         });
     </script>
+    @await Html.PartialAsync("_RegisterModal", new Bugs4Bugs.Views.Account.RegisterVM())
 </body>
 </html>
