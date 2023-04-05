@@ -8,6 +8,7 @@ namespace Bugs4Bugs.Views.Ticket
     {
         public int? Id { get; set; }
         public string? ProductName { get; set; }
+        public string ProductPhotoURL { get; set; }
 
         [Required(ErrorMessage = "Ticket topic is required")]
 
