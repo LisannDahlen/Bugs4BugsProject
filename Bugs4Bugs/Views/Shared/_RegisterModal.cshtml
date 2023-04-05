@@ -9,10 +9,7 @@
 
 
 <!--Neeeeeeeeeeeed AJAX någon duktig?-->
-<div class="container my-5">
-    <div class="row">
-        <div class="col-xl-4 offset-xl-4 col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-12 center-box">
-            <div class="card row-cols-sm-1" style="margin-bottom: 50px">
+
                 <!-- Register modal -->
                 <div class="modal fade" id="registerModal" tabindex="-1" data-mdb-backdrop="true" aria-labelledby="registerModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -59,16 +56,12 @@
                                 <button type="submit" form="registerForm" class="btn btn-primary">Sign me up</button>
                             </div>
                             </div>
-                                <div asp-validation-summary="All" id="errorMessages" class="alert">
-                                <div id="alert-danger-box" class="alert-danger"></div>
-                                </div>
+                            <div asp-validation-summary="All" id="alert-danger-box" class="alert">
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
+
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
