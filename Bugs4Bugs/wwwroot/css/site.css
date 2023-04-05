@@ -80,3 +80,10 @@ tbody{
 h1, h2, h3, h4, h5, .b4b-font {
     font-family: 'Gowun Batang', sans-serif;
 }
+
+.modal-footer {
+display: initial
+}
+.remove-flex {
+    display: initial !important;
+}

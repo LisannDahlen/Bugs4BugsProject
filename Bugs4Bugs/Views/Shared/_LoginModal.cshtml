@@ -24,11 +24,11 @@
                             <label class="form-label" for="password">Password</label>
                         </div>
                     </form>
-                    <div asp-validation-summary="All" id="loginErrorMessages" class="alert @(ViewContext.ModelState.ErrorCount > 0 ? "alert-danger" : "")" role="alert"></div>
-                </div>
-                <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
                     <button type="submit" form="loginForm" class="btn btn-primary">Log In</button>
+                </div>
+                <div class="modal-footer">
+                    <div asp-validation-summary="All" id="loginErrorMessages" class="alert @(ViewContext.ModelState.ErrorCount > 0 ? "alert-danger" : "")" role="alert"></div>
                 </div>
             </div>
         </div>
