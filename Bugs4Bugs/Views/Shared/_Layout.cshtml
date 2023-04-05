@@ -68,14 +68,14 @@
                                 <a class="nav-link" asp-controller="Home" asp-action="OurProduct">Our Product</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-controller="Home" asp-action="GetStarted">Get started</a>
+                                <a class="nav-link" asp-controller="Home" asp-action="GetStarted">Get Started</a>
                             </li>
                         }
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Ticket" asp-action="ChooseProduct">Products</a>
+                            <a class="nav-link" asp-controller="Ticket"  asp-action="ChooseProduct">Products</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Ticket" asp-action="TicketOverview" >Tickets</a>
+                            <a class="nav-link" asp-controller="Ticket" asp-route-prodName="" asp-action="TicketOverview">Tickets</a>
                         </li>
                        
                         @if (User.Identity.IsAuthenticated)
@@ -95,12 +95,12 @@
                             <button type="button" class="btn btn-link px-3 me-2">
                                 <a class="nav-link" asp-controller="Account" asp-action="LogOut">Log out</a>
                             </button>
-                           <p>
-                                Logged in as: @User.Identity.Name
 
-                           </p> 
+							<label style="text-align:center">Logged in as: @User.Identity.Name</label>
 
-                        }
+
+
+						}
                         else
                         {
                             <button type="button" class="btn btn-link px-3 me-2">
@@ -115,7 +115,7 @@
                            id="navbarDropdown"
                            role="button"
                            data-mdb-toggle="dropdown"
-                           aria-expanded="false">
+                           aria-expanded="false" style="padding-left: 20px">
                             <i class="fas fa-user"></i>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -223,7 +223,7 @@
                                 <a class="nav-link" asp-controller="Home" asp-action="OurProduct">Our Product</a>
                             </p>
                             <p>
-                                <a class="nav-link" asp-controller="Home" asp-action="GetStarted">Get started</a>
+                                <a class="nav-link" asp-controller="Home" asp-action="GetStarted">Get Started</a>
                             </p>
                             <p>
                                 <a class="nav-link" asp-controller="Ticket" asp-action="ChooseProduct">Products</a>
@@ -317,6 +317,19 @@
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
+    <!-- Add jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        //Posting the form when pressing the enter key
+        const form = document.querySelector('.post-on-enter');
+
+        form.addEventListener('keydown', function (event) {
+            if (event.keyCode === 13) {
+                event.preventDefault(); // prevent the default behavior of submitting the form on enter
+                form.submit();
+            }
+        });
+    </script>
     @await Html.PartialAsync("_RegisterModal", new Bugs4Bugs.Views.Account.RegisterVM())
 </body>
 </html>

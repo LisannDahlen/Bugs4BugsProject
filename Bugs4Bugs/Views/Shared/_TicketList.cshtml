@@ -7,7 +7,7 @@
         <div class="container">
             <div class="d-flex justify-content-end">
                 <a asp-action="ChooseProduct" asp-controller="Ticket" class="btn btn-primary">Create ticket</a>
-         
+
             </div>
         </div>
         <div style="padding-top: 20px">
@@ -66,19 +66,38 @@
                             </tr>
                             <tr class="collapse accordion-collapse" id="r_@i" data-bs-parent=".table">
                                 <td colspan="6">
-                                    <p>Submitter: @ticket.Submitter</p>
-                                    <p>Assigned technician: @ticket.Developer</p>
-                                    <p><strong>Description:</strong><br />@ticket.Description</p>
-                                    @if (@User.IsInRole("Owner") || @User.IsInRole("Technician"))
-                                    {
-                                        <div class="d-flex justify-content-end">
-                                            <a asp-action="EditTicket" asp-controller="Ticket" asp-route-Id=@ticket.Id class="btn btn-primary">Edit ticket</a>
-
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <p><strong>Submitter:</strong> @ticket.Submitter</p>
+                                            <p><strong>Assigned technician:</strong> @ticket.Developer</p>
+                                            <p><strong>Description:</strong><br />@ticket.Description</p>
                                         </div>
-                                    }
+                                        <div class="col-7">
+                                            @if (@User.IsInRole("Owner") || @User.IsInRole("Technician"))
+                                            {
+                                            <p><strong>Write a message to the submitter</strong></p>
+                                            <div class="form-outline mb-3">
+                                                <textarea class="form-control border 1px" rows="3" style="background: #FAFAFA" id="description"></textarea>
+                                                <label for="description" class="form-label">Message..</label>
+                                            </div>
+                                            }
+                                        </div>
+                                        <div class="col-2">
+                                            @if (@User.IsInRole("Owner") || @User.IsInRole("Technician"))
+                                            {
+                                                <div class="d-flex justify-content-end mt-3">
+                                                    <a asp-action="EditTicket" asp-controller="Ticket" asp-route-Id=@ticket.Id class="btn btn-primary">Edit ticket</a>
+                                                </div>
+
+                                                <div class="d-flex justify-content-end mt-3">
+                                                    <a asp-action="EditTicket" asp-controller="Ticket" asp-route-Id=@ticket.Id class="btn btn-primary">Send message</a>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
-                            
+
 
                             i++;
                         }

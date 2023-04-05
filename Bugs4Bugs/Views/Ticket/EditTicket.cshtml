@@ -1,4 +1,4 @@
-﻿@model CreateTicketVM
+﻿@model EditTicketVM
 
 @{
     ViewBag.Title = "Edit Ticket";
@@ -16,31 +16,30 @@
                     <h6>Product: @Model.ProductName</h6>
                 </div>
                 <div class="card-body">
-                    <form asp-route-ProdName="@Model.ProductName" asp-controller="Ticket" asp-action="CreateTicket">
+                    <form class="post-on-enter" asp-route-Id="@Model.Id" asp-controller="Ticket" asp-action="EditTicket">
                         <div class="form-outline mb-3">
                             <!--<label asp-for="Title">Title:</label>-->
                             <!--<input asp-for="Title" placeholder="Title"/>-->
                             <!--<br />-->
-                            <input type="text" asp-for="Topic" class="form-control">
-                            <label asp-for="Topic" class="form-label">Topic..</label>
+                            <P><strong>Topic <br /> @Model.Topic</strong></P>
                         </div>
                         
 
-@*                        <div class="form-outline mb-3">
-                        <select asp-for="SelectedTechnician" asp-items="Model.Technician" class="form-select">
-                        <option value="">-- Select a status --</option>
+                        <div class="form-outline mb-3">
+                        <select asp-for="SelectedTechnician" asp-items="Model.Technicians" class="form-select">
+                        <option value="">-- Select a Technician --</option>
 
                         </select>
 
                         </div>
 
                         <div class="form-outline mb-3">
-                        <select asp-for="SelectedStatus" asp-items="Model.Status" class="form-select">
-                        <option value="">-- Select a status --</option>
+                        <select asp-for="SelectedStatus" asp-items="Model.Statuses" class="form-select">
+                                <option value="">-- Select a status --</option>
 
                         </select>
 
-                        </div>*@
+                        </div>
                         
                         <div class="form-outline mb-3">
                             <select asp-for="SelectedBugType" asp-items="Model.BugTypes" class="form-select">
@@ -50,15 +49,12 @@
                         </div>
                         <div class="form-outline mb-3">
                             <select asp-for="SelectedUrgencyLevel" asp-items="Model.UrgencyLevels" class="form-select">
-                                <option value="">-- Select an urgency level --</option>
+                                <option value="SelectedUrgencyLevel">-- Select an urgency level --</option>
 
                             </select>
                         </div>
-                        <div class="form-outline mb-3">
-                            <textarea asp-for="Description" class="form-control border 1px" rows="3" style="background: #FAFAFA" id="description"></textarea>
-                            <label for="description" class="form-label">Description..</label>
-                        </div>
-                        <input type="submit" value="Add ticket" class="btn btn-primary" />
+                        <p><strong>Description:</strong> <br /> @Model.Description</p>
+                        <input type="submit" value="Submit changes" class="btn btn-primary" />
                     </form>
                     </br>
                     <div asp-validation-summary="All" class="alert @(ViewContext.ModelState.ErrorCount > 0 ? "alert-danger" : "")"></div>

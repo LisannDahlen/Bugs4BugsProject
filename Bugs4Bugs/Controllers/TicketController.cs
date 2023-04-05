@@ -29,7 +29,7 @@ namespace Bugs4Bugs.Controllers
                 return RedirectToAction(nameof(ChooseProduct));
             }
             CreateTicketVM createTicketVM = ticketDataservice.GetCreateTicketVM(prodName);
-            TempData[CURRENT_PRODUCT_KEY] = prodName;
+            //TempData[CURRENT_PRODUCT_KEY] = prodName;
             return View(createTicketVM);
         }
 
@@ -51,6 +51,39 @@ namespace Bugs4Bugs.Controllers
             ticketDataservice.SaveTicket(createTicketVM);
             
             return RedirectToAction("TicketOverview", new {prodName = prodName});
+        }
+
+        [HttpGet("/EditTicket/")]
+        [HttpGet("/EditTicket/{Id}")]
+        public IActionResult EditTicket(int Id)
+        {
+            if (Id == null)
+            {
+                return RedirectToAction(nameof(MyProfile));
+            }
+            EditTicketVM editTicketVM = ticketDataservice.GetEditTicketVM(Id);
+            TempData["Ticket"] = Id;
+            return View(editTicketVM);
+        }
+
+        [HttpPost("/EditTicket")]
+        [HttpPost("/EditTicket/{Id}")]
+        public IActionResult EditTicket(EditTicketVM editTicketVM, int Id)
+        {
+            //createTicketVM.ProductName = (string)TempData[CURRENT_PRODUCT_NAME];
+            editTicketVM.Id = Id;
+            
+            //if (!ModelState.IsValid)
+            //{
+            //    editTicketVM.BugTypes = ticketDataservice.GetBugTypes(editTicketVM.ProductName);
+            //    editTicketVM.UrgencyLevels = ticketDataservice.GetUrgencyLevels(editTicketVM.ProductName);
+            //    editTicketVM.Statuses = ticketDataservice.GetStatuses (editTicketVM.ProductName);
+
+            //    return View(createTicketVM);
+            //}
+            ticketDataservice.SaveTicket(editTicketVM);
+
+            return RedirectToAction("MyProfile");
         }
 
         [AllowAnonymous]
@@ -75,23 +108,7 @@ namespace Bugs4Bugs.Controllers
             return View(ticketDataservice.GetAllTickets(null, true));
         }
 
-        [HttpGet("/EditTicket/{Id}")]
-        public IActionResult EditTicket(int Id)
-        {
-            if (Id == null)
-            {
-                return RedirectToAction(nameof(MyProfile));
-            }
-            EditTicketVM editTicketVM = ticketDataservice.GetEditTicketVM(Id);
-            TempData[CURRENT_PRODUCT_KEY] = Id;
-            return View(editTicketVM);
-        }
-
-        [HttpPost("/EditTicket")]
-        public IActionResult EditTicket(EditTicketVM editTicketVM)
-        {
-            return View();
-        }
+        
 
         //[HttpGet("/CreateTicket")]
         //[HttpGet("/CreateTicket/{prodName}")]
