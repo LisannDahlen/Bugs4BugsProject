@@ -87,3 +87,7 @@ display: initial
 .remove-flex {
     display: initial !important;
 }
+
+p{
+    color: #4E4E4E;
+}

@@ -24,8 +24,8 @@ namespace Bugs4Bugs.Controllers
         }
 
         [HttpPost("/login")]
-        [HttpPost("/login/{product}")]
-        public async Task<IActionResult> LoginAsync(LoginVM loginVM, string product = null)
+        [HttpPost("/login/{prodName}")]
+        public async Task<IActionResult> LoginAsync(LoginVM loginVM, string prodName)
         {
             if (!ModelState.IsValid)
             {
@@ -42,10 +42,11 @@ namespace Bugs4Bugs.Controllers
             }
 
             // Redirect user
-            string pickedProduct = (string)TempData[AppConstants.CURRENT_PRODUCT_KEY];
-            if (pickedProduct != null)
+            
+            if (prodName != null)
             {
-                return Json(new { status = "success", redirectUrl = Url.Action(nameof(TicketController.CreateTicket), "Ticket", new { prodName = pickedProduct }) });
+                return Json(new { status = "success", redirectUrl = Url.Action("CreateTicket", "Ticket", new { prodName = prodName }) });
+                //return Json(new { status = "success", redirectUrl = "/CreateTicket/" + prodName});
             }
 
             return Json(new { status = "success", redirectUrl = Url.Action(nameof(TicketController.ChooseProduct), "Ticket") });

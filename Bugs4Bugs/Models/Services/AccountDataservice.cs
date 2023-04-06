@@ -73,7 +73,6 @@ namespace Bugs4Bugs.Models.Services
                 isPersistent: false,
                 lockoutOnFailure: false
                 );
-            var user = await userManager.GetUsersInRoleAsync("Manager");
             
             bool wasUserSignedIn = result.Succeeded;
 

@@ -22,7 +22,7 @@
                     </h6>
                 </div>
                 <div class="card-body">
-                    <form class="post-on-enter" asp-route-ProdName="@Model.ProductName" asp-controller="Ticket" asp-action="CreateTicket">
+                    <form asp-route-ProdName="@Model.ProductName" asp-controller="Ticket" asp-action="CreateTicket">
                         <div class="form-outline mb-3">
                             <!--<label asp-for="Title">Title:</label>-->
                             <!--<input asp-for="Title" placeholder="Title"/>-->
