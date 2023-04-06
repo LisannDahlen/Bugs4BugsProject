@@ -25,8 +25,9 @@ namespace Bugs4Bugs.Controllers
 
         [HttpPost("/login")]
         [HttpPost("/login/{prodName}")]
-        public async Task<IActionResult> LoginAsync(LoginVM loginVM, string prodName)
+        public async Task<IActionResult> LoginAsync(LoginVM loginVM, string? prodName)
         {
+            
             if (!ModelState.IsValid)
             {
                 var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();

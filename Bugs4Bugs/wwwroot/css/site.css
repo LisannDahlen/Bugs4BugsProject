@@ -91,3 +91,7 @@ display: initial
 p{
     color: #4E4E4E;
 }
+
+.accordion-collapse {
+    transition-duration: 0.5s;
+}
