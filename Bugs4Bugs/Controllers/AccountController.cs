@@ -25,7 +25,7 @@ namespace Bugs4Bugs.Controllers
 
         [HttpPost("/login")]
         [HttpPost("/login/{prodName}")]
-        public async Task<IActionResult> LoginAsync(LoginVM loginVM, string? prodName)
+        public async Task<IActionResult> LoginAsync(LoginVM loginVM, string? prodName) //kräver tydligen nullable string här för att inte inkludera prodnName i ModelState validation
         {
             
             if (!ModelState.IsValid)
@@ -50,7 +50,7 @@ namespace Bugs4Bugs.Controllers
                 //return Json(new { status = "success", redirectUrl = "/CreateTicket/" + prodName});
             }
 
-            return Json(new { status = "success", redirectUrl = Url.Action(nameof(TicketController.ChooseProduct), "Ticket") });
+            return Json(new { status = "success", redirectUrl = Url.Action(nameof(TicketController.MyProfile), "Ticket") });
         }
 
 
