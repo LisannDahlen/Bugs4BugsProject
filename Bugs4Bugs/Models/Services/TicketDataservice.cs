@@ -86,7 +86,7 @@ namespace Bugs4Bugs.Models.Services
             var UserId = GetCurrentUserId();
             var ownedProducts = applicationContext.Products.Where(p => p.OwnerId == UserId);
             return applicationContext.Tickets
-                .Where(t => (prodName == null || t.TicketProduct.Name == prodName) && (!filterByLogedInUser || t.SubmitterId == UserId))
+                .Where(t => (prodName == null || t.TicketProduct.Name == prodName) && (!filterByLogedInUser || (t.SubmitterId == UserId || t.TicketProduct.OwnerId == UserId)))
                 .Select(t =>
                            new TicketVM
                            {
