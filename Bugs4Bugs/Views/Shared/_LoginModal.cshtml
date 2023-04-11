@@ -26,6 +26,10 @@
                     </form>
                     <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
                     <button type="submit" form="loginForm" class="btn btn-primary">Log In</button>
+                    <br/>
+                    <button type="button" class="btn btn-link me-2" data-mdb-toggle="modal" data-mdb-target="#registerModal">
+                        Register
+                    </button>
                 </div>
                 <div class="modal-footer">
                     <div asp-validation-summary="All" id="loginErrorMessages" class="alert @(ViewContext.ModelState.ErrorCount > 0 ? "alert-danger" : "")" role="alert"></div>
