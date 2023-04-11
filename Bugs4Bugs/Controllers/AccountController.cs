@@ -24,32 +24,35 @@ namespace Bugs4Bugs.Controllers
         }
 
         [HttpPost("/login")]
-        [HttpPost("/login/{product}")]
-        public async Task<IActionResult> LoginAsync(LoginVM loginVM, string product = null)
+        [HttpPost("/login/{prodName}")]
+        public async Task<IActionResult> LoginAsync(LoginVM loginVM, string? prodName) //kräver tydligen nullable string här för att inte inkludera prodnName i ModelState validation
         {
             
             if (!ModelState.IsValid)
-                return View();
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
+                return Json(new { status = "error", errors });
+            }
 
-            // Check if credentials is valid (and set auth cookie)
+            // Check if credentials are valid (and set auth cookie)
             var errorMessage = await dataservice.TryLoginAsync(loginVM);
             if (errorMessage != null)
             {
                 // Show error
-                ModelState.AddModelError(string.Empty, errorMessage);
-                return View();
+                return Json(new { status = "error", errors = new List<string> { errorMessage } });
             }
 
             // Redirect user
             
-            string pickedProduct = (string)TempData[AppConstants.CURRENT_PRODUCT_KEY];
-                if (pickedProduct != null)
-                {
-                   return RedirectToAction(nameof(TicketController.CreateTicket), "Ticket",new { prodName = pickedProduct});
-                }
-            
-            return RedirectToAction(nameof(TicketController.ChooseProduct), "Ticket");
+            if (prodName != null)
+            {
+                return Json(new { status = "success", redirectUrl = Url.Action("CreateTicket", "Ticket", new { prodName = prodName }) });
+                //return Json(new { status = "success", redirectUrl = "/CreateTicket/" + prodName});
+            }
+
+            return Json(new { status = "success", redirectUrl = Url.Action(nameof(TicketController.MyProfile), "Ticket") });
         }
+
 
         [HttpGet("/register")]
         public IActionResult Register()

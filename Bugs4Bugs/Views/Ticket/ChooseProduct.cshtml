@@ -13,11 +13,9 @@
         <div class="input-group mb-4">
             <div class="form-outline">
                 <input type="search" id="form1" class="form-control" />
-                <label class="form-label" for="form1">Search</label>
+                <label class="form-label" for="form1"><i class="fas fa-magnifying-glass"></i></label>
             </div>
-            <button type="button" class="btn btn-primary" id="search-button">
-                <i class="fas fa-search"></i>
-            </button>
+            
         </div>
     </div>
 </div>
@@ -27,7 +25,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function () {
-        $("#search-button").click(function () {
+        $("#form1").on("input",function () {
             var searchTerm = $("#form1").val().toLowerCase().trim();
 
             $(".product-card").each(function () {

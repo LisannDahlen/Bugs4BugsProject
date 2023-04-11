@@ -144,6 +144,7 @@ namespace Bugs4Bugs.Models
                 new BugType{Id = 2,Type = "Visual glitch"},
                 new BugType{Id = 3,Type = "Performance issue"},
                 new BugType{Id = 4,Type = "Unexpected behaviour"},
+                new BugType{Id = 5,Type = "Broken feature"},
             };
         }
 

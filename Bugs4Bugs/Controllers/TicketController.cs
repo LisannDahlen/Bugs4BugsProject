@@ -43,7 +43,7 @@ namespace Bugs4Bugs.Controllers
            
             if (!ModelState.IsValid)
             {
-
+                createTicketVM.ProductPhotoURL = ticketDataservice.GetPhotoUrlByProduct(prodName);
                 createTicketVM.BugTypes = ticketDataservice.GetBugTypes(prodName);
                 createTicketVM.UrgencyLevels = ticketDataservice.GetUrgencyLevels(prodName);
                 

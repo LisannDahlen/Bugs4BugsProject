@@ -1,111 +1,104 @@
-﻿
-@model Bugs4Bugs.Views.Account.RegisterVM
+﻿@model Bugs4Bugs.Views.Account.RegisterVM
 @{
     ViewBag.Title = "Register";
 }
 
-                
 
 
 
 
-                <!--Neeeeeeeeeeeed AJAX någon duktig?-->
-<div class="container my-5">
-    <div class="row">
-        <div class="col-xl-4 offset-xl-4 col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-12 center-box">
-            <div class="card row-cols-sm-1" style="margin-bottom: 50px">
+
+<!--Neeeeeeeeeeeed AJAX någon duktig?-->
+
                 <!-- Register modal -->
-                <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" id="registerModalLabel">Register</h5>
-                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                <!-- Registration form -->
-                <form asp-controller="Account" asp-action="Register" id="registerForm">
-                <div class="form-outline mb-3">
-                <input type="text" asp-for="FirstName" id="firstName" class="form-control" />
-                <label class="form-label" for="firstName">First Name</label>
-                </div>
+                <div class="modal fade" id="registerModal" tabindex="-1" data-mdb-backdrop="true" aria-labelledby="registerModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="registerModalLabel">Register</h5>
+                                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Registration form -->
+                                <form asp-controller="Account" asp-action="Register" id="registerForm">
+                                    <div class="form-outline mb-3">
+                                        <input type="text" asp-for="FirstName" id="firstName" class="form-control" />
+                                        <label class="form-label" for="firstName">First Name</label>
+                                    </div>
 
-                <div class="form-outline mb-3">
-                <input type="text" asp-for="LastName" id="lastName" class="form-control" />
-                <label class="form-label" for="lastName">Last Name</label>
-                </div>
+                                    <div class="form-outline mb-3">
+                                        <input type="text" asp-for="LastName" id="lastName" class="form-control" />
+                                        <label class="form-label" for="lastName">Last Name</label>
+                                    </div>
 
-                <div class="form-outline mb-3">
-                <input type="text" asp-for="UserName" id="userName" class="form-control" />
-                <label class="form-label" for="userName">Username</label>
-                </div>
+                                    <div class="form-outline mb-3">
+                                        <input type="text" asp-for="UserName" id="userName" class="form-control" />
+                                        <label class="form-label" for="userName">Username</label>
+                                    </div>
 
-                    <div class="form-outline mb-3">
-                        <input type="email" asp-for="Email" id="email" class="form-control" />
-                        <label class="form-label" for="email">Email</label>
+                                    <div class="form-outline mb-3">
+                                        <input type="email" asp-for="Email" id="email" class="form-control" />
+                                        <label class="form-label" for="email">Email</label>
+                                    </div>
+                                    <br />
+                                    <div class="form-outline mb-3">
+                                        <input type="password" asp-for="Password" id="password" class="form-control" />
+                                        <label class="form-label" for="password">Password</label>
+                                    </div>
+
+                                    <div class="form-outline mb-3">
+                                        <input type="password" asp-for="PasswordRepeat" id="passwordRepeat" class="form-control" />
+                                        <label class="form-label" for="passwordRepeat">Confirm password</label>
+                                    </div>
+                                </form>
+                                <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+                                <button type="submit" form="registerForm" class="btn btn-primary">Sign me up</button>
+                            </div>
+                            <div class="modal-footer">
+                            <div asp-validation-summary="All" id="alert-danger-box" class="alert">
+                            </div>
+                        </div>
                     </div>
-                <br />
-                <div class="form-outline mb-3">
-                <input type="password" asp-for="Password" id="password" class="form-control" />
-                <label class="form-label" for="password">Password</label>
                 </div>
+            </div>
 
-                <div class="form-outline mb-3">
-                <input type="password" asp-for="PasswordRepeat" id="passwordRepeat" class="form-control" />
-                <label class="form-label" for="passwordRepeat">Confirm password</label>
-                </div>
-                </form>
-                <div asp-validation-summary="All" id="errorMessages" class="alert @(ViewContext.ModelState.ErrorCount > 0 ? "alert-danger" : "")" role="alert"></div>
-                </div>
-            <div id="error-alert" class="alert alert-danger d-none" role="alert">
-                <strong>Error:</strong> <span id="error-message"></span>
-            </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
-                <button type="submit" form="registerForm" class="btn btn-primary">Sign me up</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    function showErrorAlert(message) {
-        $('#error-message').text(message);
-        $('#error-alert').removeClass('d-none');
-    }
+    $(document).ready(function () {
+        $("#registerForm").on("submit", function (e) {
+            e.preventDefault();
+            const form = $(this);
 
-    function hideErrorAlert() {
-        $('#error-alert').addClass('d-none');
-    }
-  $(document).ready(function () {
-    $("#registerForm").on("submit", function (e) {
-      e.preventDefault();
-      const form = $(this);
+            $.ajax({
+                url: "/register",
+                type: "POST",
+                data: form.serialize(),
+                success: function (response) {
+                    console.log("Response:", response);
+                    if (response.status === "success") {
+                        location.reload();
+                    } else if (response.status === "error") {
+                        const errorMessages = $("#alert-danger-box");
+                        errorMessages.html("");
+                        errorMessages.removeClass("d-none");
 
-      $.ajax({
-        url: form.attr("asp-action"),
-        type: "POST",
-        data: form.serialize(),
-        success: function (response) {
-          if (response.status === "success") {
-            location.reload();
-          } else if (response.status === "error") {
-            const errorMessages = $("#errorMessages");
-            errorMessages.html("");
-                        errorMessages.addClass("alert-danger");
-            errorMessages.removeClass("d-none");
+                        let alertDiv = $('<div class="alert alert-danger" role="alert"></div>');
 
-            response.errors.forEach(function (error) {
-              errorMessages.append(`<p>${error}</p>`);
-            });
-          }
-        },
-                error: function (xhr, status, error) {
-                    console.log("Error: " + error);
-                    showErrorAlert("An error occurred while submitting the form. Please try again.");
+                        response.errors.forEach(function (error) {
+                            alertDiv.append(`<p>${error}</p>`);
+                        });
+
+                        errorMessages.append(alertDiv);
+                    }
                 },
-      });
+                error: function (xhr, status, error) {
+                    console.log("XHR:", xhr);
+                    console.log("Status:", status);
+                    console.log("Error:", error);
+                },
+            });
+
+        });
     });
-  });
 </script>

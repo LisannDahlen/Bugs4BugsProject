@@ -55,9 +55,10 @@ namespace Bugs4Bugs.Models.Services
             IdentityResult result = await
                 userManager.CreateAsync(user, viewModel.Password);
 
-            bool wasUserCreated = result.Succeeded;
-            if (wasUserCreated)
+            bool userWasCreated = result.Succeeded;
+            if (userWasCreated)
             {
+                await userManager.AddToRoleAsync(user, "User");
                 await signInManager.SignInAsync(user, isPersistent: false);
                 return null;
             }
@@ -73,7 +74,6 @@ namespace Bugs4Bugs.Models.Services
                 isPersistent: false,
                 lockoutOnFailure: false
                 );
-            var user = await userManager.GetUsersInRoleAsync("Manager");
             
             bool wasUserSignedIn = result.Succeeded;
 

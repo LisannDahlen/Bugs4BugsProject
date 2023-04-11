@@ -1,0 +1,88 @@
+﻿@model LoginVM
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    <!-- Login modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true" data-product-name="">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Login form -->
+                    <form asp-controller="Account" asp-action="Login" id="loginForm">
+                        <div class="form-outline mb-3">
+                            <input type="text" asp-for="UserName" id="userName" class="form-control" />
+                            <label class="form-label" for="userName">Username</label>
+                        </div>
+
+                        <div class="form-outline mb-3">
+                            <input type="password" asp-for="Password" id="password" class="form-control" />
+                            <label class="form-label" for="password">Password</label>
+                        </div>
+                    </form>
+                    <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+                    <button type="submit" form="loginForm" class="btn btn-primary">Log In</button>
+                </div>
+                <div class="modal-footer">
+                    <div asp-validation-summary="All" id="loginErrorMessages" class="alert @(ViewContext.ModelState.ErrorCount > 0 ? "alert-danger" : "")" role="alert"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function showErrorAlert(message) {
+        $('#error-message').text(message);
+        $('#error-alert').removeClass('d-none');
+    }
+
+    function hideErrorAlert() {
+        $('#error-alert').addClass('d-none');
+    }
+
+    $(document).ready(function () {
+        const modal = $("#loginModal");
+
+        $("#loginForm").on("submit", function (e) {
+            e.preventDefault();
+            productName = modal.attr("data-product-name");
+            modal.attr("data-product-name",""); 
+            const form = $(this);
+            $.ajax({
+                url: "/login/" + productName,
+                type: "POST",
+                data: form.serialize(),
+                success: function (response) {
+                    if (response.status === "success") {
+                        console.log(response)
+                        if (response.redirectUrl != null){
+                            window.location = response.redirectUrl
+                        }else{
+                            location.reload();
+                        }
+                    } else if (response.status === "error") {
+                        const errorMessages = $("#loginErrorMessages");
+                        errorMessages.html("");
+                        errorMessages.addClass("alert-danger");
+                        errorMessages.removeClass("d-none");
+
+                        response.errors.forEach(function (error) {
+                            errorMessages.append(`<p>${error}</p>`);
+                        });
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.log("Error: " + error);
+                    showErrorAlert("An error occurred while submitting the form. Please try again.");
+                },
+            });
+        });
+    });
+</script>
+
+

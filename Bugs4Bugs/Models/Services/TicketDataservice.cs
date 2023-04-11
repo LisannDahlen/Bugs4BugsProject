@@ -31,7 +31,7 @@ namespace Bugs4Bugs.Models.Services
         {
             var UserId = GetCurrentUserId();
             return applicationContext.Products
-                .Where(t => (!filterByLogedInUser || t.OwnerId == UserId))
+                .Where(p => (!filterByLogedInUser || p.OwnerId == UserId))
                 .OrderBy(p => p.Name)
                 .Select(p => new ChooseProductVM
                 {
@@ -40,6 +40,10 @@ namespace Bugs4Bugs.Models.Services
                 }).ToArray();
         }
 
+        public string GetPhotoUrlByProduct(string prodName)
+        {
+            return applicationContext.Products.Where(p => p.Name == prodName).Select(products => products.PhotoURL).FirstOrDefault();
+        }
         internal CreateTicketVM? GetCreateTicketVM(string prodName)
         {
             return applicationContext.Products.Where(p => p.Name == prodName)
@@ -80,6 +84,7 @@ namespace Bugs4Bugs.Models.Services
         public TicketVM[] GetAllTickets(string prodName = null, bool filterByLogedInUser = false)
         {
             var UserId = GetCurrentUserId();
+            var ownedProducts = applicationContext.Products.Where(p => p.OwnerId == UserId);
             return applicationContext.Tickets
                 .Where(t => (prodName == null || t.TicketProduct.Name == prodName) && (!filterByLogedInUser || t.SubmitterId == UserId))
                 .Select(t =>

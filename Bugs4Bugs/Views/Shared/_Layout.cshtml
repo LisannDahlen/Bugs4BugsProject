@@ -103,13 +103,14 @@
 						}
                         else
                         {
-                            <button type="button" class="btn btn-link px-3 me-2">
-                                <a class="nav-link" asp-controller="Account" asp-action="Login">Log in</a>
+                            <button type="button" class="btn btn-link px-3 me-2" data-mdb-toggle="modal" data-mdb-target="#loginModal">
+                                Login
                             </button>
                             <button type="button" class="btn btn-primary me-2" data-mdb-toggle="modal" data-mdb-target="#registerModal">
                                 Register
                             </button>
                         }
+                        
                        @* <a class="nav-link dropdown-toggle"
                            href="#"
                            id="navbarDropdown"
@@ -310,6 +311,9 @@
 
     </div>
 
+    <partial name="_RegisterModal" model="@new Bugs4Bugs.Views.Account.RegisterVM()" />
+    <partial name="_LoginModal" model="@new Bugs4Bugs.Views.Account.LoginVM()" />
+
     <!--Scripts-->
     <!-- Add jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -322,14 +326,14 @@
     <script>
         //Posting the form when pressing the enter key
         const form = document.querySelector('.post-on-enter');
-
-        form.addEventListener('keydown', function (event) {
-            if (event.keyCode === 13) {
-                event.preventDefault(); // prevent the default behavior of submitting the form on enter
-                form.submit();
-            }
-        });
+        if(form != null){
+            form.addEventListener('keydown', function (event) {
+                if (event.keyCode === 13) {
+                    event.preventDefault(); // prevent the default behavior of submitting the form on enter
+                    form.submit();
+                }
+            });
+        }
     </script>
-    @await Html.PartialAsync("_RegisterModal", new Bugs4Bugs.Views.Account.RegisterVM())
 </body>
 </html>
