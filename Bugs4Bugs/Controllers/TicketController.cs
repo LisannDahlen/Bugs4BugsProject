@@ -43,6 +43,7 @@ namespace Bugs4Bugs.Controllers
            
             if (!ModelState.IsValid)
             {
+
                 createTicketVM.BugTypes = ticketDataservice.GetBugTypes(prodName);
                 createTicketVM.UrgencyLevels = ticketDataservice.GetUrgencyLevels(prodName);
                 
