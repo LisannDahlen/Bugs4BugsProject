@@ -160,38 +160,44 @@ namespace Bugs4Bugs.Models
             };
         }
 
-        //public static Ticket[] GetDefaultTickets()
-        //{
+        internal static Ticket[] GetDefaultTickets()
+        {
+                return new Ticket[]
+                {
 
-        //    return new Ticket[]
-        //    {
-        //        new Ticket
-        //        {
-        //            Id = 1,
-        //            Description = "En smältande polis jagar mig och en Österrikisk bodybuilder säger att jag ska rädda framtiden",
-        //            SubmittedDate = DateTime.Now.AddDays(3),
-        //            LastUpdated = DateTime.Now.AddDays(7),
-        //            Title = "Mördarrobotar",
-        //            TicketProductId = 5,
-        //            TicketStatusId = 1, // 1 = "Closed"
-        //            TicketBugTypeId = 1,
-        //            TicketUrgencyId = 1,
-        //            SubmitterId = "defaultUser",
-        //        },
-        //        new Ticket
-        //        {
-        //            Id = 2,
-        //            Description = "Jag gjorde min matteläxa när programmet plötsligt",
-        //            SubmittedDate = DateTime.Now,
-        //            LastUpdated = DateTime.Now,
-        //            Title = "Programmet åt min läxa",
-        //            TicketProductId = 1,
-        //            TicketStatusId = 3, // 3 = "open,
-        //            TicketBugTypeId = 3,
-        //            TicketUrgencyId = 2,
-        //            SubmitterId = "defaultUser",
-        //        },
-        //    };
-        //}
+                new Ticket{Id = 1,
+                    SubmittedDate = DateTime.Now,
+                    LastUpdated= DateTime.Now,
+                    SubmitterId = defaultUserRoleId,
+                    TicketBugTypeId = 3,
+                    TicketProductId = 1,
+                    TicketStatusId = 3,
+                    TicketUrgencyId = 1,
+                    Title= "Screen freezes",
+                    Description = "Whenever I try to open my project, the visual studio screen freezes"},
+                new Ticket{Id = 2,
+                    SubmittedDate = DateTime.Now,
+                    LastUpdated= DateTime.Now,
+                    SubmitterId = defaultUserRoleId,
+                    TicketBugTypeId = 5,
+                    TicketProductId = 11,
+                    TicketStatusId = 3,
+                    TicketUrgencyId = 3,
+                    Title= "Cant see teams meeting",
+                    Description = "When I start a meeting, it is not visible for anyone else, not even for me"},
+                new Ticket{Id = 3,
+                    SubmittedDate = DateTime.Now,
+                    LastUpdated= DateTime.Now,
+                    SubmitterId = defaultUserRoleId,
+                    TicketBugTypeId = 3,
+                    TicketProductId = 7,
+                    TicketStatusId = 3,
+                    TicketUrgencyId = 4,
+                    Title= "Harry Potter is missing",
+                    Description = "All Harry Potter movies are missing. Huge problem!"}
+                };
+            }
+
+       
     }
 }
